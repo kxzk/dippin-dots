@@ -20,3 +20,8 @@ fish_add_path /path/to/add
 ```bash
 path -> ~/.ipython/profile_default/
 ```
+
+* Alias snowsql
+```bash
+alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+```
