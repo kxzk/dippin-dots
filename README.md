@@ -15,3 +15,8 @@ chsh -s /opt/homebrew/bin/fish
 ```bash
 fish_add_path /path/to/add
 ```
+
+* Ipython settings
+```bash
+path -> ~/.ipython/profile_default/
+```
