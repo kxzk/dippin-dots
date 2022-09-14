@@ -229,5 +229,6 @@ end
 
 -- custom tweaking defautl theme
 cmd [[highlight Comment cterm=italic ctermfg=8]]   -- italic comments
-cmd [[highlight LineNr ctermfg=8]]
+cmd [[highlight LineNr ctermfg=8]]          -- dim line numbers
+cmd [[highlight EndOfBuffer ctermfg=0]]     -- dim tilde under line number
 cmd [[highlight VertSplit cterm=None]]     -- remove bad split coloring
