@@ -16,13 +16,67 @@ local api = vim.api         -- invokes nvim api
 local autocmd = vim.api.nvim_create_autocmd
 local autogroup = vim.api.nvim_create_augroup
 
+-- << PACKAGES >> --
+
+-- ensure packer is installed
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
+
+require('packer').startup(function(use)
+    use 'wbthomason/packer.nvim'
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+
+    -- lsp config + installer
+    -- use 'neovim/nvim-lspconfig'
+
+    -- use {
+        -- 'nvim-telescope/telescope.nvim',
+        -- opt = true,
+        -- cmd = 'Telescope',
+        -- tag = '0.1.0',
+        -- requires = { {'nvim-lua/plenary.nvim'} }
+    -- }
+
+    -- scala lsp
+    -- use {'scalameta/nvim-metals', requires = { 'nvim-lua/plenary.nvim' } }
+
+    -- lazy load for specific command
+    use { 'psf/black', opt = true, cmd = 'Black' }   -- make sure to install `pynvim`
+    use 'scrooloose/nerdcommenter'  -- commenting
+    use 'rizzatti/dash.vim'         -- dash app plugin
+
+    if packer_bootstrap then
+        require('packer').sync()
+    end
+end)
+
+-- << REQUIRE >> --
+
+-- require('lua.plugins.telescope')
+
 -- << OPTIONS >> --
 
 g.mapleader = ' '           -- space leader
 g.background = 'dark'
+g.do_filetype_lua = 1
 
 cmd [[colorscheme default]]
-cmd [[filetype plugin indent on]]
 
 -- [[ UI ]] --
 
@@ -37,12 +91,22 @@ opt.showcmd = false         -- do not show partial command in last line
 opt.splitbelow = true
 opt.splitright = true
 
+-- get rid of annoying split chars
+opt.fillchars = {
+  horiz = '-',
+  horizup = ' ',
+  horizdown = ' ',
+  vert = ' ',
+  vertleft  = ' ',
+  vertright = ' ',
+  verthoriz = ' ',
+}
+
 -- [[ CORE ]] --
 
 opt.syntax = 'on'           -- syntax highlighting on, duh
 opt.laststatus = 3          -- global statusline
 opt.completeopt = 'menuone,noinsert,noselect'   -- autocomplete options
--- opt.clipboard = 'unnamedplus'   -- copy to system clipboard
 opt.mouse = 'a'             -- turn on mouse support
 opt.scrolloff = 3           -- min lines to keep above/below cursor
 opt.foldmethod = 'manual'   -- manual folding -> zf{motion}, zo -> open, zc -> close
@@ -66,6 +130,18 @@ opt.swapfile = false        -- no swapfile
 opt.updatecount = 0         -- no swapfiles after some number of updates
 opt.updatetime = 50         -- less lag
 
+-- [[ PLUGOPTS ]] --
+
+if (vim.loop.os_uname().sysnem == 'Darwin') then
+    g.python3_host_prog = '/opt/homebrew/bin/python3'
+else
+    g.python3_host_prog = '/usr/bin/python3'
+end
+
+g.black_fast = 1
+g.NERDSpaceDelims = 1
+g.NERDTrimTrailingWhitespace = 1
+
 -- << TEMPLATES >> --
 
 cmd [[
@@ -73,6 +149,7 @@ cmd [[
         autocmd!
         autocmd BufNewFile *.py 0r ~/.config/nvim/templates/py.skeleton
         autocmd BufNewFile *.go 0r ~/.config/nvim/templates/go.skeleton
+        autocmd BufNewFile *.todo 0r ~/.config/nvim/templates/todo.skeleton
     augroup END
 ]]
 
@@ -83,6 +160,16 @@ cmd [[
    augroup PyOpts
        autocmd!
        autocmd Filetype python nmap <leader>r :split term://python3 %<CR>
+       autocmd BufWritePre *.py silent execute ':Black'
+   augroup END
+]]
+
+-- << GOLANG >> --
+
+cmd [[
+   augroup GoOpts
+       autocmd!
+       autocmd Filetype go nmap <leader>r :split term://go run *.go<CR>
    augroup END
 ]]
 
@@ -109,7 +196,6 @@ end
 
 -- quick init.lua editing/sourcing
 map('n', '<leader>-', ':e $HOME/.config/nvim/init.lua<CR>')
-map('n', '<F1>', ':source $HOME/.config/nvim/init.lua<CR>')
 
 -- fast saves/quit
 map('n', '<leader>w', ':w!<CR>')
@@ -124,11 +210,15 @@ map('n', '<leader>s', ':%s/')
 -- clear search highlighting
 map('n', '<BS>', ':nohl<CR>')
 
--- get out of term
--- map('i', '<ESC>', '<C-\><C-N>', { noremap = true })
+-- dash app plugin
+map('n', '<leader>d', '<Plug>DashSearch<CR>')
 
 -- netrw -> nerdtree-esque
 map('n', '<leader>0', ':Vexplore<CR>')
+
+-- execute shell command under cursor
+-- and paste back into buffer
+map('n', 'Q', '!!$SHELL<CR>')
 
 -- netrw cheatsheet --
 -- - -> up directory
@@ -147,6 +237,7 @@ g.netrw_browse_split = 1
 g.netrw_winsize = 20
 g.netrw_altv = 1
 g.netrw_hide = 0
+g.netrw_cursor = 0
 
 -- << STATUSLINE >> --
 
@@ -218,7 +309,7 @@ local disabled_built_ins = {
    "optwin",
    "compiler",
    "bugreport",
-   "ftplugin"
+   "ftplugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
@@ -228,7 +319,12 @@ end
 -- << RANDOM >> --
 
 -- custom tweaking defautl theme
-cmd [[highlight Comment cterm=italic ctermfg=8]]   -- italic comments
+cmd [[highlight Comment ctermfg=8]]         -- italic comments
 cmd [[highlight LineNr ctermfg=8]]          -- dim line numbers
-cmd [[highlight EndOfBuffer ctermfg=0]]     -- dim tilde under line number
-cmd [[highlight VertSplit cterm=None]]     -- remove bad split coloring
+cmd [[highlight EndOfBuffer ctermfg=0 cterm=italic]]     -- dim tilde under line number
+cmd [[highlight VertSplit ctermfg=3 cterm=None ctermbg=None]]      -- remove bad split coloring
+cmd [[highlight SignColumn ctermbg=None]]   -- remove bad sign column coloring
+cmd [[highlight MsgArea ctermfg=8]]         -- dim command line/message area
+cmd [[highlight GitSignsAdd ctermfg=2]]     -- default colo doesn't set these
+cmd [[highlight GitSignsDelete ctermfg=1]]
+cmd [[highlight GitSignsChange ctermfg=5]]
