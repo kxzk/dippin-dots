@@ -20,14 +20,17 @@ echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/fish
 ```
 
-* Fish adding path
+* Add homebrew to fish path
 ```bash
-fish_add_path /path/to/add
+fish_add_path /opt/homebrew/bin
 ```
 
-* Ipython settings
+* Stow commands
 ```bash
-path -> ~/.ipython/profile_default/
+stow package
+
+# simulate running
+stow -nv package
 ```
 
 * Alias snowsql
