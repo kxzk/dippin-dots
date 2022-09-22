@@ -132,7 +132,7 @@ opt.updatetime = 50         -- less lag
 
 -- [[ PLUGOPTS ]] --
 
-if (vim.loop.os_uname().sysnem == 'Darwin') then
+if (vim.loop.os_uname().sysname == 'Darwin') then
     g.python3_host_prog = '/opt/homebrew/bin/python3'
 else
     g.python3_host_prog = '/usr/bin/python3'
