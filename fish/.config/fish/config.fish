@@ -22,6 +22,7 @@ alias pipu="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip
 alias g="git"
 alias ls="exa"
 alias vim="nvim"
+alias vi="nvim"
 alias grep="grep --color=auto"
 
 # shortcuts
