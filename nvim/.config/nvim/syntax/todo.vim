@@ -5,8 +5,11 @@ endif
 syn match opentask "- \[ \]"
 hi opentask ctermfg=2
 
-syn match subtask "->"
-hi subtask ctermfg=6
+syn match arrow "->"
+hi arrow ctermfg=6
+
+syn match dcol "::"
+hi dcol ctermfg=9
 
 syn match endtask "- \[x\].*$"
 hi endtask ctermfg=8
