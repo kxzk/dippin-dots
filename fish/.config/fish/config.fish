@@ -26,10 +26,10 @@ alias vi="nvim"
 alias grep="grep --color=auto"
 
 # shortcuts
+alias D="~/duckdb"
 alias vc="nvim ~/.config/nvim/init.lua"
 alias tc="nvim ~/.tmux.conf"
 alias tk="tmux kill-server"
-alias todo="nvim ~/main.todo"
 alias ip="curl ipecho.net/plain ; echo"
 alias sshconfig="nvim ~/.ssh/config"
 alias top="top -o cpu"
