@@ -8,8 +8,8 @@
 set -U fish_greeting
 
 # navigation
-alias ..="cd .."
-alias ...="cd ../.."
+alias ..="z .."
+alias ...="z ../.."
 
 # random
 alias quote="daily-quote"
@@ -36,3 +36,7 @@ alias top="top -o cpu"
 alias clean="rm -rf ~/.Trash/*; rm -rf ~/Downloads/*"
 alias weather="curl wttr.in"
 alias date="date '+%B %e, %Y'"
+
+# zoxide
+zoxide init fish | source
+alias cd="z"
