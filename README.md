@@ -33,6 +33,8 @@ stow package
 stow -nv package
 ```
 
+* [Install DuckDB CLI](https://duckdb.org/docs/installation/)
+
 * Alias snowsql
 ```bash
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
