@@ -31,6 +31,9 @@ stow package
 
 # simulate running
 stow -nv package
+
+# update -> restow
+stow -Rv package
 ```
 
 * [Install DuckDB CLI](https://duckdb.org/docs/installation/)
