@@ -51,6 +51,7 @@ teles.setup {
         },
         path_display = { 'truncate' },
         winblend = 0,
+        results_title = false,
         border = {},
         borderchars = {
             prompt = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" },
