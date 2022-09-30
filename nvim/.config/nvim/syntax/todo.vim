@@ -3,21 +3,21 @@ if exists("b:current_syntax")
 endif
 
 syn match opentask "- \[ \]"
-hi opentask ctermfg=2
+hi opentask guifg=#81a1c1
 
 syn match arrow "->"
-hi arrow ctermfg=6
+hi arrow guifg=#b48ead
 
 syn match dcol "::"
-hi dcol ctermfg=9
+hi dcol guifg=#81a1c1
 
 syn match endtask "- \[x\].*$"
-hi endtask ctermfg=8
+hi endtask guifg=#3b4252
 
 syn match header "\[\[.*\]\]"
-hi header ctermfg=3
+hi header guifg=#ebcb8b
 
 syn match subheader "--.*--"
-hi subheader ctermfg=4
+hi subheader guifg=#81a1c1
 
 let b:current_syntax = "todo"
