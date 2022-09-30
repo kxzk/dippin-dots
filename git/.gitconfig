@@ -17,8 +17,6 @@
     defaultBranch = main
 [fetch]
     prune = true
-[pull]
-    rebase = true
 [alias]
 	co = checkout
 	br = branch

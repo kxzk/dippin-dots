@@ -1,0 +1,7 @@
+*.sqlite
+db
+log/
+pid/
+security/
+startup/
+packer_compiled.lua
