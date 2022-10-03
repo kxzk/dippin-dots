@@ -4,7 +4,17 @@ if not status_ok then
 end
 
 configs.setup {
-    ensure_installed = { "python", "go", "rust", "json", "markdown", "lua" },
+    ensure_installed = {
+        "python",
+        "go",
+        "rust",
+        "json",
+        "markdown",
+        "lua",
+        "dockerfile",
+        "cmake",
+        "fish"
+    },
     sync_install = false, -- async install
     ignore_install = { "" }, -- list of parsers to install
     highlight = {

@@ -16,11 +16,6 @@ vim.cmd [[
         autocmd Filetype rust nmap <leader>t :20 split term://cargo test<CR>
     augroup end
 
-    augroup _auto_resize
-        autocmd!
-        autocmd VimResized * tabdo wincmd = 
-    augroup end
-
     augroup _templates
         autocmd!
         autocmd BufNewFile *.py 0r ~/.config/nvim/templates/py.skeleton
