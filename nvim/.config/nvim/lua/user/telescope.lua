@@ -28,7 +28,6 @@ teles.setup {
         },
         file_ignore_patterns = {
             '^.git/',
-            '^.go/',
             '^.cache/',
             '^__pycache__/',
             '^target/',
@@ -40,6 +39,7 @@ teles.setup {
             '^.cargo/',
             '^.local/',
             '^.Trash/',
+            '^pkg/',
             '%.ttf',
             '%.otf',
             '%.svg',
@@ -62,7 +62,7 @@ teles.setup {
 }
 
 local exts = {
-    extensions_list = { 'fzf', 'themes' }
+    extensions_list = { 'fzf' }
 }
 
 -- load extensions
