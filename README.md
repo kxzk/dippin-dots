@@ -21,7 +21,7 @@ chsh -s /opt/homebrew/bin/fish
 ```
 
 * Add homebrew to fish path
-```bash
+```fish
 fish_add_path /opt/homebrew/bin
 ```
 
@@ -41,4 +41,10 @@ stow -Rv package
 * Alias snowsql
 ```bash
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
+```
+
+* [Pyenv](https://github.com/pyenv/pyenv) install
+```fish
+set -Ux PYENV_ROOT $HOME/.pyenv
+fish_add_path $PYENV_ROOT/bin
 ```

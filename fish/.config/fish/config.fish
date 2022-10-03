@@ -26,16 +26,18 @@ alias vi="nvim"
 alias grep="grep --color=auto"
 
 # shortcuts
+alias snowsql="/Applications/SnowSQL.app/Contents/MacOS/snowsql"
 alias D="~/duckdb"
-alias vc="nvim ~/.config/nvim/init.lua"
-alias tc="nvim ~/.tmux.conf"
 alias tk="tmux kill-server"
 alias ip="curl ipecho.net/plain ; echo"
 alias sshconfig="nvim ~/.ssh/config"
 alias top="top -o cpu"
-alias clean="rm -rf ~/.Trash/*; rm -rf ~/Downloads/*"
 alias weather="curl wttr.in"
 alias date="date '+%B %e, %Y'"
+alias dots="~/dippin-dots"
+
+# pyenv
+pyenv init - | source
 
 # zoxide
 zoxide init fish | source

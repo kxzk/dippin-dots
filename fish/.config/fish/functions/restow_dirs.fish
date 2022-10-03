@@ -1,4 +1,4 @@
-function restow
+function restow_dirs
     set -l packages alacritty fish git nvim tmux
     for p in $packages
         stow -Rv $p
