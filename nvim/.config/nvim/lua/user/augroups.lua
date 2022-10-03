@@ -2,7 +2,7 @@ vim.cmd [[
    augroup _python
        autocmd!
        autocmd Filetype python nmap <leader>r :20 split term://python3 %<CR>
-       autocmd BufWritePre *.py silent execute ':Black'
+       " autocmd BufWritePre *.py silent execute ':Black'
    augroup end
 
    augroup _go

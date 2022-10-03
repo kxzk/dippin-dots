@@ -12,5 +12,5 @@ configs.setup {
         disable = { "" },
         additional_vim_regex_highligting = true,
     },
-    indent = { enable = true },
+    indent = { enable = false },
 }

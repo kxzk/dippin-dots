@@ -10,7 +10,7 @@ else
     g.python3_host_prog = '/usr/bin/python3'
 end
 
-g.black_fast = 1
+-- g.black_fast = 1
 g.NERDSpaceDelims = 1
 g.NERDTrimTrailingWhitespace = 1
 
@@ -27,7 +27,7 @@ g.NERDTrimTrailingWhitespace = 1
 
 g.netrw_liststlye = 3
 g.netrw_banner = 0
-g.netrw_browse_split = 1
+g.netrw_browse_split = 0
 g.netrw_winsize = 20
 g.netrw_altv = 1
 g.netrw_hide = 0

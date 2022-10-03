@@ -28,5 +28,8 @@ map('n', '<leader>0', ':Vexplore<cr>')
 map('n', 'Q', '!!$SHELL<CR>')
 
 -- telescope
-map('n', '<leader>f', '<cmd>Telescope find_files<cr>')
-map('n', '<leader>g', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>fr', '<cmd>Telescope lsp_references<cr>')
+map('n', '<leader>fc', '<cmd>Telescope git_commits<cr>')
