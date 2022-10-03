@@ -31,29 +31,29 @@ require('packer').startup(function(use)
     }
 
     -- lsp
-    -- use {
-        -- 'williamboman/mason.nvim',
-        -- 'williamboman/mason-lspconfig.nvim',
-        -- 'neovim/nvim-lspconfig'
-    -- }
-   -- require('mason').setup()
-   -- local mason_lspconfig = require('mason-lspconfig')
-   -- mason_lspconfig.setup({
-     -- ensure_installed = {
+    use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig'
+    }
+   require('mason').setup()
+   local mason_lspconfig = require('mason-lspconfig')
+   mason_lspconfig.setup({
+     ensure_installed = {
        -- 'gopls',
        -- 'rust_analyzer'
-       -- -- 'pyright',
-     -- }
-   -- })
-   -- mason_lspconfig.setup_handlers({
-     -- function(server_name)
-       -- require('lspconfig')[server_name].setup({
-         -- on_attach = function(client, bufnr)
-           -- require('user.lsp').on_attach(client, bufnr)
-         -- end
-       -- })
-     -- end
-   -- })
+       'pyright',
+     }
+   })
+   mason_lspconfig.setup_handlers({
+     function(server_name)
+       require('lspconfig')[server_name].setup({
+         on_attach = function(client, bufnr)
+           require('user.lsp.lsp').on_attach(client, bufnr)
+         end
+       })
+     end
+   })
 
     -- fuzzy finder
     use {
