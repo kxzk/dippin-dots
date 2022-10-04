@@ -24,6 +24,8 @@ alias ls="exa"
 alias vim="nvim"
 alias vi="nvim"
 alias grep="grep --color=auto"
+alias tree="exa -lxT --no-permissions --no-time --no-user --no-filesize"
+alias treesize="exa -lxT --no-permissions --no-time --no-user"
 
 # shortcuts
 alias snowsql="/Applications/SnowSQL.app/Contents/MacOS/snowsql"
