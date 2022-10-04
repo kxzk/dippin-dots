@@ -29,6 +29,11 @@ vim.cmd [[
         autocmd Filetype gitcommit setlocal spell
     augroup end
 
+    augroup _sql
+        autocmd!
+        autocmd Filetype sql nmap <leader>r :20 split term://snowsql -f %<CR>
+    augroup end
+
     augroup _terminal
         autocmd!
         autocmd TermOpen * setlocal nonumber norelativenumber
