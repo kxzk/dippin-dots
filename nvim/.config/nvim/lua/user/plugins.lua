@@ -67,7 +67,7 @@ require('packer').startup(function(use)
 
     -- python
     -- make sure pynvim installed
-    -- use { 'psf/black', cmd = 'Black' }
+    use { 'psf/black', cmd = 'Black' }
 
     -- commenting
     use 'scrooloose/nerdcommenter'
