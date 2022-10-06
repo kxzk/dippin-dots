@@ -26,6 +26,8 @@ alias vi="nvim"
 alias grep="grep --color=auto"
 alias tree="exa -lxT --no-permissions --no-time --no-user --no-filesize"
 alias treesize="exa -lxT --no-permissions --no-time --no-user"
+alias modelsize="exa -lxR --no-permissions --no-time --no-user --sort filesize --ignore-glob='*.yml|*.md' --reverse | awk '/^[1-9]/' | sort -hr"
+alias jli="jira issue list -a$(jira me)"
 
 # shortcuts
 alias snowsql="/Applications/SnowSQL.app/Contents/MacOS/snowsql"
@@ -37,9 +39,6 @@ alias top="top -o cpu"
 alias weather="curl wttr.in"
 alias date="date '+%B %e, %Y'"
 alias dots="~/dippin-dots"
-
-# pyenv
-pyenv init - | source
 
 # zoxide
 zoxide init fish | source
