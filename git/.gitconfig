@@ -4,7 +4,7 @@
 [core]
     excludesfile = ~/.gitignore_global
 [commit]
-    template = ~/dotfiles/.gitmessage
+    template = ~/dippin-dots/git/.gitmessage
 [color]
     ui = auto
 [github]
