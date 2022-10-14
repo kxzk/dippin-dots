@@ -38,7 +38,7 @@ alias ip="curl ipecho.net/plain ; echo"
 alias sshconfig="nvim ~/.ssh/config"
 alias top="top -o cpu"
 alias weather="curl wttr.in"
-alias date="date '+%B %e, %Y'"
+alias today="date '+%B %e, %Y'"
 alias dots="~/dippin-dots"
 
 # zoxide
