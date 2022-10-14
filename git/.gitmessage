@@ -1,3 +1,14 @@
+#   Add = Create a capability e.g. feature, test, dependency.
+#   Cut = Remove a capability e.g. feature, test, dependency.
+#   Fix = Fix an issue e.g. bug, typo, accident, misstatement.
+#   Bump = Increase the version of something e.g. dependency.
+#   Make = Change the build process, or tooling, or infra.
+#   Start = Begin doing something; e.g. "Branch by abstraction"
+#   Stop = End doing something; e.g. remove a feature flag.
+#   Refactor = A code change that MUST be just a refactoring.
+#   Reformat = Refactor of formatting, e.g. omit whitespace.
+#   Optimize = Refactor of performance, e.g. speed up code.
+#   Document = Refactor of documentation, e.g. help files.
 
 # (If applied, this commit will...) <subject> (Max 72 char)
 # |<----   Preferably using up to 50 chars   --->|<------------------->|
@@ -13,6 +24,7 @@ This change addresses the need by:
 
 References:
 # (Optional) Provide links or keys to any relevant tickets, articles or other resources
-# * Fixes #23
+# Ticket: #123      Resolves: #123
+# Closes: #123      See also: #456, #789
 
 * ...
