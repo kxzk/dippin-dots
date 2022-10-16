@@ -26,7 +26,11 @@ vim.cmd [[
     augroup _writing
         autocmd!
         autocmd Filetype markdown setlocal spell
-        autocmd Filetype gitcommit setlocal spell
+    augroup end
+
+    augroup _git
+        autocmd!
+        autocmd Filetype gitcommit setlocal spell textwidth=72
     augroup end
 
     augroup _sql
