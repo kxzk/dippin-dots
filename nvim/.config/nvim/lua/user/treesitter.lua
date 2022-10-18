@@ -7,6 +7,7 @@ configs.setup {
     ensure_installed = {
         "python",
         "go",
+        "sql",
         "rust",
         "json",
         "markdown",
