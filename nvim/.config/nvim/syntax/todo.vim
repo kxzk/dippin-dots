@@ -8,6 +8,9 @@ hi opentask guifg=#81a1c1
 syn match important "!!"
 hi important guifg=#BF616A
 
+syn match list "*"
+hi list guifg=#A3BE8C
+
 syn match arrow "->"
 hi arrow guifg=#b48ead
 
