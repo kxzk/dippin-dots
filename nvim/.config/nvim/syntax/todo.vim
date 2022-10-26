@@ -8,6 +8,12 @@ hi opentask guifg=#81a1c1
 syn match important "!!"
 hi important guifg=#BF616A
 
+syn match kinda_important "++"
+hi kinda_important guifg=#D08770
+
+syn match maybe_important "__"
+hi maybe_important guifg=#8FBCBB
+
 syn match list "*"
 hi list guifg=#A3BE8C
 
