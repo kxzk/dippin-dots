@@ -30,7 +30,7 @@ vim.cmd [[
 
     augroup _git
         autocmd!
-        autocmd Filetype gitcommit setlocal spell textwidth=72
+        autocmd Filetype gitcommit setlocal spell relativenumber textwidth=72
     augroup end
 
     augroup _sql
