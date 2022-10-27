@@ -10,7 +10,7 @@
 [github]
 	user = kadekillary
 [core]
-	editor = vim
+	editor = nvim
 [pager]
 	branch = false
 [init]
