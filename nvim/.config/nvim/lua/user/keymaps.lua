@@ -27,6 +27,9 @@ map('n', '<leader>0', ':Vexplore<cr>')
 -- and paste back into buffer
 map('n', 'Q', '!!$SHELL<CR>')
 
+-- gitsigns
+map('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<cr>')
+
 -- telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
