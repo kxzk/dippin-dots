@@ -36,6 +36,7 @@ vim.cmd [[
     augroup _sql
         autocmd!
         autocmd Filetype sql nmap <leader>r :20 split term://snowsql -f %<CR>
+        autocmd Filetype sql nmap <leader>t :!sqlfmt %<CR>>
     augroup end
 
     augroup _terminal
