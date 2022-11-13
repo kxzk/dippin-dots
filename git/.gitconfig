@@ -3,14 +3,25 @@
     email = kadekillary@pm.me
 [core]
     excludesfile = ~/.gitignore_global
+    editor = nvim
+    pager = delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigte = true
+    light = false
+    line-numbers = true
+    side-by-side = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
 [commit]
     template = ~/dippin-dots/git/.gitmessage
 [color]
     ui = auto
 [github]
 	user = kadekillary
-[core]
-	editor = nvim
 [pager]
 	branch = false
 [init]
@@ -20,12 +31,15 @@
 [alias]
 	co = checkout
 	br = branch
+    bd = branch -D
+    bl = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
 	ci = commit
-	st = status
     ss = status --short
 	unstage = reset HEAD --
-    undo = reset --hard HEAD
+    rsoft = reset --soft HEAD
+    rhard = reset --hard HEAD
     amend = commit --amend --no-edit
 	last = log -1 HEAD
-    rank = shortlog -n -s --no-merges
+    rank = shortlog -sne --no-merges
+    rankfile = shortlog -sne
     lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
