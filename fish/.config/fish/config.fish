@@ -44,6 +44,7 @@ alias top="top -o cpu"
 alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="~/dippin-dots"
+alias ghme="open https://github.com/kadekillary"
 
 # zoxide
 zoxide init fish | source
