@@ -35,7 +35,6 @@
     bl = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
 	ci = commit
     ss = status --short
-    psu = push --set-upstream origin
 	unstage = reset HEAD --
     rsoft = reset --soft HEAD
     rhard = reset --hard HEAD
