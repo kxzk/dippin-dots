@@ -38,7 +38,7 @@
 	unstage = reset HEAD --
     rsoft = reset --soft HEAD
     rhard = reset --hard HEAD
-    amend = commit --amend --no-edit
+    amend = commit --amend
 	last = log -1 HEAD
     rank = shortlog -sne --no-merges
     rankfile = shortlog -sne
