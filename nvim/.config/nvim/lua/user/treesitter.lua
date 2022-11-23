@@ -14,6 +14,7 @@ configs.setup {
         "lua",
         "dockerfile",
         "cmake",
+        "elixir",
         "fish"
     },
     sync_install = false, -- async install
