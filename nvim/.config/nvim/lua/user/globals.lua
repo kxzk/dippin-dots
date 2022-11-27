@@ -32,3 +32,9 @@ g.netrw_winsize = 20
 g.netrw_altv = 1
 g.netrw_hide = 0
 g.netrw_cursor = 0
+
+-- copilot
+-- g.copilot_filtypes = { '*': v:false, 'python': v:true }
+-- has to be node version < 18
+-- brew info node@16
+g.copilot_node_command = '/opt/homebrew/opt/node@16/bin/node'

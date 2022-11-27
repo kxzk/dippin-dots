@@ -36,3 +36,6 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>')
 map('n', '<leader>fr', '<cmd>Telescope lsp_references<cr>')
 map('n', '<leader>fc', '<cmd>Telescope git_commits<cr>')
+
+-- copilot
+map('n', '<leader>gp', '<cmd>Copilot panel<cr>')

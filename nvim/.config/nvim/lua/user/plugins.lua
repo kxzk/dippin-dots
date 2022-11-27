@@ -65,6 +65,9 @@ require('packer').startup(function(use)
         }
     }
 
+    -- copilot
+    use 'github/copilot.vim'
+
     -- python
     -- make sure pynvim installed
     use { 'psf/black', cmd = 'Black' }
