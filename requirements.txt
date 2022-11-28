@@ -1,4 +1,3 @@
 black
 ipython
 pynvim
-ruff
