@@ -15,6 +15,7 @@ alias ...="z ../.."
 alias quote="daily-quote"
 
 # python
+alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt"
 alias pipd="pip3 freeze | xargs pip3 uninstall -y"
 alias pipu="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
 
