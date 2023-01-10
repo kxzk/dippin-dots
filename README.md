@@ -46,3 +46,8 @@ alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/bin
 ```
+
+* Install Alacritty w/o Mac security snearing
+```
+brew install --cask alacritty --no-quarantine
+```
