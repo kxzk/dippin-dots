@@ -7,6 +7,8 @@
 # remove start up prompt
 set -U fish_greeting
 
+set -gx OPENAI_KEY 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
+
 # navigation
 alias ..="z .."
 alias ...="z ../.."
