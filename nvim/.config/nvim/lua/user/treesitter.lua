@@ -15,7 +15,8 @@ configs.setup {
         "dockerfile",
         "cmake",
         "elixir",
-        "fish"
+        "fish",
+        "yaml"
     },
     sync_install = false, -- async install
     ignore_install = { "" }, -- list of parsers to install
