@@ -37,7 +37,9 @@
     ss = status --short
 	unstage = reset HEAD --
     rsoft = reset --soft HEAD
+    rsoftm = reset --soft master
     rhard = reset --hard HEAD
+    rsoftm = reset --hard master
     amend = commit --amend
 	last = log -1 HEAD
     rank = shortlog -sne --no-merges
