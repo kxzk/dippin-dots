@@ -27,6 +27,10 @@ alias ib="issue_branch"
 alias grep="grep --color=auto"
 alias checkports="lsof -i -n -P | grep TCP"
 
+# git
+alias prrev="gh search prs --review-requested=@me --state=open"
+alias prme="gh search prs --sort=updated --author=@me --state=open"
+
 # exa (ls)
 alias ls="exa"
 alias tree="exa -lxT --no-permissions --no-time --no-user --no-filesize"
