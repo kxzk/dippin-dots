@@ -21,6 +21,7 @@ alias pipu="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip
 
 # util
 alias g="git"
+alias gp="git pull"
 alias vim="nvim"
 alias vi="nvim"
 alias ib="issue_branch"
