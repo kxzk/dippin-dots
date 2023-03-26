@@ -11,13 +11,11 @@ set -U fish_greeting
 alias ..="z .."
 alias ...="z ../.."
 
-# random
-alias quote="daily-quote"
-
 # python
 alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt"
 alias pipd="pip3 freeze | xargs pip3 uninstall -y"
 alias pipu="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
+alias pyignore="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
 
 # util
 alias g="git"
@@ -27,6 +25,7 @@ alias vi="nvim"
 alias ib="issue_branch"
 alias grep="grep --color=auto"
 alias checkports="lsof -i -n -P | grep TCP"
+alias license="curl https://gist.githubusercontent.com/kadekillary/dbc6007d5e8f7bd6b2a54270b192f547/raw/1ac0c8ac6b26a8471e14f6a627833f8d9e75f765/LICENSE > LICENSE"
 
 # git
 alias prrev="gh search prs --review-requested=@me --state=open"
