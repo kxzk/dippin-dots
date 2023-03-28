@@ -1,4 +1,6 @@
-function data_gpt -a prompt data
+function data_gpt -a prompt
+    cat /dev/stdin | while read line; set --append data "$line"; end
+        
     curl https://api.openai.com/v1/chat/completions -s \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_KEY" \
