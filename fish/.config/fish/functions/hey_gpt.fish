@@ -7,6 +7,5 @@ function hey_gpt -a prompt
         "messages": [{"role": "assistant", "content": "'$prompt'"}],
         "temperature": 0.7
     }')
-    set content (echo $gpt | jq -r '.choices[0].message.content')
-    echo $content
+    echo $gpt | jq -r '.choices[0].message.content'
 end
