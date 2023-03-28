@@ -46,3 +46,8 @@ fish_add_path $PYENV_ROOT/bin
 ```
 brew install --cask alacritty --no-quarantine
 ```
+
+* Set github cli to use vim
+```
+gh config set editor vim
+```
