@@ -47,7 +47,7 @@ fish_add_path $PYENV_ROOT/bin
 brew install --cask alacritty --no-quarantine
 ```
 
-* Set github cli to use vim
+* Set github cli to use neovim
 ```
-gh config set editor vim
+gh config set editor nvim
 ```
