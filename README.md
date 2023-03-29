@@ -51,3 +51,9 @@ brew install --cask alacritty --no-quarantine
 ```
 gh config set editor nvim
 ```
+
+* Disable Apple screenshot shadows
+
+```bash
+defaults write com.apple.screencapture disable-shadow -bool true
+```
