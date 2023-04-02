@@ -1,4 +1,5 @@
-function img_gpt -a prompt
+function img_gpt
+    set prompt \'(echo $argv | string join ' ')\'
     set create_img (curl https://api.openai.com/v1/images/generations -s \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_KEY" \
