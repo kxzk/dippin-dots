@@ -24,6 +24,16 @@ function hey_gpt3
     end
     echo ''
     echo ''
-    cat tmp.txt | gh gist create -d $prompt
+    set now (date +%Y-%m-%d_%H-%M-%S)
+    set prompt_fmt (echo $prompt | string replace -a "'" '' | tr ' ' '_')
+    set filename $now'__'$prompt_fmt'.md'
+    touch $filename
+    cat tmp.txt >> $filename
+    mv $filename ~/Desktop/gpt-logs/
     rm tmp.txt
+    cd ~/Desktop/gpt-logs/
+    git add .
+    git commit -m "new log"
+    git push
+    cd -
 end
