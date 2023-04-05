@@ -1,0 +1,11 @@
+function checkandsee
+    set options $options (fish_opt --short=m --long=max --required-val)
+    set options $options (fish_opt --short=t --long=token --multiple-vals --long-only)
+    argparse $options -- $argv
+    echo $_flag_max
+    echo $_flag_token
+    set p_bf (echo $_flag_token)
+    set p_af (echo $argv | string join ' ' )
+    set p (string join ' ' $p_bf $p_af)
+    echo $p
+end
