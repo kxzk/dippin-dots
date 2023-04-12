@@ -59,7 +59,7 @@ pyenv init - | source
 
 <br>
 
-* Install Alacritty w/o Mac security snearing
+* Install Alacritty w/o Mac security sneering
 ```
 brew install --cask alacritty --no-quarantine
 ```
