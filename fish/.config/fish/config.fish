@@ -20,6 +20,7 @@ alias pyignore="curl https://www.toptal.com/developers/gitignore/api/python,maco
 # util
 alias g="git"
 alias gp="git pull"
+alias gbl="git bl"
 alias vim="nvim"
 alias vi="nvim"
 alias ib="issue_branch"
@@ -49,7 +50,7 @@ alias sshconfig="nvim ~/.ssh/config"
 alias top="top -o cpu"
 alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
-alias dots="~/dippin-dots"
+alias dots="cd dippin-dots"
 alias ghme="open https://github.com/kadekillary"
 alias al="cd analytics"
 
