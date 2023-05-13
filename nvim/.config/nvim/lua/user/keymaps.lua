@@ -7,6 +7,9 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- easier escape for weird keyboard
+map('i', 'jk', '<esc>')
+
 -- fast saves/quit
 map('n', '<leader>w', ':w!<cr>')
 map('n', '<leader>q', ':q!<cr>')
