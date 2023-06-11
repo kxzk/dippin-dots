@@ -14,6 +14,13 @@ bootstrap() {
 	source .zprofile
 
 	brew install stow
+	
+	brew install --cask alacritty --no-quarantine
+	
+	echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
+	chsh -s /opt/homebrew/bin/fish
+	
+	fish_add_path /opt/homebrew/bin
 }
 
 bootstrap
