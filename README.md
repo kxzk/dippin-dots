@@ -25,6 +25,14 @@ stow -nv package
 
 <br>
 
+* Login to GitHub CLI
+
+```bash
+gh auth login
+```
+
+<br>
+
 * Neovim - need to update to [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```text
