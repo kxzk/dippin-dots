@@ -23,6 +23,8 @@ bootstrap() {
 	chsh -s /opt/homebrew/bin/fish
 	
 	fish_add_path /opt/homebrew/bin
+	
+	rm -rf .config/fish
 }
 
 bootstrap
