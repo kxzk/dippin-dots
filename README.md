@@ -2,37 +2,25 @@
 
 <br>
 
-* Install homebrew apps
+* Get started
+> update `/Users/<UPDATE-NAME>/.zprofile` in [bootstrap.sh](https://github.com/kxzk/dippin-dots/blob/main/bootstrap.sh)
+
 ```bash
-brew bundle
-```
-
-<br>
-
-* Make fish default shell
-```bash
-echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
-chsh -s /opt/homebrew/bin/fish
-```
-
-<br>
-
-* Add homebrew to fish path
-```fish
-fish_add_path /opt/homebrew/bin
+curl https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh > bootstrap.sh
+chmod +x bootstrap.sh
+./bootstrap.sh
 ```
 
 <br>
 
 * Stow commands
 ```bash
-stow package
+cd dippin-dots
+stow -Rv fish
+restow_dirs
 
 # simulate running
 stow -nv package
-
-# update -> restow
-stow -Rv package
 ```
 
 <br>
@@ -59,22 +47,9 @@ pyenv init - | source
 
 <br>
 
-* Install Alacritty w/o Mac security sneering
-```
-brew install --cask alacritty --no-quarantine
-```
-
-<br>
-
 * Set github cli to use neovim
 ```
 gh config set editor nvim
 ```
 
 <br>
-
-* Disable Apple screenshot shadows
-
-```bash
-defaults write com.apple.screencapture disable-shadow -bool true
-```
