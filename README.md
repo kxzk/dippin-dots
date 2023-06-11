@@ -25,6 +25,26 @@ stow -nv package
 
 <br>
 
+* Neovim - need to update to [lazy.nvim](https://github.com/folke/lazy.nvim)
+
+```text
+* Comment out init.lua
+* Comment out mason require in plugins.lua
+* Open & run :PackerSync
+```
+
+<br>
+<br>
+
+---
+
+<br>
+
+<h3 align="center">EXTRAS</h3>
+
+<br>
+<br>
+
 * [Install DuckDB CLI](https://duckdb.org/docs/installation/)
 
 <br>
