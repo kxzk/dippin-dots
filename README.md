@@ -33,6 +33,17 @@ gh auth login
 
 <br>
 
+* Setup Copilot for Neovim
+
+```bash
+brew install node@16
+```
+```
+:Copilot setup
+```
+
+<br>
+
 * Neovim - need to update to [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```text
