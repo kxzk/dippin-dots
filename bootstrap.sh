@@ -17,6 +17,8 @@ bootstrap() {
 	
 	brew install --cask alacritty --no-quarantine
 	
+	brew bundle
+	
 	echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
 	chsh -s /opt/homebrew/bin/fish
 	
