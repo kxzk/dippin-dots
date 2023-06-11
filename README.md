@@ -1,4 +1,4 @@
-<h3 align="center">DIPPIN DOTS</h3>
+![colors](https://github.com/kxzk/dippin-dots/assets/25046261/305c7cbe-5735-4222-adb3-8511dd4c238d)
 
 <br>
 
@@ -37,10 +37,6 @@ stow -nv package
 <br>
 
 ---
-
-<br>
-
-<h3 align="center">EXTRAS</h3>
 
 <br>
 <br>
