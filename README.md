@@ -1,4 +1,4 @@
-![colors](https://github.com/kxzk/dippin-dots/assets/25046261/305c7cbe-5735-4222-adb3-8511dd4c238d)
+<h3 align="center">DIPPIN DOTS</h3>
 
 <br>
 
