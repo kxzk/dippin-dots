@@ -1,48 +1,48 @@
 [user]
-    name = kadekillary
-    email = kadekillary@pm.me
+  name = kadekillary
+  email = kadekillary@pm.me
 [core]
-    excludesfile = ~/.gitignore_global
-    editor = nvim
-    pager = delta
+  excludesfile = ~/.gitignore_global
+  editor = nvim
+  pager = delta
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    navigte = true
-    light = false
-    line-numbers = true
-    side-by-side = true
+  navigte = true
+  light = false
+  line-numbers = true
+  side-by-side = true
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 [diff]
-    colorMoved = default
+  colorMoved = default
 [commit]
-    template = ~/dippin-dots/git/.gitmessage
+  template = ~/dippin-dots/git/.gitmessage
 [color]
-    ui = auto
+  ui = auto
 [github]
-	user = kadekillary
+  user = kxzk
 [pager]
 	branch = false
 [init]
-    defaultBranch = main
+  defaultBranch = main
 [fetch]
-    prune = true
+  prune = true
 [alias]
 	co = checkout
 	br = branch
-    bd = branch -D
-    bl = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
-	ci = commit
-    ss = status --short
-	unstage = reset HEAD --
-    rsoft = reset --soft HEAD
-    rsoftm = reset --soft master
-    rhard = reset --hard HEAD
-    rsoftm = reset --hard master
-    amend = commit --amend
-	last = log -1 HEAD
-    rank = shortlog -sne --no-merges
-    rankfile = shortlog -sne
-    find = "log --pretty='format:%Cgreen%H %Cblue%s' --name-status --grep"
-    lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+  bd = branch -D
+  bl = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+  ci = commit
+  ss = status --short
+  unstage = reset HEAD --
+  rsoft = reset --soft HEAD
+  rsoftm = reset --soft master
+  rhard = reset --hard HEAD
+  rsoftm = reset --hard master
+  amend = commit --amend
+  last = log -1 HEAD
+  rank = shortlog -sne --no-merges
+  rankfile = shortlog -sne
+  find = "log --pretty='format:%Cgreen%H %Cblue%s' --name-status --grep"
+  lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
