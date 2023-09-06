@@ -16,6 +16,7 @@ configs.setup {
         "cmake",
         "elixir",
         "fish",
+        "swift",
         "yaml"
     },
     sync_install = false, -- async install

@@ -41,8 +41,8 @@ require('packer').startup(function(use)
    mason_lspconfig.setup({
      ensure_installed = {
        -- 'rust_analyzer',
+       -- 'pyright',
        'gopls',
-       'pyright',
      }
    })
    mason_lspconfig.setup_handlers({
