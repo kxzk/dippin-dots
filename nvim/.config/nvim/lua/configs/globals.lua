@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.mapleader = ' '           -- space leader
 g.background = 'dark'
 g.do_filetype_lua = 1
 
@@ -9,10 +8,6 @@ if (vim.loop.os_uname().sysname == 'Darwin') then
 else
     g.python3_host_prog = '/usr/bin/python3'
 end
-
--- g.black_fast = 1
-g.NERDSpaceDelims = 1
-g.NERDTrimTrailingWhitespace = 1
 
 -- netrw cheatsheet --
 -- - -> up directory
