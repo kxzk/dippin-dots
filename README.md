@@ -43,16 +43,6 @@ brew install node@16
 ```
 
 <br>
-
-* Neovim - need to update to [lazy.nvim](https://github.com/folke/lazy.nvim)
-
-```text
-* Comment out init.lua
-* Comment out mason require in plugins.lua
-* Open & run :PackerSync
-```
-
-<br>
 <br>
 
 ---
