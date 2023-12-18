@@ -1,29 +1,31 @@
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.go' },
-  callback = function()
-    vim.lsp.buf.code_action({ context = { only = { 'source.organizeImports' } }, apply = true })
-  end
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.go" },
+	callback = function()
+		vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
+		-- vim.lsp.buf.format()
+		-- vim.cmd [[silent! golines -m 100 -w %]]
+	end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'gitcommit', 'markdown' },
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.relativenumber = true
-    -- vim.opt_local.textwidth = 72
-  end,
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "gitcommit", "markdown" },
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.relativenumber = true
+		-- vim.opt_local.textwidth = 72
+	end,
 })
 
-vim.cmd [[
+vim.cmd([[
    augroup _python
        autocmd!
        autocmd Filetype python nmap <leader>r :20 split term://python3 %<CR>
-       autocmd BufWritePost *.py !black %
    augroup end
 
    augroup _go
        autocmd!
        autocmd Filetype go nmap <leader>r :20 split term://go run *.go<CR>
+       " autocmd BufWritePost *.go !golines -m 100 -w % 
    augroup end
 
     augroup _rust
@@ -49,4 +51,4 @@ vim.cmd [[
         autocmd!
         autocmd TermOpen * setlocal nonumber norelativenumber
     augroup end
-]]
+]])

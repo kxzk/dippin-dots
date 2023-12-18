@@ -1,6 +1,7 @@
 vim.opt.shortmess:append 'sI'
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.opt.termguicolors = true
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -30,7 +31,7 @@ pcall(require('telescope').load_extension, 'fzf')
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
-  underline = true,
+  underline = false,
   update_in_insert = false,
   severity_sort = false,
   float = {
@@ -39,7 +40,7 @@ vim.diagnostic.config({
 })
 
 -- configure specific sign symbols
-local signs = { Error = 'E ', Warn = 'W ', Hint = 'H ', Info = 'I ' }
+local signs = { Error = '• ', Warn = '‣ ', Hint = '• ', Info = '• ' }
 
 for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
@@ -47,21 +48,48 @@ for type, icon in pairs(signs) do
 end
 
 
+-- treesitter --
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { 
+    'python',
+    'bash',
+    'lua',
+    'go',
+    'rust',
+    'elixir',
+    'fish',
+    'markdown',
+    'html',
+    'json',
+    'yaml',
+    'css',
+    'dockerfile',
+    'sql',
+    'swift',
+    'c',
+    'cpp'
+  },
+  auto_install = false,
+  highlight = { enable = true },
+  indent = { enable = false }
+}
+
 -- lsp --
 
 -- servers --
 
 local servers = {
-  pyright = {
+  pyright = {},
+  gopls = {
     settings = {
-      openFilesOnly = true,
-      analysis = {
-        diagnosticMode = 'openFilesOnly',
-      }
-    }
+      gopls = {
+        gofumpt = true,
+      },
+    },
   },
-  gopls = {},
   elixirls = {},
+  clangd = {},
 }
 
 
@@ -87,12 +115,8 @@ local on_attach = function(client, bufnr)
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
   -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
   -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-  
+
+  client.server_capabilities.semanticTokensProvider = nil
 end
 
 

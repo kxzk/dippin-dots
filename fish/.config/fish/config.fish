@@ -15,12 +15,14 @@ alias ...="z ../.."
 alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt"
 alias pipd="pip3 freeze | xargs pip3 uninstall -y"
 alias pipu="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
-alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
 
-alias tls='tmux ls'               # list the sessions
-alias tns='tmux new -s'           # creates a new session with name given after the alias
-alias tat='tmux attach -t'        # attaches to the session given after the alias
-alias tkt='tmux kill-session -t'  # kills the session with name given after the alias
+# ignores
+alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
+alias ignorego="curl https://www.toptal.com/developers/gitignore/api/go,macos > .gitignore"
+
+# go
+alias air="/Users/edak/go/bin/air"
+alias golines="/Users/edak/go/bin/golines"
 
 # util
 alias g="git"
@@ -37,18 +39,18 @@ alias license="curl https://gist.githubusercontent.com/kadekillary/dbc6007d5e8f7
 alias prrev="gh search prs --review-requested=@me --state=open"
 alias prme="gh search prs --sort=updated --author=@me --state=open"
 
-# exa (ls)
-alias ls="exa"
-alias tree="exa -lxT --no-permissions --no-time --no-user --no-filesize"
-alias treesize="exa -lxT --no-permissions --no-time --no-user"
-alias modelsize="exa -lxR --no-permissions --no-time --no-user --sort filesize --ignore-glob='*.yml|*.md' --reverse | awk '/^[1-9]/' | sort -hr"
+# eza (ls)
+alias ls="eza"
+alias tree="eza -lxT --no-permissions --no-time --no-user --no-filesize"
+alias treesize="eza -lxT --no-permissions --no-time --no-user"
+alias modelsize="eza -lxR --no-permissions --no-time --no-user --sort filesize --ignore-glob='*.yml|*.md' --reverse | awk '/^[1-9]/' | sort -hr"
 
 # jira
 # alias jli="jira issue list -a$(jira me) -s~Done"
 
 # shortcuts
 # alias snowsql="/Applications/SnowSQL.app/Contents/MacOS/snowsql"
-alias D="~/duckdb"
+alias D="duckdb"
 alias ip="curl ipecho.net/plain ; echo"
 alias sshconfig="nvim ~/.ssh/config"
 alias top="top -o cpu"

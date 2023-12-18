@@ -8,7 +8,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- easier escape for weird keyboard
-map('i', 'jk', '<esc>')
+-- map('i', 'jk', '<esc>')
 
 -- fast saves/quit
 map('n', '<leader>w', ':w!<cr>')
