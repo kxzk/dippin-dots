@@ -36,7 +36,7 @@ gh auth login
 * Setup Copilot for Neovim
 
 ```bash
-brew install node@16
+brew install node
 ```
 ```
 :Copilot setup
@@ -50,12 +50,9 @@ brew install node@16
 <br>
 <br>
 
-* [Install DuckDB CLI](https://duckdb.org/docs/installation/)
-
-<br>
-
 * Alias snowsql
 ```bash
+brew install --cask snowflake-snowsql
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 ```
 
