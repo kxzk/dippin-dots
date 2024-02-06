@@ -4,7 +4,7 @@ function hey_gpt
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-4",
+        "model": "gpt-4-0125-preview",
         "messages": [{"role": "user", "content": "'$prompt'"}],
         "temperature": 1.0,
         "stream": true
