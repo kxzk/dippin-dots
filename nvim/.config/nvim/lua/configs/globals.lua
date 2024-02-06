@@ -32,6 +32,4 @@ g.netrw_cursor = 0
 
 -- copilot
 -- g.copilot_filtypes = { '*': v:false, 'python': v:true }
--- has to be node version < 18
--- brew info node@16
-g.copilot_node_command = "/opt/homebrew/opt/node@16/bin/node"
+g.copilot_node_command = "/opt/homebrew/bin/node"

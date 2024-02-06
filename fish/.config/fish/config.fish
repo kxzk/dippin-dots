@@ -57,6 +57,7 @@ alias top="top -o cpu"
 alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
+alias D="cd desktop"
 
 # pyenv
 # pyenv init - | source

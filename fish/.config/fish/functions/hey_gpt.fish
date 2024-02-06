@@ -6,7 +6,7 @@ function hey_gpt
     -d '{
         "model": "gpt-4",
         "messages": [{"role": "user", "content": "'$prompt'"}],
-        "temperature": 0.7,
+        "temperature": 1.0,
         "stream": true
     }')
     for text in $gpt

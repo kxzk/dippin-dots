@@ -19,9 +19,24 @@ return {
 		opts = {
 			signs = {
 				add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-				change = { hl = "GitSignsChange", text = "│", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-				delete = { hl = "GitSignsDelete", text = "│", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-				topdelete = { hl = "GitSignsDelete", text = "│", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+				change = {
+					hl = "GitSignsChange",
+					text = "│",
+					numhl = "GitSignsChangeNr",
+					linehl = "GitSignsChangeLn",
+				},
+				delete = {
+					hl = "GitSignsDelete",
+					text = "│",
+					numhl = "GitSignsDeleteNr",
+					linehl = "GitSignsDeleteLn",
+				},
+				topdelete = {
+					hl = "GitSignsDelete",
+					text = "│",
+					numhl = "GitSignsDeleteNr",
+					linehl = "GitSignsDeleteLn",
+				},
 				changedelete = {
 					hl = "GitSignsChange",
 					text = "│",
@@ -33,7 +48,7 @@ return {
 		},
 	},
 	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
-	-- { 'github/copilot.vim' , event = "VeryLazy" },
+	{ "github/copilot.vim", tag = "v1.16.0", event = "VeryLazy" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
