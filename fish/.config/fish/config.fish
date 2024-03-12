@@ -12,17 +12,15 @@ alias ..="z .."
 alias ...="z ../.."
 
 # python
-alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt"
-alias pipd="pip3 freeze | xargs pip3 uninstall -y"
-alias pipu="pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
+alias active="source .venv/bin/activate.fish"
+alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt --break-system-packages"
 
 # ignores
 alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
 alias ignorego="curl https://www.toptal.com/developers/gitignore/api/go,macos > .gitignore"
 
 # go
-alias air="/Users/edak/go/bin/air"
-alias golines="/Users/edak/go/bin/golines"
+alias air="/Users/harkonnen/go/bin/air"
 
 # util
 alias g="git"
@@ -57,7 +55,7 @@ alias top="top -o cpu"
 alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
-alias D="cd desktop"
+alias home="cd desktop"
 
 # pyenv
 # pyenv init - | source

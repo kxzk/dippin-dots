@@ -1,4 +1,6 @@
 *.sqlite
+*.json
+.DS_Store
 db
 log/
 pid/

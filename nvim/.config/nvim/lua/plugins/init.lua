@@ -160,6 +160,11 @@ return {
 				go = { "gofmt", "goimports", "golines" },
 				cpp = { "clang-format" },
 				python = { "isort", "black" },
+				-- javascript = { "prettierd" },
+				html = { "prettierd" },
+				fish = { "fish_indent" },
+				rust = { "rustfmt" },
+				sql = { "sqlfmt" },
 				["_"] = { "trim_whitespace" },
 			},
 			format_on_save = {
