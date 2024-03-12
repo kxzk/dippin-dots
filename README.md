@@ -1,8 +1,8 @@
-<h3 align="center">DIPPIN DOTS</h3>
+<h3 align="center">dippin dots</h3>
 
 <br>
 
-* Get started
+* get started
 > update `/Users/<UPDATE-NAME>/.zprofile` in [bootstrap.sh](https://github.com/kxzk/dippin-dots/blob/main/bootstrap.sh)
 
 ```bash
@@ -13,7 +13,8 @@ chmod +x bootstrap.sh
 
 <br>
 
-* Stow commands
+* stow commands
+
 ```bash
 cd dippin-dots
 stow -Rv fish
@@ -25,7 +26,7 @@ stow -nv package
 
 <br>
 
-* Login to GitHub CLI
+* login to github cli
 
 ```bash
 gh auth login
@@ -33,13 +34,18 @@ gh auth login
 
 <br>
 
-* Setup Copilot for Neovim
+* setup copilot for neovim
 
-```bash
-brew install node
-```
 ```
 :Copilot setup
+```
+
+<br>
+
+* install [air](https://github.com/cosmtrek/air) for go
+
+```bash
+curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 ```
 
 <br>
@@ -50,7 +56,8 @@ brew install node
 <br>
 <br>
 
-* Alias snowsql
+* alias snowsql
+
 ```bash
 brew install --cask snowflake-snowsql
 alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
@@ -58,7 +65,8 @@ alias snowsql=/Applications/SnowSQL.app/Contents/MacOS/snowsql
 
 <br>
 
-* [Pyenv](https://github.com/pyenv/pyenv) install
+* [pyenv](https://github.com/pyenv/pyenv) install
+
 ```fish
 set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path $PYENV_ROOT/bin
@@ -69,7 +77,8 @@ pyenv init - | source
 
 <br>
 
-* Set github cli to use neovim
+* set github cli to use neovim
+
 ```
 gh config set editor nvim
 ```
