@@ -147,10 +147,10 @@ return {
 		build = "cd formatter && npm i && npm run build",
 		config = true,
 		ft = "html",
-		opts = {
-			on_save_enabled = true,
-			on_save_pattern = { "*.html" },
-		},
+		-- 	opts = {
+		-- 		on_save_enabled = true,
+		-- 		on_save_pattern = { "*.html" },
+		-- 	},
 	},
 	{
 		"stevearc/conform.nvim",

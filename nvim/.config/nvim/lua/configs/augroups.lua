@@ -22,6 +22,11 @@ vim.cmd([[
        autocmd Filetype python nmap <leader>r :20 split term://python3 %<CR>
    augroup end
 
+   augroup _html
+        autocmd!
+        autocmd Filetype html nmap <leader>ts :TailwindSort<CR>
+   augroup end
+
    augroup _go
        autocmd!
        autocmd Filetype go nmap <leader>r :20 split term://go run *.go<CR>
@@ -41,11 +46,11 @@ vim.cmd([[
         autocmd BufNewFile *.todo 0r ~/.config/nvim/templates/todo.skeleton
     augroup end
 
-    augroup _sql
-        autocmd!
-        autocmd Filetype sql nmap <leader>r :20 split term://snowsql -f %<CR>
-        autocmd Filetype sql nmap <leader>t :!sqlfmt %<CR><CR>
-    augroup end
+    " augroup _sql
+    "     autocmd!
+    "     autocmd Filetype sql nmap <leader>r :20 split term://snowsql -f %<CR>
+    "     autocmd Filetype sql nmap <leader>t :!sqlfmt %<CR><CR>
+    " augroup end
 
     augroup _terminal
         autocmd!
