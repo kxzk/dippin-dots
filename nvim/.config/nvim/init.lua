@@ -68,6 +68,7 @@ require("nvim-treesitter.configs").setup({
 		"swift",
 		"c",
 		"cpp",
+		"terraform",
 	},
 	auto_install = false,
 	highlight = { enable = true },
