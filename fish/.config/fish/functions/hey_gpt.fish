@@ -12,11 +12,10 @@ function hey_gpt
     for text in $gpt
         if test $text = 'data: [DONE]'
             break
-        else if string match -q --regex "role" $text
+        else if string match -q --regex role $text
             continue
-        else if string match -q --regex "content" $text
+        else if string match -q --regex content $text
             echo -n $text | string replace 'data: ' '' | jq -r -j '.choices[0].delta.content'
-            echo -n $text | string replace 'data: ' '' | jq -r -j '.choices[0].delta.content' >> tmp.txt
         else
             continue
         end

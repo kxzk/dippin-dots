@@ -69,6 +69,7 @@ require("nvim-treesitter.configs").setup({
 		"c",
 		"cpp",
 		"terraform",
+		"ruby",
 	},
 	auto_install = false,
 	highlight = { enable = true },
@@ -90,6 +91,11 @@ local servers = {
 	},
 	elixirls = {},
 	clangd = {},
+	solargraph = {
+		definitions = true,
+		references = true,
+		diagnostics = true,
+	},
 }
 
 local on_attach = function(client, bufnr)

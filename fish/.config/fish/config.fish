@@ -7,6 +7,11 @@
 # remove start up prompt
 set -U fish_greeting
 
+
+# ruby
+set -gx PATH /opt/homebrew/opt/ruby/bin $PATH
+set -gx PATH /opt/homebrew/lib/ruby/gems/3.3.0/bin $PATH
+
 # navigation
 alias ..="z .."
 alias ...="z ../.."
@@ -56,6 +61,8 @@ alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
 alias home="cd desktop"
+
+set -gx PATH /opt/homebrew/bin $PATH
 
 # pyenv
 # pyenv init - | source
