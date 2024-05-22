@@ -20,8 +20,9 @@ local function hl(group, fg, bg)
 	vim.cmd("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
-hl("StatusColor", "#4C566A", "#3B4252")
-hl("StatusColor1", "#81A1C1", "#3B4252")
+-- colorscheme: neovim 0.10 default
+hl("StatusColor1", "#4f5258", "#1c1d23")
+hl("StatusColor", "#2c2e33", "#1c1d23")
 
 function status_line()
 	return table.concat({

@@ -1,20 +1,5 @@
 return {
 	{
-		-- 'shaunsingh/nord.nvim',
-		"gbprod/nord.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd.colorscheme("nord")
-			vim.cmd([[highlight Comment guifg=#4C566A]]) -- comment color
-			vim.cmd([[highlight LineNr guifg=#3B4252]]) -- dim line numbers
-			vim.cmd([[highlight CursorLineNr guifg=#EBCB8B]]) -- brighter cursorline number
-			vim.cmd([[highlight EndOfBuffer guifg=#2E3440]]) -- dim tilde under line number
-			vim.cmd([[highlight VertSplit guifg=#EBCB8B gui=None guibg=None]]) -- remove bad split coloring
-			vim.cmd([[highlight MsgArea guifg=#EBCB8B]]) -- dim command line/message area
-		end,
-	},
-	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {

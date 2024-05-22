@@ -17,7 +17,7 @@ dynamic_padding = true
 history = 500
 
 [font]
-size = 14.0
+size = 12.0
 normal = { family = "Fira Code", style = "Retina" }
 bold = { family = "Fira Code", style = "SemiBold" }
 

@@ -17,7 +17,7 @@ alias ..="z .."
 alias ...="z ../.."
 
 # python
-alias active="source .venv/bin/activate.fish"
+alias ativ="source .venv/bin/activate.fish"
 alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt --break-system-packages"
 
 # ignores
