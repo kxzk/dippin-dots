@@ -1,6 +1,7 @@
 <h3 align="center">dippin dots</h3>
 
 <br>
+<br>
 
 * get started
 > update `/Users/<UPDATE-NAME>/.zprofile` in [bootstrap.sh](https://github.com/kxzk/dippin-dots/blob/main/bootstrap.sh)
