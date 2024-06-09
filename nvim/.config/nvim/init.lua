@@ -89,13 +89,13 @@ local servers = {
 			},
 		},
 	},
-	elixirls = {},
+	-- elixirls = {},
 	clangd = {},
-	solargraph = {
-		definitions = true,
-		references = true,
-		diagnostics = true,
-	},
+	-- solargraph = {
+	-- 	definitions = true,
+	-- 	references = true,
+	-- 	diagnostics = true,
+	-- },
 }
 
 local on_attach = function(client, bufnr)
