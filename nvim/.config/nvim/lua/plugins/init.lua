@@ -3,36 +3,15 @@ return {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-				change = {
-					hl = "GitSignsChange",
-					text = "│",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				delete = {
-					hl = "GitSignsDelete",
-					text = "│",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				topdelete = {
-					hl = "GitSignsDelete",
-					text = "│",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				changedelete = {
-					hl = "GitSignsChange",
-					text = "│",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				untracked = { hl = "GitSignsAdd", text = "│", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+				add = { text = "│" },
+				change = { text = "│" },
+				delete = { text = "·" },
+				topdelete = { text = "·" },
+				changedelete = { text = "·" },
+				untracked = { text = "│" },
 			},
 		},
 	},
-	{ "numToStr/Comment.nvim", opts = {}, event = "VeryLazy" },
 	{ "github/copilot.vim", tag = "v1.16.0", event = "VeryLazy" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
@@ -149,7 +128,7 @@ return {
 				html = { "prettierd" },
 				fish = { "fish_indent" },
 				rust = { "rustfmt" },
-				sql = { "sqlfmt" },
+				-- sql = { "sqlfmt" },
 				["_"] = { "trim_whitespace" },
 			},
 			format_on_save = {

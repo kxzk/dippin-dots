@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", { ui = { border = "rounded" } })
 
+require("configs.colo")
 require("configs.keymaps")
 require("configs.statusline")
 require("configs.options")
