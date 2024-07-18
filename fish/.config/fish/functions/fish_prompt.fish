@@ -9,6 +9,6 @@ function fish_prompt
     if fish_is_root_user
         echo -n (set_color red)'# '
     end
-    echo -n (set_color white)'❯'(set_color white)'❯'(set_color white)'❯ '
+    echo -n (set_color brblue)'❯ '
     set_color normal
 end
