@@ -92,7 +92,7 @@ local servers = {
 	},
 	-- elixirls = {},
 	clangd = {},
-	-- solargraph = {
+	-- solargraph@0.45.0 = {
 	-- 	definitions = true,
 	-- 	references = true,
 	-- 	diagnostics = true,
