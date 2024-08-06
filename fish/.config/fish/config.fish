@@ -7,10 +7,14 @@
 # remove start up prompt
 set -U fish_greeting
 
+# for sp ruby
+if status is-interactive
+    and not set -q RBENV_SHELL
+    set -gx PATH $HOME/.rbenv/bin $PATH
+    status --is-interactive; and source (rbenv init -|psub)
+end
 
-# ruby
-set -gx PATH /opt/homebrew/opt/ruby/bin $PATH
-set -gx PATH /opt/homebrew/lib/ruby/gems/3.3.0/bin $PATH
+set -x POW_WORKERS 1
 
 # navigation
 alias ..="z .."
@@ -18,6 +22,7 @@ alias ...="z ../.."
 
 # python
 alias ativ="source .venv/bin/activate.fish"
+alias dativ="deactivate"
 alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt --break-system-packages"
 
 # ignores
