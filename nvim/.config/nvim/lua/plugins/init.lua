@@ -12,7 +12,7 @@ return {
 			},
 		},
 	},
-	{ "github/copilot.vim", tag = "v1.16.0", event = "VeryLazy" },
+	{ "github/copilot.vim", tag = "v1.38.0", event = "VeryLazy" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
