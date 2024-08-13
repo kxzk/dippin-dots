@@ -82,6 +82,7 @@ pyenv init - | source
 
 ```
 gh config set editor nvim
+gh config set pager delta
 ```
 
 <br>
