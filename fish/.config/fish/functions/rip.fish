@@ -1,3 +1,3 @@
 function rip
-    rg -p -i $argv
+    rg --json -i $argv | delta
 end
