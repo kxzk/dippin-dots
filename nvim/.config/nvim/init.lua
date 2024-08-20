@@ -71,6 +71,7 @@ require("nvim-treesitter.configs").setup({
 		"cpp",
 		"terraform",
 		"ruby",
+		"templ",
 	},
 	auto_install = false,
 	highlight = { enable = true },

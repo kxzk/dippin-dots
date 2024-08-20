@@ -12,7 +12,13 @@ return {
 			},
 		},
 	},
+<<<<<<< Updated upstream
 	{ "github/copilot.vim", tag = "v1.38.0", event = "VeryLazy" },
+||||||| Stash base
+	{ "github/copilot.vim", tag = "v1.16.0", event = "VeryLazy" },
+=======
+	{ "github/copilot.vim", tag = "v1.38.0" },
+>>>>>>> Stashed changes
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
@@ -111,17 +117,17 @@ return {
 		build = "cd formatter && npm i && npm run build",
 		config = true,
 		ft = "html",
-		-- 	opts = {
-		-- 		on_save_enabled = true,
-		-- 		on_save_pattern = { "*.html" },
-		-- 	},
+		opts = {
+			on_save_enabled = true,
+			on_save_pattern = { "*.html", "*.templ" },
+		},
 	},
 	{
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "gofmt", "goimports", "golines" },
+				go = { "goimports", "gofmt", "golines" },
 				cpp = { "clang-format" },
 				python = { "isort", "black" },
 				-- javascript = { "prettierd" },
@@ -134,6 +140,33 @@ return {
 			format_on_save = {
 				timeout_ms = 500,
 				lsp_fallback = true,
+			},
+		},
+	},
+	{
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		build = "make",
+		opts = {
+			-- add any opts here
+		},
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			{
+				"grapp-dev/nui-components.nvim",
+				dependencies = {
+					"MunifTanjim/nui.nvim",
+				},
+			},
+			--- The below is optional, make sure to setup it properly if you have lazy=true
+			{
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					file_types = { "markdown", "Avante" },
+				},
+				ft = { "markdown", "Avante" },
 			},
 		},
 	},

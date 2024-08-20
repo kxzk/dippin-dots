@@ -29,9 +29,6 @@ alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt --break-system
 alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
 alias ignorego="curl https://www.toptal.com/developers/gitignore/api/go,macos > .gitignore"
 
-# go
-alias air="/Users/harkonnen/go/bin/air"
-
 # util
 alias g="git"
 alias gp="git pull"
@@ -70,6 +67,7 @@ alias dots="cd dippin-dots"
 alias home="cd desktop"
 
 set -gx PATH /opt/homebrew/bin $PATH
+set -gx PATH $PATH $HOME/go/bin
 
 # pyenv
 # pyenv init - | source

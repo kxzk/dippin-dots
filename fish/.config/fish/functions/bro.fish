@@ -1,12 +1,12 @@
-function hey_gpt
+function bro
     set prompt \'(echo $argv | string join ' ')\'
     set gpt (curl https://api.openai.com/v1/chat/completions -s \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-4o",
+        "model": "gpt-4o-mini",
         "messages": [{"role": "user", "content": "'$prompt'"}],
-        "temperature": 1.0,
+        "temperature": 0.0,
         "stream": true
     }')
     for text in $gpt
