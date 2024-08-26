@@ -7,15 +7,6 @@
 # remove start up prompt
 set -U fish_greeting
 
-# for sp ruby
-if status is-interactive
-    and not set -q RBENV_SHELL
-    set -gx PATH $HOME/.rbenv/bin $PATH
-    status --is-interactive; and source (rbenv init -|psub)
-end
-
-set -x POW_WORKERS 1
-
 # navigation
 alias ..="z .."
 alias ...="z ../.."
@@ -71,6 +62,15 @@ set -gx PATH $PATH $HOME/go/bin
 
 # pyenv
 # pyenv init - | source
+
+# atuin
+set -gx ATUIN_NOBIND true
+atuin init fish | source
+
+# bind to ctrl-r in normal and insert mode, add any other bindings you want here too
+bind \cr _atuin_search
+bind -M insert \cr _atuin_search
+
 # zoxide
 zoxide init fish | source
 alias cd="z"
