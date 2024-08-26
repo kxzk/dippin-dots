@@ -1,24 +1,16 @@
 function bro
-    set prompt \'(echo $argv | string join ' ')\'
-    set gpt (curl https://api.openai.com/v1/chat/completions -s \
+    set prompt (echo $argv | string join ' ')
+    set temp_file (mktemp)
+    set response (curl https://api.openai.com/v1/chat/completions -s \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
         "model": "gpt-4o-mini",
         "messages": [{"role": "user", "content": "'$prompt'"}],
-        "temperature": 0.0,
-        "stream": true
+        "temperature": 0.0
     }')
-    for text in $gpt
-        if test $text = 'data: [DONE]'
-            break
-        else if string match -q --regex role $text
-            continue
-        else if string match -q --regex content $text
-            echo -n $text | string replace 'data: ' '' | jq -r -j '.choices[0].delta.content'
-        else
-            continue
-        end
-    end
-    echo ''
+
+    echo $response | jq -r '.choices[0].message.content' >$temp_file
+    bat --style=plain --paging=never --language=markdown $temp_file
+    rm $temp_file
 end

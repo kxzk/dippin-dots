@@ -25,6 +25,9 @@ require("configs.options")
 require("configs.augroups")
 require("configs.globals")
 
+-- my plugin
+require("hey_bro")
+
 pcall(require("telescope").load_extension, "fzf")
 
 -- signs --
