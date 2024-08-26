@@ -1,6 +1,27 @@
 local api = vim.api
-local fn = vim.fn
 local M = {}
+
+local dressing_config = {
+	input = {
+		default_prompt = "Input:",
+		prompt_align = "center",
+		relative = "editor",
+		prefer_width = 0.5, -- 50% of editor width
+		max_width = nil,
+		min_width = 40,
+		win_options = {
+			winblend = 0,
+			winhighlight = "NormalFloat:DiagnosticInfo",
+		},
+		override = function(conf)
+			conf.border = "rounded"
+			return conf
+		end,
+	},
+}
+
+-- Setup dressing.nvim
+require("dressing").setup(dressing_config)
 
 local function create_tmux_split_and_run(command)
 	local result = os.execute('tmux split-window -h "' .. command .. '; exec fish"')
@@ -16,15 +37,20 @@ local function stream_response(question)
 end
 
 function M.prompt_and_send()
-	local question = fn.input("What's up bro? ")
-	if question ~= "" then
-		local success, err = pcall(stream_response, question)
-		if not success then
-			api.nvim_err_writeln("Error: " .. tostring(err))
+	vim.ui.input({ prompt = "What's up bro?" }, function(question)
+		if question then
+			if question ~= "" then
+				local success, err = pcall(stream_response, question)
+				if not success then
+					api.nvim_err_writeln("Error: " .. tostring(err))
+				end
+			else
+				api.nvim_err_writeln("No question entered")
+			end
+		else
+			api.nvim_echo({ { "Input cancelled", "WarningMsg" } }, false, {})
 		end
-	else
-		api.nvim_err_writeln("No question entered")
-	end
+	end)
 end
 
 api.nvim_set_keymap(
