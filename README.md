@@ -95,6 +95,8 @@ curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 atuin register -u <USERNAME> -e <EMAIL>
 atuin import auto
 atuin sync
+
+atuin login -u <USERNAME> -p <PASSWORD> -k <KEY>
 ```
 
 <br>
