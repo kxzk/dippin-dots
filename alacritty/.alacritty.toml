@@ -18,9 +18,9 @@ history = 500
 
 [font]
 size = 13.0
-normal = { family = "Berkeley Mono" }
-bold = { family = "Berkeley Mono", style = "Bold" }
-italic = { family = "Berkeley Mono", style = "Italic" }
+normal = { family = "BerkeleyMono Nerd Font" }
+bold = { family = "BerkeleyMono Nerd Font", style = "Bold" }
+italic = { family = "BerkeleyMono Nerd Font", style = "Italic" }
 builtin_box_drawing = true
 
 [colors]
