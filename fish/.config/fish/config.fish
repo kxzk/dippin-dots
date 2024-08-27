@@ -37,9 +37,9 @@ alias prrev="gh search prs --review-requested=@me --state=open"
 alias prme="gh search prs --sort=updated --author=@me --state=open"
 
 # eza (ls)
-alias ls="eza"
-alias lst="eza -T"
-alias tree="eza -lxT --no-permissions --no-time --no-user --no-filesize"
+alias ls="eza --icons"
+alias lst="eza -T --icons"
+alias tree="eza -lxT --no-permissions --no-time --no-user --no-filesize --icons"
 alias treesize="eza -lxT --no-permissions --no-time --no-user"
 alias modelsize="eza -lxR --no-permissions --no-time --no-user --sort filesize --ignore-glob='*.yml|*.md' --reverse | awk '/^[1-9]/' | sort -hr"
 
