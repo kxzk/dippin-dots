@@ -17,6 +17,9 @@ map("n", "<leader>q", ":q!<cr>")
 -- fast searching
 map("n", "<leader>s", ":%s/")
 
+-- copy file to clipboard
+map("n", "<leader>p", ":%w !pbcopy<cr><cr>")
+
 -- clear search highlighting
 map("n", "<BS>", ":nohlsearch<cr>")
 
@@ -28,7 +31,7 @@ map("n", "<leader>0", ":Vexplore<cr>")
 
 -- execute shell command under cursor
 -- and paste back into buffer
-map("n", "Q", "!!$SHELL<CR>")
+map("n", "Q", "!!$SHELL<cr>")
 
 -- gitsigns
 map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>")
@@ -36,9 +39,6 @@ map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>")
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
-
--- copilot
-map("n", "<leader>gp", "<cmd>Copilot panel<cr>")
+map("n", "<leader>fb", "<cmd>Telescope git_bcommits<cr>")
