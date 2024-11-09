@@ -3,16 +3,16 @@ return {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "|" },
-				change = { text = "+" },
-				delete = { text = "×" },
-				topdelete = { text = "×" },
-				changedelete = { text = "×" },
-				untracked = { text = "¦" },
+				add = { text = "│" },
+				change = { text = "│" },
+				delete = { text = "│" },
+				topdelete = { text = "│" },
+				changedelete = { text = "│" },
+				untracked = { text = "│" },
 			},
 		},
 	},
-	{ "github/copilot.vim", tag = "v1.38.0" },
+	{ "github/copilot.vim", tag = "v1.41.0" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
