@@ -25,6 +25,10 @@ hl("StatusColor1", "#4f5258", "#1c1d23")
 hl("StatusColor", "#2c2e33", "#1c1d23")
 
 function status_line()
+	if vim.bo.filetype == "sql" then
+		return "%f"
+	end
+
 	return table.concat({
 		"%#StatusColor1#",
 		" ",
