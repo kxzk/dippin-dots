@@ -1,6 +1,3 @@
-tap "homebrew/cask-fonts"
-cask "font-fira-code"
-
 brew "visidata"
 brew "go"
 brew "python3"
@@ -29,3 +26,4 @@ brew "uv"
 brew "stylua"
 brew "btop"
 brew "bat"
+brew "orbstack"
