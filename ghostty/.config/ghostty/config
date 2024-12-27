@@ -18,8 +18,15 @@ mouse-hide-while-typing = true
 macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 
+macos-icon = "custom-style"
+macos-icon-frame = "chrome"
+macos-icon-ghost-color = "#39FF14"
+macos-icon-screen-color = "#000000"
+
 clipboard-read = allow
 clipboard-write = allow
+
+copy-on-select = true
 
 keybind = ctrl+r=reload_config
 keybind = ctrl+q=close_window
