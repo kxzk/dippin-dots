@@ -18,12 +18,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", { ui = { border = "rounded" } })
 
-require("configs.colo")
 require("configs.keymaps")
 require("configs.statusline")
 require("configs.options")
 require("configs.augroups")
 require("configs.globals")
+require("configs.colo")
 
 pcall(require("telescope").load_extension, "fzf")
 
@@ -57,8 +57,6 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"go",
 		"rust",
-		"elixir",
-		"fish",
 		"markdown",
 		"html",
 		"json",
@@ -66,12 +64,9 @@ require("nvim-treesitter.configs").setup({
 		"css",
 		"dockerfile",
 		"sql",
-		"swift",
 		"c",
 		"cpp",
-		"terraform",
-		"ruby",
-		"templ",
+		"haskell",
 	},
 	auto_install = false,
 	highlight = { enable = true },
@@ -80,69 +75,20 @@ require("nvim-treesitter.configs").setup({
 
 -- lsp --
 
--- servers --
-
-local servers = {
-	pyright = {},
-	gopls = {
-		settings = {
-			gopls = {
-				gofumpt = true,
-			},
+local capabilities = {
+	textDocument = {
+		foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
 		},
 	},
-	-- elixirls = {},
-	clangd = {},
-	-- solargraph@0.45.0 = {
-	-- 	definitions = true,
-	-- 	references = true,
-	-- 	diagnostics = true,
-	-- },
 }
 
-local on_attach = function(client, bufnr)
-	local nmap = function(keys, func, desc)
-		if desc then
-			desc = "LSP: " .. desc
-		end
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
-		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-	end
-
-	-- nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-	-- nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-	nmap("<leader>T", vim.lsp.buf.type_definition, "Type [D]efinition")
-	-- nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-	-- nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	-- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-	-- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-
-	client.server_capabilities.semanticTokensProvider = nil
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
--- mason --
-
-local mason_lspconfig = require("mason-lspconfig")
-
-mason_lspconfig.setup({
-	ensure_installed = vim.tbl_keys(servers),
+vim.lsp.config("*", {
+	capabilities = capabilities,
+	root_markers = { ".git" },
 })
 
-mason_lspconfig.setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = servers[server_name],
-			filetypes = (servers[server_name] or {}).filetypes,
-		})
-	end,
-})
+vim.lsp.enable({ "pyright", "gopls", "ruby-lsp" })

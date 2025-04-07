@@ -32,4 +32,4 @@ g.netrw_cursor = 0
 
 -- copilot
 -- g.copilot_filtypes = { '*': v:false, 'python': v:true }
-g.copilot_node_command = "/opt/homebrew/bin/node"
+g.copilot_node_command = "/opt/homebrew/opt/node@20/bin/node"

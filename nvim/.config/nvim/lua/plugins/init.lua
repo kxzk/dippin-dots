@@ -3,16 +3,16 @@ return {
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "│" },
-				change = { text = "│" },
-				delete = { text = "│" },
-				topdelete = { text = "│" },
-				changedelete = { text = "│" },
-				untracked = { text = "│" },
+				add = { text = "|" },
+				change = { text = "+" },
+				delete = { text = "×" },
+				topdelete = { text = "×" },
+				changedelete = { text = "×" },
+				untracked = { text = "¦" },
 			},
 		},
 	},
-	{ "github/copilot.vim", tag = "v1.41.0" },
+	{ "github/copilot.vim", tag = "v1.44.0" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
@@ -96,26 +96,17 @@ return {
 			indent = { enable = false },
 		},
 	},
-	{
-		-- LSP Configuration & Plugins
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			-- Automatically install LSPs to stdpath for neovim
-			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
-		},
-	},
-	{
-		"laytan/tailwind-sorter.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
-		build = "cd formatter && npm i && npm run build",
-		config = true,
-		ft = "html",
-		opts = {
-			on_save_enabled = true,
-			on_save_pattern = { "*.html", "*.templ" },
-		},
-	},
+	-- {
+	-- 	"laytan/tailwind-sorter.nvim",
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
+	-- 	build = "cd formatter && npm i && npm run build",
+	-- 	config = true,
+	-- 	ft = "html",
+	-- 	opts = {
+	-- 		on_save_enabled = true,
+	-- 		on_save_pattern = { "*.html", "*.templ" },
+	-- 	},
+	-- },
 	{
 		"stevearc/conform.nvim",
 		opts = {
@@ -128,6 +119,7 @@ return {
 				html = { "prettierd" },
 				fish = { "fish_indent" },
 				rust = { "rustfmt" },
+				zig = { "zigfmt" },
 				-- sql = { "sqlfmt" },
 				["_"] = { "trim_whitespace" },
 			},
@@ -138,25 +130,31 @@ return {
 		},
 	},
 	{
-		"yetone/avante.nvim",
-		event = "VeryLazy",
-		build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
+		"saghen/blink.cmp",
+		version = "1.*",
 		opts = {
-			-- add any opts here
-		},
-		dependencies = {
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below is optional, make sure to setup it properly if you have lazy=true
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
+			-- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+			-- 'super-tab' for mappings similar to vscode (tab to accept)
+			-- 'enter' for enter to accept
+			--
+			-- All presets have the following mappings:
+			-- C-space: Open menu or open docs if already open
+			-- C-n/C-p or Up/Down: Select next/previous item
+			-- C-e: Hide menu
+			-- C-k: Toggle signature help (if signature.enabled = true)
+			--
+			-- See :h blink-cmp-config-keymap for defining your own keymap
+			keymap = {
+				preset = "default",
+				["<C-w>"] = { "scroll_documentation_up" },
+				["<C-e>"] = { "scroll_documentation_down" },
 			},
+			appearance = { nerd_font_variant = "Nerd Font Mono" },
+			completion = { documentation = { auto_show = false } },
+			signature = { enabled = true },
+			sources = { default = { "lsp", "path", "snippets", "buffer" } },
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
+		opts_extend = { "sources.default" },
 	},
 }

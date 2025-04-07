@@ -29,10 +29,6 @@ map("n", "<leader>d", "<Plug>DashSearch<cr>")
 -- netrw -> nerdtree-esque
 map("n", "<leader>0", ":Vexplore<cr>")
 
--- execute shell command under cursor
--- and paste back into buffer
-map("n", "Q", "!!$SHELL<cr>")
-
 -- gitsigns
 map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>")
 

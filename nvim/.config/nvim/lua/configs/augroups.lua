@@ -16,10 +16,19 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		end
+	end,
+})
+
 vim.cmd([[
    augroup _python
        autocmd!
-       autocmd Filetype python nmap <leader>r :20 split term://python3 %<CR>
+       autocmd Filetype python nmap <leader>r :20 split term://uv run %<CR>
    augroup end
 
    augroup _html
