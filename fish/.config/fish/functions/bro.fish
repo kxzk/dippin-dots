@@ -5,7 +5,7 @@ function bro
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-        "model": "gpt-4o-mini",
+        "model": "gpt-4.1-nano-2025-04-14",
         "messages": [{"role": "user", "content": "'$prompt'"}],
         "temperature": 0.0
     }')
