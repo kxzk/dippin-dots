@@ -55,7 +55,7 @@ alias top="top -o cpu"
 alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
-alias home="cd desktop"
+alias h="cd desktop"
 
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH $PATH $HOME/go/bin
