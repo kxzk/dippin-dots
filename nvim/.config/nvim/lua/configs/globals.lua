@@ -1,5 +1,8 @@
 local g = vim.g
 
+-- make it stop yelling
+vim.deprecate = function() end
+
 g.background = "dark"
 g.do_filetype_lua = 1
 
@@ -32,4 +35,4 @@ g.netrw_cursor = 0
 
 -- copilot
 -- g.copilot_filtypes = { '*': v:false, 'python': v:true }
-g.copilot_node_command = "/opt/homebrew/opt/node@20/bin/node"
+g.copilot_node_command = "/opt/homebrew/bin/node"

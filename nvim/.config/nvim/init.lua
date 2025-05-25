@@ -40,7 +40,7 @@ vim.diagnostic.config({
 	},
 })
 
--- configure specific sign symbols
+-- sign symbols --
 local signs = { Error = "• ", Warn = "‣ ", Hint = "• ", Info = "• " }
 
 for type, icon in pairs(signs) do
@@ -91,4 +91,4 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-vim.lsp.enable({ "pyright", "gopls", "ruby-lsp" })
+vim.lsp.enable({ "pyrefly", "gopls", "ruby-lsp" })
