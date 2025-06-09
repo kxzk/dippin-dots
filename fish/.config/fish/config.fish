@@ -56,6 +56,8 @@ alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
 alias h="cd desktop"
+alias cldp="claude --dangerously-skip-permissions"
+alias cldpc="claude --dangerously-skip-permissions --continue"
 
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH $PATH $HOME/go/bin
