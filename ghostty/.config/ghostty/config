@@ -5,7 +5,7 @@ font-family-bold = "Berkeley Mono Bold"
 font-family-italic = "Berkeley Mono Medium Oblique"
 font-family-bold-italic = "Berkeley Mono Bold Oblique"
 
-font-size = 13
+font-size = 16
 
 theme = "Bright Lights"
 
@@ -21,7 +21,7 @@ macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 
 macos-icon = "custom-style"
-macos-icon-frame = "chrome"
+macos-icon-frame = "plastic"
 macos-icon-ghost-color = "#1a1a1a"
 macos-icon-screen-color = "#000000"
 
