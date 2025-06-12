@@ -11,6 +11,6 @@ function bro
     }')
 
     echo $response | jq -r '.choices[0].message.content' >$temp_file
-    bat --style=plain --paging=never --language=markdown $temp_file
+    bat --style=plain --theme gruvbox-dark --paging=never --language=markdown $temp_file
     rm $temp_file
 end
