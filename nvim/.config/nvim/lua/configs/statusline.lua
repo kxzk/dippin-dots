@@ -10,7 +10,7 @@ end
 -- colorscheme: neovim 0.10 default
 hl("StatusColor", "#2c2e33", "#1c1d23")
 hl("StatusColor1", "#4f5258", "#1c1d23")
-hl("StatusColor2", "#FFCAFF", "#1c1d23")
+hl("StatusColor2", "#Fce094", "#1c1d23")
 
 function status_line()
 	if vim.bo.filetype == "sql" then
