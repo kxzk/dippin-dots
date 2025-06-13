@@ -25,16 +25,16 @@ engineer so they can start shipping features or fixes in < 2 hours.
 ## Deliverables
 Return a report with these sections:
 
-50‑word elevator pitch: what the repo does and why it exists
-Architecture diagram description: use ASCII
-Key execution paths: bullet list of how a request / CLI call flows through the system
-WTF hotspots: files or patterns likely to cause confusion, brittleness, or tech‑debt
-Quick‑start commands: exact shell incantations to: set up dev env, run tests, build, launch
-Open questions for the human: gaps you detected
+- 50‑word elevator pitch: what the repo does and why it exists
+- Architecture diagram description: use ASCII
+- Key execution paths: bullet list of how a request / CLI call flows through the system
+- WTF hotspots: files or patterns likely to cause confusion, brittleness, or tech‑debt
+- Quick‑start commands: exact shell incantations to: set up dev env, run tests, build, launch
+- Open questions for the human: gaps you detected
 
 ## Style
-• Use precise, domain language; avoid clichés.
-• Prefer first‑principles explanations over buzzwords.
-• Expose hidden coupling, side effects, and TODO/FIXME clusters.
-• Output in terse prose; each bullet ≤ 20 words.
-• Reference file paths explicitly
+- Use precise, domain language; avoid clichés.
+- Prefer first‑principles explanations over buzzwords.
+- Expose hidden coupling, side effects, and TODO/FIXME clusters.
+- Output in terse prose; each bullet ≤ 20 words.
+- Reference file paths explicitly
