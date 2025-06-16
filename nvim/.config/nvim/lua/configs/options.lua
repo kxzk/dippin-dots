@@ -32,6 +32,7 @@ opt.completeopt = "menuone,noinsert,noselect" -- autocomplete options
 opt.mouse = "a" -- turn on mouse support
 opt.scrolloff = 3 -- min lines to keep above/below cursor
 opt.foldmethod = "manual" -- manual folding -> zf{motion}, zo -> open, zc -> close
+opt.clipboard = "unnamedplus" -- use system clipboard
 
 -- set omnifunc=syntaxcomplete#Complete
 
