@@ -158,49 +158,6 @@ return {
 		opts_extend = { "sources.default" },
 	},
 	{
-		"olimorris/codecompanion.nvim",
-		opts = {
-			display = {
-				chat = {
-					intro_message = "",
-				},
-			},
-			adapters = {
-				openai = function()
-					return require("codecompanion.adapters").extend("openai", {
-						schema = { model = { default = "o3-2025-04-16" } },
-					})
-				end,
-				copilot = function()
-					return require("codecompanion.adapters").extend("copilot", {
-						schema = { model = { default = "claude-sonnet-4" } },
-					})
-				end,
-			},
-			strategies = {
-				chat = {
-					adapter = "copilot",
-					roles = {
-						llm = function(adapter)
-							return "@" .. adapter.formatted_name
-						end,
-						user = "@Kade",
-					},
-				},
-				inline = {
-					adapter = "copilot",
-				},
-				cmd = {
-					adapter = "copilot",
-				},
-			},
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
-	{
 		"OXY2DEV/markview.nvim",
 		lazy = false,
 		opts = {
@@ -209,15 +166,5 @@ return {
 				ignore_buftypes = {},
 			},
 		},
-	},
-	{
-		"echasnovski/mini.diff",
-		config = function()
-			local diff = require("mini.diff")
-			diff.setup({
-				-- Disabled by default
-				source = diff.gen_source.none(),
-			})
-		end,
 	},
 }
