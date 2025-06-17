@@ -19,18 +19,18 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { ui = { border = "rounded" } })
 
 require("configs.keymaps")
-require("configs.statusline")
 require("configs.options")
 require("configs.augroups")
 require("configs.globals")
 require("configs.colo")
+require("configs.statusline")
 
 pcall(require("telescope").load_extension, "fzf")
 
 -- signs --
 
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_lines = { current_line = true },
 	signs = true,
 	underline = false,
 	update_in_insert = false,
