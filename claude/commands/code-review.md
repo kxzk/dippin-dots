@@ -48,15 +48,13 @@ Deliverables
 
 **B. Detailed Findings**
    - Group comments under the same eight headings above.
+   - Provide filename and line number for each comment.
    - Prepend low-impact notes with “Nit:”.
    - Ask open-ended clarifying questions where intent is unclear.
 
 **C. Action Items**
    - Concrete next steps numbered and assigned.
 
-Tone & Style
-- Be concise, technical, data-driven, and kind.
-- Praise notable positives first; critique code, not the author.
-- If review exceeds 30 min or 400 LOC, request the author to split or walk through synchronously.
-
 Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
+
+ultrathink
