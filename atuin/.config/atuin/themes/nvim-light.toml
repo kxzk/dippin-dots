@@ -1,0 +1,13 @@
+[theme]
+name   = "nvim-light"   # anything, so long as it matches config.toml
+parent = ""             # inherit from the built-in default only when a key here is missing
+
+[colors]                # Meaning → colour
+Base       = "#9b9ea4"  # default foreground
+Title      = "#2c2e33"  # headers & section titles
+Important  = "#c4c6cd"  # success / good news
+Guidance   = "#2c2e33"  # hints & helper text
+Annotation = "#2c2e33"  # low-priority notes
+AlertInfo  = "#c4c6cd"  # neutral informational alerts
+AlertWarn  = "#4f5258"  # cautions
+AlertError = "#4f5258"  # errors & critical alerts
