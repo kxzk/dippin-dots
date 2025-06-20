@@ -100,3 +100,10 @@ atuin login -u <USERNAME> -p <PASSWORD> -k <KEY>
 ```
 
 <br>
+
+* glimpse
+
+```bash
+brew tap seatedro/glimpse
+brew install glimpse
+```
