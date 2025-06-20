@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "gitcommit", "markdown" },
 	callback = function()
 		vim.opt_local.spell = true
+		vim.opt_local.spelllang = "en_us"
 		vim.opt_local.relativenumber = true
 		-- vim.opt_local.textwidth = 72
 	end,
@@ -58,6 +59,7 @@ vim.cmd([[
     augroup _sql
         autocmd!
         autocmd Filetype sql :colorscheme retrobox
+        autocmd Filetype sql :set background=dark
         " autocmd Filetype sql nmap <leader>r :20 split term://snowsql -f %<CR>
         autocmd Filetype sql nmap <leader>r :20 split term://duckdb \< %<CR>
         autocmd Filetype sql nmap <leader>t :!sqlfmt %<CR><CR>
