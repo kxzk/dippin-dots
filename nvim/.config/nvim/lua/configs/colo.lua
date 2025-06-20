@@ -23,7 +23,7 @@
 vim.api.nvim_set_hl(0, "Comment", { fg = "#9b9ea4", italic = true })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#e0e2ea" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#eef1f8" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#9b9ea4" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#9b9ea4", bg = "#eef1f8" })
 vim.api.nvim_set_hl(0, "MsgArea", { fg = "#9b9ea4" })
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#14161b" })
 vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#2c2e33" })
@@ -36,3 +36,4 @@ vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { bg = "#c4c6cd", fg = "#2C
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { bg = "#c4c6cd", fg = "#FFB454" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { bg = "#c4c6cd", fg = "#A3D9FF" })
 vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { bg = "#c4c6cd", fg = "#2C2E33" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#ffcaff" })
