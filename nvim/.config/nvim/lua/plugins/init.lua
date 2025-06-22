@@ -1,4 +1,5 @@
 return {
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -123,6 +124,14 @@ return {
 				-- sql = { "sqlfmt" },
 				["_"] = { "trim_whitespace" },
 			},
+			formatters = {
+				zigfmt = {
+					command = "zig",
+					args = { "fmt", "--stdin" },
+					stdin = true,
+					stdout = true,
+				},
+			},
 			format_on_save = {
 				timeout_ms = 500,
 				lsp_fallback = true,
@@ -157,14 +166,14 @@ return {
 		},
 		opts_extend = { "sources.default" },
 	},
-	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
-		opts = {
-			preview = {
-				filetypes = { "markdown", "codecompanion" },
-				ignore_buftypes = {},
-			},
-		},
-	},
+	-- {
+	-- 	"OXY2DEV/markview.nvim",
+	-- 	lazy = false,
+	-- 	opts = {
+	-- 		preview = {
+	-- 			filetypes = { "markdown" },
+	-- 			ignore_buftypes = {},
+	-- 		},
+	-- 	},
+	-- },
 }

@@ -1,21 +1,21 @@
 shell-integration = "fish"
 
-font-family = "Berkeley Mono Regular"
+font-family = "Berkeley Mono"
 font-family-bold = "Berkeley Mono Bold"
-font-family-italic = "Berkeley Mono Medium Oblique"
+font-family-italic = "Berkeley Mono Oblique"
 font-family-bold-italic = "Berkeley Mono Bold Oblique"
 
-font-size = 16
+font-size = 15
 
-theme = "NvimLight"
+theme = "GruvboxDark"
 
 cursor-text = "#000000"
-cursor-color = "#ec71e5"
+cursor-color = "#d3869b"
 cursor-style = block
 cursor-style-blink = false
 
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 7
+window-padding-y = 7
 
 mouse-hide-while-typing = true
 

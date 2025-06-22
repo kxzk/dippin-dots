@@ -3,8 +3,8 @@ local g = vim.g
 -- make it stop yelling
 vim.deprecate = function() end
 
-vim.cmd("colorscheme default")
-vim.o.background = "light"
+vim.cmd("colorscheme gruvbox")
+vim.o.background = "dark"
 g.do_filetype_lua = 1
 
 if vim.loop.os_uname().sysname == "Darwin" then

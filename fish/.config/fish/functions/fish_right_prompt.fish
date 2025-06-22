@@ -28,7 +28,7 @@ function fish_right_prompt
     # Try to get branch name
     if set -l branch_name (git symbolic-ref --short HEAD 2>/dev/null)
         set branch $branch_name
-        set branch_color brgreen
+        set branch_color brmagenta
     else
         # Detached HEAD state - get SHA or tag
         set branch (git describe --contains --all HEAD 2>/dev/null)

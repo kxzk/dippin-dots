@@ -31,6 +31,8 @@ map("n", "<leader>0", ":Vexplore<cr>")
 
 -- gitsigns
 map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>")
+map("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>")
+map("v", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>")
 
 -- telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
@@ -38,7 +40,3 @@ map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
 map("n", "<leader>fb", "<cmd>Telescope git_bcommits<cr>")
-
--- codecompanion
-map("n", "<leader>cc", "<cmd>CodeCompanionChat<cr>")
-map("v", "<leader>a", "<cmd>CodeCompanion<cr>")
