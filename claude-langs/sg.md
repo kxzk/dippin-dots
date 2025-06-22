@@ -1,0 +1,11 @@
+- use `sg` (ast-grep) for syntax-aware searches
+- `sg` is your go-to for structured code queries - it will match all code that has the same syntactical structure
+- pattern must be single-quoted
+- can use meta variable to match any single AST node with `$` prefix
+- can use `$$$` to match zero or more AST nodes
+- ALWAYS use the `--json` flag to get structured output
+- example (generic): `sg --lang <lang> -p '<pattern>'`
+- example (see all ruby functions): `sg --lang ruby -p 'def $METHOD $$$ end' --json`
+- example (read specific class): `sg --lang ruby -p 'class MyClass $$$ end' --json`
+- example (see all python classes): `sg --lang python -p 'class $NAME: $$$' --json`
+- example (read specific function): `sg --lang python -p 'def my_function($$$): $$$' --json`
