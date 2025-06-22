@@ -19,6 +19,8 @@ alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt --break-system
 # ignores
 alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
 alias ignorego="curl https://www.toptal.com/developers/gitignore/api/go,macos > .gitignore"
+alias ignorerust="curl https://www.toptal.com/developers/gitignore/api/rust,rust-analyzer,macos > .gitignore"
+alias ignoreruby="curl https://www.toptal.com/developers/gitignore/api/ruby,macos > .gitignore"
 
 # util
 alias g="git"
