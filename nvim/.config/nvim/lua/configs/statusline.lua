@@ -8,9 +8,9 @@ local function hl(group, fg, bg)
 end
 
 -- colorscheme: neovim 0.10 default
-hl("StatusColor", "#32302f", "#282828")
-hl("StatusColor1", "#3c3836", "#282828")
-hl("StatusColor2", "#b16286", "#282828")
+hl("StatusColor", "#2c2e33", "#14161B")
+hl("StatusColor1", "#4f5258", "#14161B")
+hl("StatusColor2", "#Fce094", "#14161B")
 
 function status_line()
 	if vim.bo.filetype == "sql" then

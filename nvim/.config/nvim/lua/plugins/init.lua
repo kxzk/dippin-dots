@@ -1,5 +1,4 @@
 return {
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -167,14 +166,4 @@ return {
 		},
 		opts_extend = { "sources.default" },
 	},
-	-- {
-	-- 	"OXY2DEV/markview.nvim",
-	-- 	lazy = false,
-	-- 	opts = {
-	-- 		preview = {
-	-- 			filetypes = { "markdown" },
-	-- 			ignore_buftypes = {},
-	-- 		},
-	-- 	},
-	-- },
 }
