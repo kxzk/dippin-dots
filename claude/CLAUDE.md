@@ -13,7 +13,6 @@
 
 # Code style
 - only comment on things that are non-obvious, quirks or edge cases
-- prefer elegant solutions without going overboard
 - names should reveal intent (e.g. elapsed, not t_ms)
 - elegance bias: prefer lucid, minimal solutions that express the intent plainly; resist cleverness that adds fragility or hinders future change
 
