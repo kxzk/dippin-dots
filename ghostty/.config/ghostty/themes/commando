@@ -1,0 +1,42 @@
+# Commando - Minimalist Ghostty Theme
+# Place in ~/.config/ghostty/themes/commando
+
+# Core colors
+background = #F5F2ED
+foreground = #1A1A1A
+cursor-color = #1A1A1A
+selection-background = #E0D8CC
+selection-foreground = #1A1A1A
+
+# ANSI Colors (0-7: normal, 8-15: bright)
+# Black/Gray (0, 8) - Used for UI elements
+palette = 0=#3A3A3A
+palette = 8=#5A5A5A
+
+# Red (1, 9) - Errors and important alerts
+palette = 1=#FF4444
+palette = 9=#FF6666
+
+# Green (2, 10) - Success states and our comment color
+palette = 2=#5F8A5F
+palette = 10=#6B7D6A
+
+# Yellow (3, 11) - Warnings
+palette = 3=#FF7700
+palette = 11=#FF9933
+
+# Blue (4, 12) - Info and links
+palette = 4=#4682B4
+palette = 12=#5A96C8
+
+# Magenta (5, 13) - Purple tones
+palette = 5=#8B7D8B
+palette = 13=#A394A3
+
+# Cyan (6, 14) - Minimal use
+palette = 6=#5D7A7A
+palette = 14=#6F8F8F
+
+# White/Light (7, 15) - Text variations
+palette = 7=#B8B2A8
+palette = 15=#D4CFC7

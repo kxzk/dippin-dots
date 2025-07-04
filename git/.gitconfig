@@ -6,7 +6,7 @@
   editor = nvim
   pager = delta
 [interactive]
-  diffFilter = delta --color-only --syntax-theme gruvbox-dark
+  diffFilter = delta --color-only --syntax-theme OneHalfLight
 [delta]
   navigte = true
   light = false
