@@ -15,7 +15,7 @@ Please deep-dive into the code not just skimming the commits.
 * **Abstraction Leakage**: Does this expose implementation details? Can internal changes break consumers?
 * **Pattern Consistency**: Does this introduce a new way of doing something we already do elsewhere?
 
-Example finding:
+<exammple>
 ```
 File: src/services/auth.ts:42
 Issue: Direct SQL query in service layer breaks repository pattern used elsewhere
@@ -26,13 +26,14 @@ const user = await db.query('SELECT * FROM users WHERE id = ?', [id]);
 // Use existing pattern:
 const user = await userRepository.findById(id);
 ```
+</example>
 
 ## 2. Hidden Complexity & Technical Debt
 * **Cyclomatic Complexity**: Functions > 10? Classes with > 7 methods?
 * **Temporal Coupling**: Must calls happen in specific order? Document or refactor.
 * **Feature Envy**: Is this code more interested in another object's data than its own?
 
-Example:
+<example>
 ```
 // Temporal coupling - these MUST be called in order
 validator.prepare();
@@ -42,13 +43,14 @@ validator.cleanup();
 // Better: Encapsulate the workflow
 validator.validateWithLifecycle();
 ```
+</example>
 
 ## 3. Performance & Scale Tradeoffs
 * **N+1 Queries**: Loop containing DB/API calls?
 * **Memory Pressure**: Unbounded collections? Large object graphs?
 * **Synchronous Traps**: Blocking I/O in request path?
 
-Concrete example:
+<example>
 ```
 // N+1 problem:
 for (const user of users) {
@@ -60,6 +62,7 @@ const userIds = users.map(u => u.id);
 const allPosts = await fetchPostsByUserIds(userIds); // 1 query
 const postsByUser = groupBy(allPosts, 'userId');
 ```
+</example>
 
 ## 4. Error Handling & Edge Cases
 * **Partial Failure States**: What if step 3 of 5 fails?
@@ -81,7 +84,7 @@ const postsByUser = groupBy(allPosts, 'userId');
 * **Edge Case Coverage**: Tests for null, empty, overflow, concurrent access?
 * **Behavior vs Implementation**: Tests coupled to internals?
 
-Example:
+</example>
 ```
 // Implementation-coupled test (fragile):
 expect(service._cache.size).toBe(1);
@@ -90,6 +93,7 @@ expect(service._cache.size).toBe(1);
 expect(service.get('key')).toBe('cached-value');
 expect(mockDb.query).not.toHaveBeenCalled();
 ```
+</example>
 
 ## 8. Long-term Maintainability
 * **Future-proof Interfaces**: Can we extend without breaking?

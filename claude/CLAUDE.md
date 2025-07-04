@@ -13,14 +13,15 @@
 
 # Code style
 - only comment on things that are non-obvious, quirks or edge cases
-- names should reveal intent (e.g. elapsed, not t_ms)
+- prefer elegant solutions without going overboard
+- names should reveal intent (e.g. elapsed_time_ms, not t_ms)
 - elegance bias: prefer lucid, minimal solutions that express the intent plainly; resist cleverness that adds fragility or hinders future change
 
 # Ast-grep (`sg`)
 - **purpose**: high-speed structural code search and analysis through ast pattern matching. enables agents to rapidly extract, locate, and understand code patterns across large codebases without parsing overhead.
 - **core value**: transforms code comprehension from linear text scanning to structural pattern recognition - like having grep that understands syntax trees instead of strings.
 - **syntax model**:
-```fish
+```bash
 sg --pattern '$FUNC($$$ARGS)' --lang python --json
 sg --pattern 'if ($COND) { $$$BODY }' --lang javascript --json
 sg --pattern 'class $NAME extends $PARENT' --lang java --json
@@ -32,7 +33,7 @@ sg --pattern 'class $NAME extends $PARENT' --lang java --json
     - _ - Matches any single node without capturing
     - Literal code matches exactly as written
 - **key commands**:
-```fish
+```bash
 # find all function calls named 'process'
 sg --pattern 'process($$$)' --lang python --json
 # extract all class definitions
@@ -42,7 +43,6 @@ sg --pattern 'import { $$$IMPORTS } from "$MODULE"' --lang javascript --json
 # find method definitions with specific signatures
 sg --pattern 'def $METHOD(self, data: $TYPE) -> $RETURN' --lang python --json
 ```
-
 
 # Finishing
 - after you have completed your changes, alert me by running the command: `afplay /System/Library/Sounds/Submarine.aiff` in the terminal
