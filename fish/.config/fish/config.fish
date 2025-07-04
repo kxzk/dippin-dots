@@ -24,11 +24,8 @@ alias ignoreruby="curl https://www.toptal.com/developers/gitignore/api/ruby,maco
 
 # util
 alias g="git"
-alias gp="git pull"
-alias gbl="git bl"
 alias vim="nvim"
 alias vi="nvim"
-alias py="python3"
 # alias ib="issue_branch"
 alias grep="grep --color=auto"
 alias checkports="lsof -i -n -P | grep TCP"
@@ -37,6 +34,9 @@ alias license="curl https://gist.githubusercontent.com/kadekillary/dbc6007d5e8f7
 # git
 alias prrev="gh search prs --review-requested=@me --state=open"
 alias prme="gh search prs --sort=updated --author=@me --state=open"
+
+# change `gh` colo to make it easier to read on light terminal
+# set -gx GLAMOUR_STYLE dracula
 
 # eza (ls)
 alias ls="eza --icons"
@@ -58,14 +58,14 @@ alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
 alias h="cd desktop"
-alias cldp="claude --dangerously-skip-permissions"
-alias cldpc="claude --dangerously-skip-permissions --continue"
+alias claude="$HOME/.claude/local/claude"
+alias cl="CLAUBBIT=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 ENABLE_BACKGROUND_TASKS=1 $HOME/.claude/local/claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
+alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'
+# alias vd="vd --theme=ascii8"
+alias fire="caffeinate -dimus cacafire"
 
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH $PATH $HOME/go/bin
-
-# pyenv
-# pyenv init - | source
 
 # atuin
 set -gx ATUIN_NOBIND true
