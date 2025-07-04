@@ -22,6 +22,7 @@ require("configs.keymaps")
 require("configs.options")
 require("configs.augroups")
 require("configs.globals")
+require("commando").setup()
 require("configs.colo")
 require("configs.statusline")
 

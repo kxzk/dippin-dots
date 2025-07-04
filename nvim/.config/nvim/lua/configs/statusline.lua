@@ -7,10 +7,9 @@ local function hl(group, fg, bg)
 	vim.cmd("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
--- colorscheme: neovim 0.10 default
-hl("StatusColor", "#2c2e33", "#14161B")
-hl("StatusColor1", "#4f5258", "#14161B")
-hl("StatusColor2", "#Fce094", "#14161B")
+hl("StatusColor", "#b8b2a8", "#ede8e0")
+hl("StatusColor1", "#1a1a1a", "#ede8e0")
+hl("StatusColor2", "#4682b4", "#ede8e0")
 
 function status_line()
 	if vim.bo.filetype == "sql" then
