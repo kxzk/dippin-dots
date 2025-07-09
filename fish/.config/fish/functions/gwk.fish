@@ -1,6 +1,5 @@
 function gwk
     if test (count $argv) -ne 1
-        echo "Usage: gwk <branch-name>"
         return 1
     end
     set -l branch $argv[1]
@@ -17,18 +16,29 @@ function gwk
 
     set -l here $PWD
     cd $repo_root
-    
+
     # try to add worktree tracking origin branch
-    if not git worktree add -B $branch $target_dir origin/$branch ^/dev/null
+    if not git worktree add -B $branch $target_dir origin/$branch >/dev/null 2>&1
         # if that fails, create a new branch
-        if not git worktree add -b $branch $target_dir
+        if not git worktree add -b $branch $target_dir >/dev/null 2>&1
             echo "gwk: unable to add worktree for '$branch'"
             cd $here
             return 1
         end
     end
-    
+
     cd $here
     cd $target_dir
+    
+    # Clean output in ASCII box
+    set -l msg "Switched to worktree: $branch"
+    set -l len (string length "$msg")
+    set -l border (string repeat -n (math $len + 4) "─")
+    
+    echo "┌$border┐"
+    echo "│  $msg  │"
+    echo "└$border┘"
+    
     commandline -f repaint
 end
+
