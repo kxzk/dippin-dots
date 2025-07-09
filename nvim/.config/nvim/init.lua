@@ -22,14 +22,12 @@ require("configs.keymaps")
 require("configs.options")
 require("configs.augroups")
 require("configs.globals")
-require("commando").setup()
 require("configs.colo")
 require("configs.statusline")
 
 pcall(require("telescope").load_extension, "fzf")
 
 -- signs --
-
 vim.diagnostic.config({
 	virtual_lines = { current_line = true },
 	signs = true,
@@ -50,7 +48,6 @@ for type, icon in pairs(signs) do
 end
 
 -- treesitter --
-
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"python",
@@ -75,7 +72,6 @@ require("nvim-treesitter.configs").setup({
 })
 
 -- lsp --
-
 local capabilities = {
 	textDocument = {
 		foldingRange = {

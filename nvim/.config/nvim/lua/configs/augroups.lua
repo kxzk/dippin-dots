@@ -58,8 +58,8 @@ vim.cmd([[
 
     augroup _sql
         autocmd!
-        autocmd Filetype sql :colorscheme retrobox
-        autocmd Filetype sql :set background=dark
+        "autocmd Filetype sql :colorscheme sorbet
+        "autocmd Filetype sql :set background=dark
         " autocmd Filetype sql nmap <leader>r :20 split term://snowsql -f %<CR>
         autocmd Filetype sql nmap <leader>r :20 split term://duckdb \< %<CR>
         autocmd Filetype sql nmap <leader>t :!sqlfmt %<CR><CR>
