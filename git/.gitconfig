@@ -6,7 +6,7 @@
   editor = nvim
   pager = delta
 [interactive]
-  diffFilter = delta --color-only --syntax-theme OneHalfLight
+  diffFilter = delta --color-only --syntax-theme "Monokai Extended Origin"
 [delta]
   navigte = true
   light = false
