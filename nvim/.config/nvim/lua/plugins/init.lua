@@ -1,5 +1,4 @@
 return {
-	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {

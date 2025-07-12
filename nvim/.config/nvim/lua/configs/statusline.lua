@@ -7,14 +7,14 @@ local function hl(group, fg, bg)
 	vim.cmd("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
-hl("StatusColor", "#32302f", "#282828")
-hl("StatusColor1", "#3c3836", "#282828")
-hl("StatusColor2", "#b16286", "#282828")
+hl("StatusColor", "#2c2e33", "#1c1d23")
+hl("StatusColor1", "#4f5258", "#1c1d23")
+hl("StatusColor2", "#fce094", "#1c1d23")
 
 function status_line()
-	if vim.bo.filetype == "sql" then
-		return "%f"
-	end
+	-- if vim.bo.filetype == "sql" then
+	-- 	return "%f"
+	-- end
 
 	return table.concat({
 		"%#StatusColor1#",
