@@ -58,9 +58,10 @@ alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
 alias h="cd desktop"
-alias claude="$HOME/.claude/local/claude"
-alias cl="CLAUBBIT=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 ENABLE_BACKGROUND_TASKS=1 $HOME/.claude/local/claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
+alias claude="~/.local/bin/claude"
+alias cl="CLAUBBIT=1 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 ENABLE_BACKGROUND_TASKS=1 claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
 alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'
+alias oracle='codex exec --full-auto --skip-git-repo-check'
 # alias vd="vd --theme=ascii8"
 alias fire="caffeinate -dimus cacafire"
 
