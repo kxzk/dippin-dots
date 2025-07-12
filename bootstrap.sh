@@ -5,17 +5,17 @@ set -o nounset   # abort on unbound variable
 set -o pipefail  # don't hide errors within pipes
 
 bootstrap() {
-	# Install Xcode Command Line Tools if not already installed
+	# install xcode command line tools if not already installed
 	if ! xcode-select -p &> /dev/null; then
 		echo "Installing Xcode Command Line Tools..."
 		xcode-select --install
-		# Wait for installation to complete
+		# wait for installation to complete
 		until xcode-select -p &> /dev/null; do
 			sleep 5
 		done
 	fi
 
-	# Accept Xcode license if needed
+	# accept xcode license if needed
 	if ! sudo xcodebuild -license check &> /dev/null; then
 		sudo xcodebuild -license accept
 	fi
@@ -58,26 +58,26 @@ bootstrap() {
 		echo "Warning: No Brewfile found in current directory"
 	fi
 
-	# Install and configure fish shell
+	# install and configure fish shell
 	if ! brew list fish &> /dev/null; then
 		brew install fish
 	fi
 
-	# Add fish to allowed shells if not already present
+	# add fish to allowed shells if not already present
 	if ! grep -q "/opt/homebrew/bin/fish" /etc/shells; then
 		echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
 	fi
 
-	# Change default shell to fish if not already set
+	# change default shell to fish if not already set
 	if [[ "${SHELL}" != "/opt/homebrew/bin/fish" ]]; then
 		echo "Changing default shell to fish..."
 		chsh -s /opt/homebrew/bin/fish
 	fi
 
-	# Configure fish path - run this in fish context
+	# configure fish path - run this in fish context
 	/opt/homebrew/bin/fish -c 'fish_add_path /opt/homebrew/bin'
 
-	# Stow dotfiles if directories exist
+	# stow dotfiles if directories exist
 	if [[ -d "fish" ]] && command -v stow &> /dev/null; then
 		echo "Stowing fish configuration..."
 		stow fish
