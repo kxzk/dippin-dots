@@ -7,10 +7,10 @@ font-family-bold-italic = "Berkeley Mono Bold Oblique"
 
 font-size = 15
 
-theme = "GruvboxDark"
+theme = "Bright Lights"
 
 cursor-text = "#000000"
-cursor-color = "#ff7700"
+cursor-color = "#ff78bb"
 cursor-style = block
 cursor-style-blink = false
 
