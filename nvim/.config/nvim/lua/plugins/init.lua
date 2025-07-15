@@ -1,5 +1,11 @@
 return {
 	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {

@@ -7,10 +7,8 @@ font-family-bold-italic = "Berkeley Mono Bold Oblique"
 
 font-size = 15
 
-theme = "Bright Lights"
+theme = "tokyonight_moon"
 
-cursor-text = "#000000"
-cursor-color = "#ff78bb"
 cursor-style = block
 cursor-style-blink = false
 

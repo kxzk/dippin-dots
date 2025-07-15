@@ -1,3 +1,3 @@
 function rip
-    rg --json -i $argv | delta --syntax-theme gruvbox-dark
+    rg --json -i $argv | delta --syntax-theme Dracula
 end
