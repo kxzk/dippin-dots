@@ -27,6 +27,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.cmd([[
+   augroup _ruby
+       autocmd!
+       autocmd Filetype ruby nmap <leader>r :20 split term://ruby %<CR>
+   augroup end
+
    augroup _python
        autocmd!
        autocmd Filetype python nmap <leader>r :20 split term://uv run %<CR>
