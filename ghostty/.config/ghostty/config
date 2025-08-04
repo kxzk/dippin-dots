@@ -1,34 +1,105 @@
-shell-integration = "fish"
-
 font-family = "Berkeley Mono"
 font-family-bold = "Berkeley Mono Bold"
 font-family-italic = "Berkeley Mono Oblique"
 font-family-bold-italic = "Berkeley Mono Bold Oblique"
 
-font-size = 15
+font-size = 16
 
 theme = "tokyonight_moon"
 
-cursor-style = block
-cursor-style-blink = false
-
-window-padding-x = 7
-window-padding-y = 7
-
-mouse-hide-while-typing = true
-
-macos-titlebar-style = hidden
+macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
+macos-window-shadow = false
+macos-auto-secure-input = true
+quick-terminal-position = center
+quick-terminal-animation-duration = 0
+adw-toolbar-style = flat
 
 macos-icon = "custom-style"
 macos-icon-frame = "plastic"
 macos-icon-ghost-color = "#1a1a1a"
 macos-icon-screen-color = "#000000"
 
+window-title-font-family = "Berkeley Mono"
+split-divider-color = #222436
+unfocused-split-fill = #1b1d2b
+window-theme = ghostty
+window-decoration = client
+window-new-tab-position = end
+window-padding-x = 7
+window-padding-y = 7
+
+cursor-style = block
+cursor-style-blink = false
+cursor-invert-fg-bg = true
+
+mouse-hide-while-typing = true
+
 clipboard-read = allow
 clipboard-write = allow
-
 copy-on-select = true
 
-keybind = ctrl+q=close_window
+shell-integration = detect
+shell-integration-features = cursor,sudo,title
+confirm-close-surface = false
+
+# ghostty
+
 keybind = ctrl+enter=toggle_fullscreen
+keybind = ctrl+a>v=select_all
+keybind = ctrl+a>y=copy_to_clipboard
+keybind = ctrl+a>t=toggle_quick_terminal
+
+# tmux-style keybindings - using sequences (prefix model)
+
+# split panes - matching tmux \ (fake |) and -
+keybind = ctrl+a>backslash=new_split:right
+keybind = ctrl+a>minus=new_split:down
+
+# pane movement
+keybind = ctrl+a>h=goto_split:left
+keybind = ctrl+a>j=goto_split:bottom
+keybind = ctrl+a>k=goto_split:top
+keybind = ctrl+a>l=goto_split:right
+keybind = ctrl+a>;=goto_split:previous
+
+# new window/tab (was tmux 'c')
+keybind = ctrl+a>c=new_tab
+
+# resize splits - matching tmux arrow keys
+keybind = ctrl+a>left=resize_split:left,40
+keybind = ctrl+a>right=resize_split:right,40
+keybind = ctrl+a>up=resize_split:up,40
+keybind = ctrl+a>down=resize_split:down,40
+
+# equalize splits
+keybind = ctrl+a>w=equalize_splits
+
+# close split/tab (tmux 'x' equivalent)
+keybind = ctrl+a>x=close_surface
+
+# reload config (tmux 'r')
+keybind = ctrl+a>r=reload_config
+
+# toggle zoom (tmux 'z' equivalent)
+keybind = ctrl+a>z=toggle_split_zoom
+
+# scrolling
+keybind = ctrl+a>[=scroll_page_up
+keybind = ctrl+a>]=scroll_page_down
+
+# quick tab switching (tmux window numbers)
+keybind = ctrl+a>0=goto_tab:1
+keybind = ctrl+a>1=goto_tab:2
+keybind = ctrl+a>2=goto_tab:3
+keybind = ctrl+a>3=goto_tab:4
+keybind = ctrl+a>4=goto_tab:5
+keybind = ctrl+a>5=goto_tab:6
+keybind = ctrl+a>6=goto_tab:7
+keybind = ctrl+a>7=goto_tab:8
+keybind = ctrl+a>8=goto_tab:9
+keybind = ctrl+a>9=goto_tab:10
+
+# tab navigation
+keybind = ctrl+a>n=next_tab
+keybind = ctrl+a>p=previous_tab
