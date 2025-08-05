@@ -30,6 +30,7 @@
   prune = true
 [alias]
 	co = checkout
+  sw = switch
 	br = branch
   wk = worktree
   bd = branch -D
