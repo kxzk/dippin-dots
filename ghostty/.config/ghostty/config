@@ -7,6 +7,7 @@ font-size = 16
 
 theme = "tokyonight_moon"
 
+macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
 macos-titlebar-proxy-icon = hidden
 macos-window-shadow = false
