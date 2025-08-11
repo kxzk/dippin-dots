@@ -1,0 +1,45 @@
+function prd --description 'Generate PRD skeleton as feature.prd'
+    set -l file "feature.prd"
+
+    if test -e "$file"
+        echo "$file already exists" >&2
+        return 1
+    end
+
+    set -l template '
+# Feature Name
+
+## What
+<!-- One sentence - what this does -->
+
+## Why
+<!-- Problem it solves in plain terms -->
+
+## Requirements
+
+### IMPORTANT Must Have
+-
+
+### Must Not
+-
+
+## Technical Context
+
+### Files
+- @
+
+### Links
+-
+
+## Implementation Notes
+
+### Approach
+<!-- High-level strategy in 2-3 sentences -->
+
+
+### Risks
+<!-- Known gotchas or complexity -->
+'
+    printf "%s\n" "$template" >"$file"
+    echo "[created] $file"
+end
