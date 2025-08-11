@@ -56,6 +56,7 @@ vim.cmd([[
 
     augroup _templates
         autocmd!
+        autocmd BufNewFile *.prd 0r ~/.config/nvim/templates/prd.skeleton
         autocmd BufNewFile *.py 0r ~/.config/nvim/templates/py.skeleton
         autocmd BufNewFile *.go 0r ~/.config/nvim/templates/go.skeleton
         autocmd BufNewFile *.todo 0r ~/.config/nvim/templates/todo.skeleton
