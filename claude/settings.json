@@ -1,6 +1,31 @@
 {
   "model": "opus",
   "includeCoAuthoredBy": false,
+  "env": {
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": true,
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": true,
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": 1,
+    "DISABLE_COST_WARNINGS": 1
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(mkdir:*)",
+      "Bash(ls:*)",
+      "Bash(rg:*)",
+      "Bash(cat:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(tail:*)",
+      "Bash(curl:*)",
+      "Bash(head:*)",
+      "List(*)",
+      "Read(*)"
+    ]
+  },
   "hooks": {
     "Stop": [
       {
