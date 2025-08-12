@@ -107,3 +107,14 @@ atuin login -u <USERNAME> -p <PASSWORD> -k <KEY>
 brew tap seatedro/glimpse
 brew install glimpse
 ```
+
+<br>
+
+* install ty
+
+```bash
+pip3 install ty --break-system-packages
+```
+
+<br>
+<br>
