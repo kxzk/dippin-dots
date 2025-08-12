@@ -88,4 +88,4 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-vim.lsp.enable({ "pyrefly", "gopls", "ruby-lsp" })
+vim.lsp.enable({ "ty", "gopls", "ruby-lsp" })
