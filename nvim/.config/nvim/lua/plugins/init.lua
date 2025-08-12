@@ -1,8 +1,12 @@
 return {
 	{
+		"MeanderingProgrammer/render-markdown.nvim",
+	},
+	{
 		"dmtrKovalenko/fff.nvim",
 		build = "cargo build --release",
 		opts = {
+			prompt = " ",
 			keymaps = {
 				close = "<C-c>",
 			},
