@@ -1,11 +1,15 @@
+font-family = ""
 font-family = "Berkeley Mono"
+font-family-bold = ""
 font-family-bold = "Berkeley Mono Bold"
+font-family-italic = ""
 font-family-italic = "Berkeley Mono Oblique"
+font-family-bold-italic = ""
 font-family-bold-italic = "Berkeley Mono Bold Oblique"
 
 font-size = 16
 
-theme = "tokyonight_moon"
+theme = "e-ink"
 
 macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
