@@ -1,6 +1,10 @@
 ---
 description: Create draft PR
+allowed-tools: Bash(git:*)
 ---
+
+# Context
+- Get current branch name: !`git branch --show-current`
 
 # Task
 Your goal is to commit all changes made in this branch and create a draft pull request (PR) on GitHub.
