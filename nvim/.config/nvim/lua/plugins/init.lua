@@ -1,5 +1,13 @@
 return {
 	{
+		"e-ink-colorscheme/e-ink.nvim",
+		priority = 1000,
+		config = function()
+			require("e-ink").setup()
+			vim.cmd.colorscheme("e-ink")
+		end,
+	},
+	{
 		"MeanderingProgrammer/render-markdown.nvim",
 	},
 	{
@@ -16,23 +24,11 @@ return {
 		},
 		keys = {
 			{
-				"ff",
+				"<leader>ff",
 				function()
 					require("fff").find_files()
 				end,
 				desc = "Open file picker",
-			},
-		},
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			styles = {
-				keywords = { italic = false },
-				functions = { italic = false },
-				variables = { italic = false },
 			},
 		},
 	},

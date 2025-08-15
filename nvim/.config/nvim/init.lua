@@ -68,19 +68,11 @@ require("nvim-treesitter.configs").setup({
 	},
 	auto_install = false,
 	highlight = { enable = true },
-	indent = { enable = false },
+	indent = { enable = true },
 })
 
 -- lsp --
-local capabilities = {
-	textDocument = {
-		foldingRange = {
-			dynamicRegistration = false,
-			lineFoldingOnly = true,
-		},
-	},
-}
-
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
 vim.lsp.config("*", {
