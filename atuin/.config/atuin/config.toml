@@ -2,8 +2,8 @@
 ## linux/mac: ~/.local/share/atuin/history.db
 ## windows: %USERPROFILE%/.local/share/atuin/history.db
 # db_path = "~/.history.db"
-[theme]
-name = "marine"
+# [theme]
+# name = "marine"
 
 ## where to store your encryption key, default is your system data directory
 ## linux/mac: ~/.local/share/atuin/key
@@ -62,7 +62,7 @@ dialect = "us"
 
 ## which style to use
 ## possible values: auto, full, compact
-style = "full"
+style = "compact"
 
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
