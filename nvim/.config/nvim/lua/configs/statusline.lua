@@ -7,9 +7,9 @@ local function hl(group, fg, bg)
 	vim.cmd("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
-hl("StatusColor", "#aeaeae", "#c2c2c2")
-hl("StatusColor1", "#686868", "#c2c2c2")
-hl("StatusColor2", "#df69ba", "#c2c2c2")
+hl("StatusColor1", "#aeaeae", "#2d2d2d")
+hl("StatusColor", "#4a4a4a", "#2d2d2d")
+hl("StatusColor2", "#df69ba", "#2d2d2d")
 
 function status_line()
 	-- if vim.bo.filetype == "sql" then
