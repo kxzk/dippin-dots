@@ -3,7 +3,6 @@ local g = vim.g
 -- make it stop yelling
 vim.deprecate = function() end
 
-vim.cmd("colorscheme e-ink")
 vim.o.background = "dark"
 g.do_filetype_lua = 1
 
