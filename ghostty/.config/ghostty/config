@@ -9,7 +9,7 @@ font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
 font-size = 16
 
-theme = "e-ink"
+theme = "DoomOne"
 
 macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
