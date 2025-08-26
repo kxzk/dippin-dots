@@ -1,6 +1,6 @@
 *.sqlite
-*.json
 .DS_Store
+lazy-lock.json
 db
 log/
 pid/
@@ -9,3 +9,5 @@ startup/
 packer_compiled.lua
 Brewfile.lock.json
 fish_variables
+rustup.fish
+fish/.config/fish/completions/*
