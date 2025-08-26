@@ -6,10 +6,10 @@
   editor = nvim
   pager = delta
 [interactive]
-  diffFilter = delta --color-only --syntax-theme "Dracula"
+  diffFilter = delta --color-only
 [delta]
-  navigte = true
-  light = false
+  navigate = true
+  dark = true
   line-numbers = true
   side-by-side = true
 [merge]
