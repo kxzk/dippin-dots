@@ -9,7 +9,11 @@ font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
 font-size = 16
 
-theme = "DoomOne"
+theme = "OneHalfDark"
+title = " "
+
+background-opacity = 0.92
+background-blur = true
 
 macos-non-native-fullscreen = true
 macos-titlebar-style = hidden
@@ -25,11 +29,10 @@ macos-icon-screen-color = "#000000"
 window-padding-x = 7
 window-padding-y = 7
 
-cursor-style = block
-cursor-style-blink = false
+cursor-style = underline
+cursor-style-blink = true
 cursor-invert-fg-bg = true
-
-mouse-hide-while-typing = true
+mouse-hide-while-typing = false
 
 clipboard-read = allow
 clipboard-write = allow
@@ -39,3 +42,6 @@ shell-integration = detect
 shell-integration-features = cursor,sudo,title
 
 keybind = ctrl+enter=toggle_fullscreen
+keybind = shift+enter=text:\x1b\r
+keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
