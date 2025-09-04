@@ -2,6 +2,12 @@ return {
 	cmd = { "ty", "server" },
 	filetypes = { "python" },
 	settings = {
-		diagnosticMode = "workspace",
+		ty = {
+			diagnosticMode = "workspace",
+			inlayHints = {
+				variableTypes = true,
+				callArgumentNames = true,
+			},
+		},
 	},
 }
