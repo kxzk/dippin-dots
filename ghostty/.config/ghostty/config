@@ -12,7 +12,7 @@ font-size = 16
 theme = "OneHalfDark"
 title = " "
 
-background-opacity = 0.92
+background-opacity = 0.95
 background-blur = true
 
 macos-non-native-fullscreen = true
@@ -43,5 +43,5 @@ shell-integration-features = cursor,sudo,title
 
 keybind = ctrl+enter=toggle_fullscreen
 keybind = shift+enter=text:\x1b\r
-keybind = ctrl+plus=increase_font_size:1
+keybind = ctrl+equal=increase_font_size:1
 keybind = ctrl+minus=decrease_font_size:1
