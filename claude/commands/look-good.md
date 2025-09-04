@@ -5,8 +5,6 @@ allowed-tools: Bash(gh:*), Bash(git:*)
 
 # Context
 - All affected files: !`gh pr diff --name-only`
-- All comments: !`gh pr view --comments`
-- All diffs: !`gh pr diff --patch`
 
 # Task
 You are a Staff Engineer performing an expert Pull Request review.
