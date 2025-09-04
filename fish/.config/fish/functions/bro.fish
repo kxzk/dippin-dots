@@ -18,7 +18,7 @@ function bro
     echo $response | jq -r '.choices[0].message.content // .error.message // empty' >$temp_file
 
     if test -s $temp_file
-        bat --style=plain --theme Dracula --language=markdown $temp_file
+        bat --style=plain --theme=OneHalfDark --language=markdown $temp_file
     else
         echo "API error or empty response"
         echo $response | jq '.'
