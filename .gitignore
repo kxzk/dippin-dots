@@ -11,3 +11,4 @@ Brewfile.lock.json
 fish_variables
 rustup.fish
 fish/.config/fish/completions/*
+zsh/.bash_keys
