@@ -58,29 +58,10 @@ bootstrap() {
 		echo "Warning: No Brewfile found in current directory"
 	fi
 
-	# install and configure fish shell
-	if ! brew list fish &> /dev/null; then
-		brew install fish
-	fi
-
-	# add fish to allowed shells if not already present
-	if ! grep -q "/opt/homebrew/bin/fish" /etc/shells; then
-		echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
-	fi
-
-	# change default shell to fish if not already set
-	if [[ "${SHELL}" != "/opt/homebrew/bin/fish" ]]; then
-		echo "Changing default shell to fish..."
-		chsh -s /opt/homebrew/bin/fish
-	fi
-
-	# configure fish path - run this in fish context
-	/opt/homebrew/bin/fish -c 'fish_add_path /opt/homebrew/bin'
-
 	# stow dotfiles if directories exist
-	if [[ -d "fish" ]] && command -v stow &> /dev/null; then
-		echo "Stowing fish configuration..."
-		stow fish
+	if [[ -d "zsh" ]] && command -v stow &> /dev/null; then
+		echo "Stowing zsh configuration..."
+		stow zsh
 	fi
 }
 
