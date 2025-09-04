@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+rgcheat() {
+  open https://www.philipdaniels.com/blog/2019/ripgrep-cheatsheet/
+}
+
+rgcheat

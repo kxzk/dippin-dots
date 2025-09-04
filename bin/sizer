@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# sizer - A script to display the size of a file in B, KB, MB, and GB.
+
+# Function to display usage
+usage() {
+    echo "Usage: sizer <filename>"
+    echo "Example: sizer /path/to/file.txt"
+    exit 1
+}
+
+# Check if exactly one argument is provided
+if [ "$#" -ne 1 ]; then
+    usage
+fi
+
+# Assign the first argument to filename
+filename="$1"
+
+# Check if the file exists and is a regular file
+if [ -f "$filename" ]; then
+    # Determine the appropriate stat command based on the operating system
+    if stat --version >/dev/null 2>&1; then
+        # GNU stat (common on Linux)
+        size_bytes=$(stat -c%s "$filename")
+    else
+        # BSD stat (common on macOS)
+        size_bytes=$(stat -f%z "$filename")
+    fi
+
+    # Calculate sizes in KB, MB, and GB with two decimal places
+    size_kb=$(echo "scale=2; $size_bytes / 1024" | bc)
+    size_mb=$(echo "scale=2; $size_kb / 1024" | bc)
+    size_gb=$(echo "scale=2; $size_mb / 1024" | bc)
+
+    # Display the sizes
+    echo "${size_bytes} B"
+    echo "${size_kb} KB"
+    echo "${size_mb} MB"
+    echo "${size_gb} GB"
+else
+    echo "Error: File '$filename' not found or is not a regular file."
+    exit 1
+fi

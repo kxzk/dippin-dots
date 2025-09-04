@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+pcols() {
+    head -n 1 "$@" | tr ',' '\n' | nl -v0
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+git_recent() {
+    git log --pretty=format: --name-only --diff-filter=A |
+    awk '!seen[$0]++ && NF' |
+    xargs -I_ git --no-pager log -1 --format="%ad _" -- _
+}
+
+git_recent

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ot() {
+    open -a TextEdit "$@"
+}
