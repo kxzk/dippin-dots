@@ -5,6 +5,7 @@ return {
 		config = function()
 			require("onedark").setup({
 				style = "dark",
+				transparent = true,
 			})
 			-- Enable theme
 			require("onedark").load()
@@ -128,9 +129,6 @@ return {
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		opts = {
-			indent = { enable = false },
-		},
 	},
 	-- {
 	-- 	"laytan/tailwind-sorter.nvim",
