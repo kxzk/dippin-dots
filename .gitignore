@@ -12,3 +12,6 @@ fish_variables
 rustup.fish
 fish/.config/fish/completions/*
 zsh/.bash_keys
+codex/.codex/*.json
+codex/.codex/*.jsonl
+codex/.codex/sessions/
