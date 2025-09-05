@@ -1,0 +1,7 @@
+model = "gpt-5"
+model_reasoning_effort = "high"
+# model_reasoning_summary = "concise"
+approval_policy = "on-request"
+# untrusted, on-failure, never
+sandbox_mode = "danger-full-access"
+# hide_agent_reasoning = true
