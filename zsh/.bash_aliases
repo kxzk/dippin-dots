@@ -47,5 +47,8 @@ alias prme="gh search prs --sort=updated --author=@me --state=open"
 alias cldp="claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
 alias cl="claude --disallowedTools NotebookEdit,NotebookWrite"
 
+# codex
+alias cx="codex --model 'gpt-5-codex' --yolo -c model_reasoning_summary_format=experimental"
+
 # sp
 alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'
