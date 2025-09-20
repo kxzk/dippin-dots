@@ -1,5 +1,4 @@
-model = "gpt-5"
-model_reasoning_effort = "high"
+model = "gpt-5-codex"
 # model_reasoning_summary = "concise"
 approval_policy = "on-request"
 # untrusted, on-failure, never
