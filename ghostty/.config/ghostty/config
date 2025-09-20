@@ -9,7 +9,7 @@ font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
 font-size = 16
 
-theme = "OneHalfDark"
+theme = "One Half Dark"
 title = " "
 
 background-opacity = 0.95
@@ -31,7 +31,8 @@ window-padding-y = 7
 
 cursor-style = underline
 cursor-style-blink = true
-cursor-invert-fg-bg = true
+cursor-color = cell-foreground
+cursor-text = cell-background
 mouse-hide-while-typing = false
 
 clipboard-read = allow
