@@ -8,7 +8,7 @@ font-family-bold-italic = ""
 font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
 font-size = 16
-title = " "
+# title = " "
 
 theme = "One Half Dark"
 
