@@ -4,7 +4,17 @@
 [[ -f ~/.bash_keys ]] && source ~/.bash_keys
 
 setopt PROMPT_SUBST
-PROMPT='%F{green}boy@metal%f:%F{blue}%2~%f$ '
+
+git_branch() {
+    git branch 2>/dev/null | sed -n 's/^\* //p'
+}
+
+git_prompt() {
+    local branch=$(git_branch)
+    [[ -n $branch ]] && echo " %F{magenta}⦗$branch⦘ %f"
+}
+
+PROMPT='%F{green}boy@metal%f 𝝺 %F{blue}%2~%f$(git_prompt)$ '
 
 # my local binaries
 export PATH="$HOME/.local/bin:$PATH"
