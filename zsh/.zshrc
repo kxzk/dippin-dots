@@ -14,7 +14,7 @@ git_prompt() {
     [[ -n $branch ]] && echo " %F{magenta}⦗$branch⦘ %f"
 }
 
-PROMPT='%F{green}boy@metal%f 𝝺 %F{blue}%2~%f$(git_prompt)$ '
+PROMPT='%F{green}boy@metal%f 𝝺 %F{blue}%2~%f$(git_prompt)'
 
 # my local binaries
 export PATH="$HOME/.local/bin:$PATH"
