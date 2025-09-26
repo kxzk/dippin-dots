@@ -11,18 +11,18 @@ git_branch() {
 
 git_prompt() {
     local branch=$(git_branch)
-    [[ -n $branch ]] && echo " %F{magenta}⦗$branch⦘ %f"
+    [[ -n $branch ]] && echo " %F{magenta}⦗$branch⦘%f"
 }
 
 dir_prompt() {
     if [[ "$PWD" == "$HOME" ]]; then
-        echo "%F{blue}~ %f"
+        echo "%F{blue}~%f"
     else
         echo "%F{blue}%2~%f"
     fi
 }
 
-PROMPT='%F{green}boy@metal%f 𝝺 $(dir_prompt)$(git_prompt)'
+PROMPT='%F{green}boy@metal%f 𝝺 $(dir_prompt)$(git_prompt) '
 
 # my local binaries
 export PATH="$HOME/.local/bin:$PATH"
