@@ -15,8 +15,6 @@
 - IMPORTANT: naming is critical (use descriptive names that convey intent)
 - single responsibility per function/class
 - composition over inheritance
-- interfaces over singletons
 
 # Python
-- for every python script use uv (instead of pip)
-- use uv script dependency headers instead of virualenvs: https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies
+- for python use uv (instead of pip)
