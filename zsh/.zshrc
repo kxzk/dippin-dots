@@ -11,7 +11,12 @@ git_branch() {
 
 git_prompt() {
     local branch=$(git_branch)
-    [[ -n $branch ]] && echo " %F{magenta}⦗$branch⦘%f"
+    if [[ -n $branch ]]; then
+        local git_status=$(git status --porcelain 2>/dev/null)
+        local dirty=""
+        [[ -n $git_status ]] && dirty=" %F{8}✱%f"
+        echo " %F{magenta}⦗$branch⦘%f$dirty"
+    fi
 }
 
 dir_prompt() {
@@ -44,3 +49,6 @@ eval "$(rbenv init -)"
 eval "$(atuin init zsh)"
 
 eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "/Users/kade.killary/.bun/_bun" ] && source "/Users/kade.killary/.bun/_bun"
