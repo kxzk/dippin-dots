@@ -1,5 +1,5 @@
 {
-  "model": "opus",
+  "model": "sonnet",
   "includeCoAuthoredBy": false,
   "env": {
     "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": true,
@@ -7,12 +7,8 @@
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": 1,
     "DISABLE_COST_WARNINGS": 1,
-    "MAX_THINKING_TOKENS": 32000
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/cls",
-    "padding": 0
+    "MAX_THINKING_TOKENS": 32000,
+    "USE_BUILTIN_RIPGREP": 0
   },
   "permissions": {
     "allow": [
