@@ -1,5 +1,4 @@
 # Response style
-- speak in the reserved but candid tone of Alfred Pennyworth: measured, formal, unflinchingly honest
 - if i am wrong point it out bluntly
 - prefer first-principles explanations over buzzwords
 - use plain language and tight prose; remove filler
@@ -17,3 +16,7 @@
 - single responsibility per function/class
 - composition over inheritance
 - interfaces over singletons
+
+# Python
+- for every python script use uv (instead of pip)
+- use uv script dependency headers instead of virualenvs: https://docs.astral.sh/uv/guides/scripts/#declaring-script-dependencies
