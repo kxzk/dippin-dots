@@ -1,0 +1,1 @@
+git branch | grep "^\*" | xargs -n 1 -I {} git branch -D {}
