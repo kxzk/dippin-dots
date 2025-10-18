@@ -11,9 +11,9 @@ return {
 			require("onedark").load()
 		end,
 	},
-	-- {
-	-- 	"MeanderingProgrammer/render-markdown.nvim",
-	-- },
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+	},
 	{
 		"dmtrKovalenko/fff.nvim",
 		build = "cargo build --release",
