@@ -1,15 +1,13 @@
 {
-  "model": "sonnet",
-  "includeCoAuthoredBy": false,
   "env": {
-    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": true,
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": true,
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
-    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": 1,
-    "DISABLE_COST_WARNINGS": 1,
-    "MAX_THINKING_TOKENS": 32000,
-    "USE_BUILTIN_RIPGREP": 0
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "true",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "true",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
+    "DISABLE_COST_WARNINGS": "1",
+    "USE_BUILTIN_RIPGREP": "0"
   },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash(git:*)",
@@ -28,6 +26,7 @@
       "Read(*)"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "Stop": [
       {
@@ -40,5 +39,7 @@
         ]
       }
     ]
-  }
+  },
+  "alwaysThinkingEnabled": false,
+  "spinningTipsEnabled": false
 }

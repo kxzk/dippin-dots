@@ -36,5 +36,3 @@ Example PR title: `[P4M-892] Improve sidekiq memory instrumentation and rotation
 - Create draft PR: `gh pr create --draft --title "<PR_TITLE>"`
 - List PRs: `gh pr list`
 - Create comment: `gh pr comment <PR_NUMBER> --body "Hi from GitHub CLI"`
-
-ultrathink
