@@ -18,7 +18,7 @@ chmod +x bootstrap.sh
 
 ```bash
 cd dippin-dots
-stow -Rv fish
+stow -Rv git
 restow_dirs
 
 # simulate running
@@ -47,6 +47,27 @@ gh auth login
 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+```
+<br>
+
+* install claude code
+
+```bash
+brew install --cask claude-code
+```
+
+<br>
+
+* install codex
+
+```bash
+brew install --cask codex
+```
+
+* install bun
+
+```bash
+curl -fsSL https://bun.com/install | bash # for macOS, Linux, and WSL
 ```
 
 <br>
@@ -118,3 +139,9 @@ pip3 install ty --break-system-packages
 
 <br>
 <br>
+
+* install bundler
+
+```bash
+gem install bundler
+```
