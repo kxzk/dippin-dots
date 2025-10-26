@@ -12,7 +12,7 @@ font-size = 16
 
 theme = "One Half Dark"
 
-background-opacity = 0.95
+background-opacity = 0.90
 background-blur = true
 
 app-notifications = false
@@ -32,14 +32,14 @@ macos-icon-ghost-color = "#1a1a1a"
 macos-icon-screen-color = "#000000"
 
 window-title-font-family = "Berkeley Mono"
-split-divider-color = #99c739
+split-divider-color = #61afef
 unfocused-split-fill = #070709
 window-theme = ghostty
 window-decoration = client
 window-new-tab-position = end
 window-inherit-working-directory = true
-window-padding-x = 7
-window-padding-y = 7
+window-padding-x = 5
+window-padding-y = 5
 
 cursor-style = underline
 cursor-style-blink = true
@@ -104,8 +104,8 @@ keybind = ctrl+a>r=reload_config
 keybind = ctrl+a>z=toggle_split_zoom
 
 # scrolling
-keybind = ctrl+a>[=scroll_page_up
-keybind = ctrl+a>]=scroll_page_down
+keybind = ctrl+q>j=scroll_page_lines:10
+keybind = ctrl+q>k=scroll_page_lines:-10
 
 # quick tab switching
 keybind = ctrl+a>1=goto_tab:1
