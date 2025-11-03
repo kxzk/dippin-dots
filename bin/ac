@@ -1,0 +1,70 @@
+#!/bin/bash
+# ac - Git Commit with Claude Code (auto-commit)
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+# Exit early if nothing to commit
+if [[ -z $(git status --porcelain) ]]; then
+    echo -e "${YELLOW}no changes to commit${NC}"
+    exit 0
+fi
+
+echo -e "${YELLOW}⟦ ac ⟧ ⚡ auto-committer${NC}"
+
+echo -e "${GREEN}| staging all changes...${NC}"
+git add -A
+
+echo -e "${GREEN}| generating commit message...${NC}"
+TEMP_MSG=$(mktemp)
+
+# Generate commit message with structured prompt
+{
+    echo "Create a conventional commit message with this exact structure:"
+    echo ""
+    echo "type(scope): imperative subject under 50 chars"
+    echo ""
+    echo "- Bullet point explaining WHY this change matters"
+    echo "- Bullet point for each significant change"
+    echo "- Focus on user/system impact, not implementation"
+    echo ""
+    echo "Changes to analyze:"
+    echo "---"
+    git status --short
+    echo "---"
+    git diff --cached --stat
+    echo "---"
+    git diff --cached | head -300
+    echo "---"
+    echo "Rules:"
+    echo "• Types: feat|fix|docs|refactor|perf|test|chore"
+    echo "• Subject: lowercase, no period, imperative mood"
+    echo "• Body: blank line after subject, bullets wrapped at 72 chars"
+    echo "• Skip obvious details—explain context and impact"
+    echo ""
+    echo "Output ONLY the commit message as shown above."
+} | claude -p --allowedTools "Bash,Write,Read" --permission-mode acceptEdits > "$TEMP_MSG"
+
+if [[ ! -s "$TEMP_MSG" ]]; then
+    echo -e "${RED}failed to generate commit message${NC}"
+    rm "$TEMP_MSG"
+    exit 1
+fi
+
+echo -e "${GREEN}| commit message:${NC}"
+cat "$TEMP_MSG"
+echo ""
+
+git commit -F "$TEMP_MSG"
+rm "$TEMP_MSG"
+
+echo -e "${GREEN}| pushing...${NC}"
+git push || {
+    echo -e "${YELLOW}push failed. Try: git push -u origin $(git branch --show-current)${NC}"
+    exit 1
+}
+
+echo -e "${GREEN}| ✓ committed and pushed${NC}"
