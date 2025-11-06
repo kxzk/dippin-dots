@@ -1,0 +1,50 @@
+{
+    "window.commandCenter": true,
+    "editor.fontFamily": "Berkeley Mono",
+    "editor.inlayHints.fontFamily": "Berkeley Mono",
+    "workbench.tree.renderIndentGuides": "none",
+    "editor.guides.indentation": false,
+    "extensions.ignoreRecommendations": true,
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "Cursor Dark Midnight",
+    "workbench.preferredDarkColorTheme": "Cursor Dark Midnight",
+    "workbench.preferredHighContrastColorTheme": "Cursor Dark Midnight",
+    "editor.fontSize": 14,
+    "window.closeWhenEmpty": true,
+    "update.releaseTrack": "prerelease",
+    "editor.cursorStyle": "underline",
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.ruff_cache": true,
+      "**/.venv": true
+    },
+    "cursor.general.globalCursorIgnoreList": [
+      "**/.env",
+      "**/.env.*",
+      "**/credentials.json",
+      "**/credentials.*.json",
+      "**/secret.json",
+      "**/secrets.json",
+      "**/*.key",
+      "**/*.pem",
+      "**/*.pfx",
+      "**/*.p12",
+      "**/*.crt",
+      "**/*.cer",
+      "**/id_rsa",
+      "**/id_dsa",
+      "**/.ssh/id_*",
+      "**/__pycache__",
+      "**/.venv",
+      "**/.ruff_cache"
+    ],
+    "[python]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "charliermarsh.ruff",
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+      }
+    },
+    "editor.inlayHints.enabled": "off",
+    "ty.inlayHints.variableTypes": false
+}
