@@ -13,7 +13,7 @@ if [[ -z $(git status --porcelain) ]]; then
     exit 0
 fi
 
-echo -e "${YELLOW}⟦ ac ⟧ ⚡ auto-committer${NC}"
+echo -e "${YELLOW}❨ ac | auto-committer ❩${NC}"
 
 echo -e "${GREEN}| staging all changes...${NC}"
 git add -A
@@ -45,7 +45,7 @@ TEMP_MSG=$(mktemp)
     echo "• Body: blank line after subject, bullets wrapped at 72 chars"
     echo "• Skip obvious details—explain context and impact"
     echo ""
-    echo "Output ONLY the commit message as shown above."
+    echo "IMPORTANT Output ONLY the commit message; DO NOT INCLUDE backticks"
 } | claude -p --allowedTools "Bash,Write,Read" --permission-mode acceptEdits > "$TEMP_MSG"
 
 if [[ ! -s "$TEMP_MSG" ]]; then
@@ -62,9 +62,6 @@ git commit -F "$TEMP_MSG"
 rm "$TEMP_MSG"
 
 echo -e "${GREEN}| pushing...${NC}"
-git push || {
-    echo -e "${YELLOW}push failed. Try: git push -u origin $(git branch --show-current)${NC}"
-    exit 1
-}
+git push 2>/dev/null || git push -u origin "$(git branch --show-current)"
 
 echo -e "${GREEN}| ✓ committed and pushed${NC}"
