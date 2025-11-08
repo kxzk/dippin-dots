@@ -15,10 +15,10 @@ fi
 
 echo -e "${YELLOW}❨ ac | auto-committer ❩${NC}"
 
-echo -e "${GREEN}| staging all changes...${NC}"
+echo -e "${GREEN}| staging${NC}"
 git add -A
 
-echo -e "${GREEN}| generating commit message...${NC}"
+echo -e "${GREEN}| generating${NC}"
 TEMP_MSG=$(mktemp)
 
 # Generate commit message with structured prompt
@@ -57,7 +57,7 @@ fi
 git commit -F "$TEMP_MSG"
 rm "$TEMP_MSG"
 
-echo -e "${GREEN}| pushing...${NC}"
+echo -e "${GREEN}| pushing${NC}"
 git push 2>/dev/null || git push -u origin "$(git branch --show-current)"
 
 echo -e "${GREEN}| ✓${NC}"
