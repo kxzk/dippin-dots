@@ -43,7 +43,7 @@ export PATH="$PATH:$HOME/go/bin"
 # rust (prepend after homebrew to take precedence)
 export PATH="$HOME/.cargo/bin:$PATH"
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
@@ -52,3 +52,14 @@ eval "$(zoxide init zsh)"
 
 # bun completions
 [ -s "/Users/kade.killary/.bun/_bun" ] && source "/Users/kade.killary/.bun/_bun"
+
+# use homebrew ruby by default
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/opt/homebrew/lib/ruby/gems/3.4.0/bin:$PATH"
+
+# qlty completions
+[ -s "/opt/homebrew/share/zsh/site-functions/_qlty" ] && source "/opt/homebrew/share/zsh/site-functions/_qlty"
+
+# qlty
+export QLTY_INSTALL="$HOME/.qlty"
+export PATH="$QLTY_INSTALL/bin:$PATH"

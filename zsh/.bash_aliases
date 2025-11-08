@@ -30,6 +30,7 @@ alias weather="curl wttr.in"
 alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
 alias h="cd desktop"
+alias dev="cd ~/dev"
 
 mk() { mkdir -p "$1" && cd "$1"; }
 
@@ -46,7 +47,6 @@ alias prme="gh search prs --sort=updated --author=@me --state=open"
 # claude code
 alias cldp="claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
 alias cl="claude --disallowedTools NotebookEdit,NotebookWrite"
-
 
 # codex
 alias cx="codex --yolo -c model_reasoning_summary_format=experimental -c model_reasoning_effort='high'"

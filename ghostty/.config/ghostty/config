@@ -12,8 +12,8 @@ font-size = 16
 
 theme = "One Half Dark"
 
-background-opacity = 0.90
-background-blur = true
+# background-opacity = 0.95
+background-blur = false
 
 app-notifications = false
 

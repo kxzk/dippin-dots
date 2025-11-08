@@ -26,7 +26,6 @@
       "Read(*)"
     ]
   },
-  "model": "sonnet",
   "hooks": {
     "Stop": [
       {
@@ -40,6 +39,6 @@
       }
     ]
   },
-  "alwaysThinkingEnabled": false,
-  "spinningTipsEnabled": false
+  "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": false
 }
