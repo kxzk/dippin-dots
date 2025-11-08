@@ -54,14 +54,10 @@ if [[ ! -s "$TEMP_MSG" ]]; then
     exit 1
 fi
 
-echo -e "${GREEN}| commit message:${NC}"
-cat "$TEMP_MSG"
-echo ""
-
 git commit -F "$TEMP_MSG"
 rm "$TEMP_MSG"
 
 echo -e "${GREEN}| pushing...${NC}"
 git push 2>/dev/null || git push -u origin "$(git branch --show-current)"
 
-echo -e "${GREEN}| ✓ committed and pushed${NC}"
+echo -e "${GREEN}| ✓${NC}"
