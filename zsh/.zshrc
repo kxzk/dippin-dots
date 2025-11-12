@@ -27,7 +27,13 @@ dir_prompt() {
     fi
 }
 
-PROMPT='%F{green}boy@metal%f 𝝺 $(dir_prompt)$(git_prompt) '
+k8s_prompt() {
+    local ctx=$(kubectl config current-context 2>/dev/null | sed 's/teleport-//')
+    local ns=$(kubens -c 2>/dev/null)
+    [[ -n $ctx ]] && echo " %F{white}[$ctx:$ns]%f"
+}
+
+PROMPT='%F{green}boy@metal%f 𝝺 $(dir_prompt)$(git_prompt)$(k8s_prompt) '
 
 # my local binaries
 export PATH="$HOME/.local/bin:$PATH"
