@@ -6,7 +6,6 @@
     "editor.guides.indentation": false,
     "extensions.ignoreRecommendations": true,
     "editor.lineNumbers": "relative",
-    "workbench.colorTheme": "Cursor Dark Midnight",
     "workbench.preferredDarkColorTheme": "Cursor Dark Midnight",
     "workbench.preferredHighContrastColorTheme": "Cursor Dark Midnight",
     "editor.fontSize": 14,
@@ -44,7 +43,12 @@
       "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
       }
+      "python.analysis.autoImportCompletions": false
     },
     "editor.inlayHints.enabled": "off",
-    "ty.inlayHints.variableTypes": false
+    "ty.inlayHints.variableTypes": false,
+    "workbench.colorTheme": "Cursor Dark Midnight",
+    "terminal.integrated.fontLigatures.enabled": true,
+    "editor.fontLigatures": true,
+    "explorer.confirmDelete": false
 }
