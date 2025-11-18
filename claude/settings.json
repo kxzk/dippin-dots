@@ -40,6 +40,5 @@
     ]
   },
   "spinnerTipsEnabled": false,
-  "alwaysThinkingEnabled": false,
-  "model": "opus"
+  "alwaysThinkingEnabled": false
 }

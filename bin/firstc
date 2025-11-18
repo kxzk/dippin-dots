@@ -27,7 +27,8 @@ DESC="${BASH_REMATCH[2]}"
 
 ISSUE_UPPER=$(echo "$ISSUE" | tr '[:lower:]' '[:upper:]')
 
-DESC_TITLE=$(echo "$DESC" | tr '-' ' ' | sed 's/\b\(.\)/\u\1/g')
+DESC_WORDS=$(echo "$DESC" | tr '-' ' ')
+DESC_TITLE=$(echo "$DESC_WORDS" | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) tolower(substr($i,2))}1')
 
 COMMIT_MSG="[$ISSUE_UPPER] $DESC_TITLE"
 
