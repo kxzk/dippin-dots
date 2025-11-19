@@ -29,24 +29,25 @@
 [fetch]
   prune = true
 [alias]
-	co = checkout
-  sw = switch
-	br = branch
-  wk = worktree
+  amend = commit --amend
   bd = branch -D
   bl = "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
   ci = commit
-  puo = push -u origin main
-  ss = status --short
-  undo = reset --soft HEAD~1
-  unstage = reset HEAD --
-  rsoft = reset --soft HEAD
-  rsoftm = reset --soft master
-  rhard = reset --hard HEAD
-  rsoftm = reset --hard master
-  amend = commit --amend
+  co = checkout
+  find = "log --pretty='format:%Cgreen%H %Cblue%s' --name-status --grep"
+  gone = !git fetch -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+  hard = reset --hard HEAD
   last = log -1 HEAD
+  lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+  merged = !git branch --merged main | grep -v '^*' | grep -v 'main' | xargs git branch -d
+  pf = push --force-with-lease
+  pl = pull --rebase
+  puo = push -u origin main
   rank = shortlog -sne --no-merges
   rankfile = shortlog -sne
-  find = "log --pretty='format:%Cgreen%H %Cblue%s' --name-status --grep"
-  lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+  soft = reset --soft HEAD
+  ss = status --short
+  sw = switch
+  undo = reset --soft HEAD~1
+  unstage = reset HEAD --
+  wk = worktree
