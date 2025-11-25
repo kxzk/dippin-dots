@@ -51,3 +51,4 @@
   undo = reset --soft HEAD~1
   unstage = reset HEAD --
   wk = worktree
+  delete-merged = "!git fetch -p && git branch -r --merged origin/main | grep -v 'main\\|master\\|HEAD' | sed 's/origin\\///' | xargs -I {} git push origin --delete {}"
