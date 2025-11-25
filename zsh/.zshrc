@@ -6,7 +6,7 @@
 setopt PROMPT_SUBST
 
 git_branch() {
-    git branch 2>/dev/null | sed -n 's/^\* //p'
+    git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
 git_prompt() {
@@ -28,49 +28,50 @@ dir_prompt() {
 }
 
 k8s_prompt() {
-    local ctx=$(kubectl config current-context 2>/dev/null | sed 's/teleport-//')
-    local ns=$(kubens -c 2>/dev/null)
-    if [[ -n $ctx ]]; then
-        [[ -n $ns ]] && echo " %F{yellow}⟨k8s|$ctx:$ns%⟩f" || echo " %F{yellow}⟨k8s|$ctx⟩%f"
-    fi
+    [[ -z $KUBECONFIG_HASH || $KUBECONFIG_HASH != $(md5 -q ~/.kube/config 2>/dev/null) ]] && {
+        KUBECONFIG_HASH=$(md5 -q ~/.kube/config 2>/dev/null)
+        K8S_CTX=$(kubectl config current-context 2>/dev/null | sed 's/teleport-//')
+        K8S_NS=$(kubens -c 2>/dev/null)
+    }
+    [[ -n $K8S_CTX ]] && echo " %F{yellow}⟨k8s|$K8S_CTX${K8S_NS:+:$K8S_NS}⟩%f"
 }
 
-PROMPT='%F{green}boy@metal%f 𝝺 $(dir_prompt)$(k8s_prompt)$(git_prompt) '
-
-# my local binaries
-export PATH="$HOME/.local/bin:$PATH"
+precmd() {
+    _dir=$(dir_prompt)
+    _k8s=$(k8s_prompt)
+    _git=$(git_prompt)
+}
+PROMPT='%F{green}boy@metal%f 𝝺 ${_dir}${_k8s}${_git} '
 
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+export QLTY_INSTALL="$HOME/.qlty"
 
-# npm
-export PATH="$HOME/.npm-global/bin:$PATH"
-
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$PATH:$HOME/go/bin"
-# rust (prepend after homebrew to take precedence)
-export PATH="$HOME/.cargo/bin:$PATH"
+typeset -U path
+path=(
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+    "/opt/homebrew/opt/ruby/bin"
+    "/opt/homebrew/lib/ruby/gems/3.4.0/bin"
+    "/opt/homebrew/bin"
+    "$BUN_INSTALL/bin"
+    "$HOME/.npm-global/bin"
+    "$QLTY_INSTALL/bin"
+    "$HOME/go/bin"
+    "/usr/local/zig"
+    $path
+)
 
 # eval "$(rbenv init -)"
 
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
+[[ -f "$HOME/.atuin/bin/env" ]] && . "$HOME/.atuin/bin/env"
+(( $+commands[atuin] )) && eval "$(atuin init zsh)"
 
-eval "$(zoxide init zsh)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
-# bun completions
-[ -s "/Users/kade.killary/.bun/_bun" ] && source "/Users/kade.killary/.bun/_bun"
-
-# use homebrew ruby by default
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/opt/homebrew/lib/ruby/gems/3.4.0/bin:$PATH"
-
-# qlty completions
-[ -s "/opt/homebrew/share/zsh/site-functions/_qlty" ] && source "/opt/homebrew/share/zsh/site-functions/_qlty"
-
-# qlty
-export QLTY_INSTALL="$HOME/.qlty"
-export PATH="$QLTY_INSTALL/bin:$PATH"
-
-# zig
-export PATH=$PATH:/usr/local/zig
+# lazy-load completions
+compdef _bun bun 2>/dev/null || {
+    _bun() { source "$HOME/.bun/_bun" && _bun "$@" }
+}
+compdef _qlty qlty 2>/dev/null || {
+    _qlty() { [[ -s "/opt/homebrew/share/zsh/site-functions/_qlty" ]] && source "/opt/homebrew/share/zsh/site-functions/_qlty" && _qlty "$@" }
+}
