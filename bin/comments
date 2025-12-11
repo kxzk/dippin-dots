@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+pr=${1:-$(gh pr view --json number -q .number)}
+
+gh api "repos/${repo}/pulls/${pr}/comments" --jq '
+  .[] | [
+    "",
+    "────────────────────────────────────────",
+    "\(.path):\(.start_line // .line)-\(.line)",
+    "",
+    "[\(.user.login)]: \(.body | rtrimstr("\n"))"
+  ] | join("\n")
+'

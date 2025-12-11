@@ -10,7 +10,6 @@
     "workbench.preferredHighContrastColorTheme": "Cursor Dark Midnight",
     "editor.fontSize": 14,
     "window.closeWhenEmpty": true,
-    "update.releaseTrack": "prerelease",
     "editor.cursorStyle": "underline",
     "files.exclude": {
       "**/__pycache__": true,
@@ -52,15 +51,21 @@
       "editor.semanticHighlighting.enabled": true,
       "editor.tabSize": 2
     },
+    "[rust]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "rust-analyzer.check.command": "clippy",
     "ruby.lsp.enabled": true,
     "ruby.useLanguageServer": true,
     "rubyLsp.enableExperimentalFeatures": true,
     "rubyLsp.formatter": "auto",
     "rubyLsp.rubyExecutablePath": "/opt/homebrew/opt/ruby/bin/ruby",
     "editor.inlayHints.enabled": "off",
-    "ty.inlayHints.variableTypes": false,
     "terminal.integrated.fontLigatures.enabled": true,
     "editor.fontLigatures": true,
     "explorer.confirmDelete": false,
-    "workbench.colorTheme": "Cursor Dark Midnight"
+    "workbench.colorTheme": "Cursor Dark Midnight",
+    "ty.inlayHints.variableTypes": false,
+    "update.releaseTrack": "prerelease"
 }
