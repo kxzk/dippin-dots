@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+main_branch="${1:-main}"
+dry_run=false
+
+if [[ "${2:-}" == "--dry-run" ]]; then
+    dry_run=true
+fi
+
+if ! command -v gh &> /dev/null; then
+    echo "Error: gh CLI not installed"
+    exit 1
+fi
+
+if ! gh auth status &> /dev/null; then
+    echo "Error: gh CLI not authenticated"
+    exit 1
+fi
+
+branches=$(git branch | grep -v "$main_branch" | sed 's/^[* ]*//')
+
+if [[ -z "$branches" ]]; then
+    echo "No branches to clean up"
+    exit 0
+fi
+
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
+
+check_branch() {
+    local branch=$1
+    local out_file=$2
+    local pr_state
+    pr_state=$(gh pr list --head "$branch" --state merged --json number --jq 'length')
+    echo "$branch:$pr_state" > "$out_file"
+}
+
+export -f check_branch
+
+pids=()
+i=0
+for branch in $branches; do
+    check_branch "$branch" "$tmp_dir/$i" &
+    pids+=($!)
+    ((i++))
+done
+
+for pid in "${pids[@]}"; do
+    wait "$pid"
+done
+
+deleted=0
+skipped=0
+
+for file in "$tmp_dir"/*; do
+    [[ -f "$file" ]] || continue
+    line=$(cat "$file")
+    branch="${line%%:*}"
+    pr_state="${line##*:}"
+
+    if [[ "$pr_state" -gt 0 ]]; then
+        if $dry_run; then
+            echo "[dry-run] Would delete: $branch"
+        else
+            git branch -D "$branch"
+            echo "Deleted: $branch"
+        fi
+        ((deleted++))
+    else
+        echo "Skipped (no merged PR): $branch"
+        ((skipped++))
+    fi
+done
+
+echo ""
+echo "Summary: $deleted deleted, $skipped skipped"

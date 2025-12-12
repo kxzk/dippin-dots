@@ -1,4 +1,8 @@
 [[ ! -o interactive ]] && return
+
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+autoload -Uz compinit && compinit
+
 # source aliases (zsh can use bash aliases)
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 [[ -f ~/.bash_keys ]] && source ~/.bash_keys

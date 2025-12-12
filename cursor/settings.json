@@ -67,5 +67,13 @@
     "explorer.confirmDelete": false,
     "workbench.colorTheme": "Cursor Dark Midnight",
     "ty.inlayHints.variableTypes": false,
-    "update.releaseTrack": "prerelease"
+    "update.releaseTrack": "prerelease",
+    "vim.leader": "<space>",
+    "vim.timeout": 500,
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "w"],
+        "commands": ["workbench.action.files.save"]
+      },
+    ]
 }
