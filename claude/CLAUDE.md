@@ -10,7 +10,8 @@
 
 # Code style
 - NEVER COMMENT YOUR CODE (it's my code, i should write the comments)
-- prefer elegant solutions without going overboard, start simple
+- if a comment exists than I wrote it, ignore it's fine
+- prefer elegant solutions without going overboard
 - IMPORTANT: naming is critical (use descriptive names that convey intent)
 - single responsibility per function/class
 - composition over inheritance
