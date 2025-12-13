@@ -2,9 +2,12 @@
   "env": {
     "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "true",
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "true",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
     "DISABLE_COST_WARNINGS": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
+    "DISABLE_TELEMETRY": "1"
     "USE_BUILTIN_RIPGREP": "0"
   },
   "includeCoAuthoredBy": false,
@@ -22,6 +25,7 @@
       "Bash(tail:*)",
       "Bash(curl:*)",
       "Bash(head:*)",
+      "Bash(docker:*)",
       "List(*)",
       "Read(*)"
     ]
