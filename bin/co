@@ -1,5 +1,5 @@
 #!/bin/bash
-# ac - Git Commit with Claude Code (auto-commit)
+# co - commit only
 set -e
 
 RED='\033[0;31m'
@@ -7,19 +7,17 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# Exit early if nothing to commit
 if [[ -z $(git status --porcelain) ]]; then
     echo -e "${YELLOW}no changes to commit${NC}"
     exit 0
 fi
 
-echo -e "${YELLOW}❨ ac | auto-committer ❩${NC}"
+echo -e "${YELLOW}❨ co | commit-only ❩${NC}"
 
 git add -A
 
 TEMP_MSG=$(mktemp)
 
-# Generate commit message with structured prompt
 {
     echo "Create a conventional commit message with this exact structure:"
     echo ""
@@ -54,7 +52,5 @@ fi
 
 git commit -F "$TEMP_MSG"
 rm "$TEMP_MSG"
-
-git push 2>/dev/null || git push -u origin "$(git branch --show-current)"
 
 echo -e "${GREEN}| ✓${NC}"

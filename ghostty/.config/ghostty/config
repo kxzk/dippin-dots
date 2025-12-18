@@ -1,3 +1,6 @@
+# life on the edge
+auto-update-channel = tip
+
 font-family = ""
 font-family = "Berkeley Mono"
 font-family-bold = ""
@@ -123,4 +126,8 @@ keybind = ctrl+a>n=next_tab
 keybind = ctrl+a>p=previous_tab
 
 # tab title
-keybind = ctrl+a>,=prompt_surface_title
+# keybind = ctrl+a>,=prompt_surface_title
+keybind = ctrl+a>,=prompt_tab_title
+
+# command palette
+keybind = ctrl+a>h=toggle_command_palette
