@@ -15,7 +15,7 @@ local function hl(group, fg, bg)
 end
 
 hl("StatusColor", "#32374b", "#2a2e3f")
-hl("StatusColor1", "#3a4058", "#2a2e3f")
+hl("StatusColor1", "#535763", "#2a2e3f")
 hl("StatusColor2", "#ffd76d", "#2a2e3f")
 
 function status_line()
