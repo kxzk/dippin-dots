@@ -14,6 +14,7 @@ alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -v 127.0
 alias fire="caffeinate -dimus cacafire"
 alias wake="caffeinate -dims"
 alias ccost="bunx ccusage"
+alias D="duckdb"
 
 # shortcuts
 alias cd="z"

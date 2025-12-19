@@ -1,0 +1,3 @@
+IRB.conf[:USE_AUTOCOMPLETE] = true
+IRB.conf[:PROMPT_MODE] = :SIMPLE
+IRB.conf[:ECHO_ON_ASSIGNMENT] = :truncate

@@ -57,6 +57,11 @@ brew install --cask claude-code
 curl -fsSL https://bun.sh/install | bash
 ```
 
+#### DuckDB
+```bash
+curl https://install.duckdb.org | sh
+```
+
 #### Go Air (hot reload)
 ```bash
 go install github.com/air-verse/air@latest
