@@ -3,6 +3,7 @@ vim.opt.shortmess:append("sI")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.termguicolors = true
+vim.o.winborder = "rounded"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
