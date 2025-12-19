@@ -4,6 +4,7 @@ local g = vim.g
 vim.deprecate = function() end
 
 vim.o.background = "dark"
+vim.cmd("colorscheme monokai-pro-octagon")
 g.do_filetype_lua = 1
 
 if vim.loop.os_uname().sysname == "Darwin" then
@@ -25,7 +26,7 @@ end
 -- s -> sort
 -- % -> new file
 
-g.netrw_liststlye = 3
+g.netrw_liststyle = 3
 g.netrw_banner = 0
 g.netrw_browse_split = 0
 g.netrw_winsize = 20

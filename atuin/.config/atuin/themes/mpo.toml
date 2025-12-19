@@ -1,0 +1,13 @@
+[theme]
+name = "mpo"
+parent = ""
+
+[colors]
+AlertInfo = "#bad761"
+AlertWarn = "#ff9b5e"
+AlertError = "#ff657a"
+Annotation = "#545c7e"
+Base = "#545c7e"
+Guidance = "#c39ac9"
+Important = "#ff657a"
+Title = "#c39ac9"

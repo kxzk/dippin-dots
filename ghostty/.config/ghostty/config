@@ -10,10 +10,10 @@ font-family-italic = "Berkeley Mono Retina Oblique"
 font-family-bold-italic = ""
 font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
-font-size = 14
+font-size = 15
 # title = " "
 
-theme = "One Half Dark"
+theme = "Monokai Pro Octagon"
 
 # background-opacity = 0.95
 background-blur = false
@@ -35,8 +35,8 @@ macos-icon-ghost-color = "#1a1a1a"
 macos-icon-screen-color = "#000000"
 
 window-title-font-family = "Berkeley Mono Retina"
-split-divider-color = #61afef
-unfocused-split-fill = #070709
+split-divider-color = #282a3a
+unfocused-split-fill = #0d0e14
 window-theme = ghostty
 window-decoration = client
 window-new-tab-position = end

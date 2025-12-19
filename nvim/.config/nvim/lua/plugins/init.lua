@@ -1,18 +1,13 @@
 return {
 	{
-		"navarasu/onedark.nvim",
-		priority = 1000, -- make sure to load this before all the other start plugins
+		"loctvl842/monokai-pro.nvim",
 		config = function()
-			require("onedark").setup({
-				style = "dark",
-				transparent = true,
-			})
-			-- Enable theme
-			require("onedark").load()
+			require("monokai-pro").setup()
 		end,
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
 	},
 	{
 		"dmtrKovalenko/fff.nvim",
@@ -38,6 +33,7 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -49,12 +45,13 @@ return {
 			},
 		},
 	},
-	{ "github/copilot.vim" },
+	{ "github/copilot.vim", event = "InsertEnter" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
+		cmd = "Telescope",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			-- Fuzzy Finder Algorithm which requires local dependencies to be built.
@@ -126,9 +123,14 @@ return {
 		},
 	},
 	{
-		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		opts = {
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
+		},
 	},
 	-- {
 	-- 	"laytan/tailwind-sorter.nvim",

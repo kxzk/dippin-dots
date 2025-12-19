@@ -1,28 +1,31 @@
-local function file_path()
-	local path_to_file = vim.fn.pathshorten(vim.fn.getcwd()):lower()
-	return path_to_file .. "/"
+local cached_cwd = ""
+
+local function update_cwd_cache()
+	cached_cwd = vim.fn.pathshorten(vim.fn.getcwd()):lower() .. "/"
 end
+
+update_cwd_cache()
+
+vim.api.nvim_create_autocmd("DirChanged", {
+	callback = update_cwd_cache,
+})
 
 local function hl(group, fg, bg)
 	vim.cmd("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
-hl("StatusColor", "#49505f", "#3e4450")
-hl("StatusColor1", "#778296", "#3e4450")
-hl("StatusColor2", "#df69ba", "#3e4450")
+hl("StatusColor", "#32374b", "#2a2e3f")
+hl("StatusColor1", "#3a4058", "#2a2e3f")
+hl("StatusColor2", "#ffd76d", "#2a2e3f")
 
 function status_line()
-	-- if vim.bo.filetype == "sql" then
-	-- 	return "%f"
-	-- end
-
 	return table.concat({
 		"%#StatusColor1#",
 		" ",
 		"%<",
 		"%#StatusColor#",
 		"%=",
-		file_path(),
+		cached_cwd,
 		"%#StatusColor1#",
 		"%f",
 		"%#StatusColor2#",

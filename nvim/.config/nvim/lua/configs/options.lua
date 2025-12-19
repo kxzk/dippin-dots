@@ -48,7 +48,6 @@ opt.shiftround = true -- round indent to multiple of shiftwidth
 
 opt.hidden = true -- enable background buffers
 opt.history = 50 -- remember n commands :example
-opt.lazyredraw = true -- faster scrolling
 opt.backup = false -- no backups
 opt.writebackup = false -- no backups while editing (living on the edge)
 opt.swapfile = false -- no swapfile

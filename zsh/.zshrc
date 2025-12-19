@@ -25,9 +25,9 @@ git_prompt() {
 
 dir_prompt() {
     if [[ "$PWD" == "$HOME" ]]; then
-        echo "%F{blue}~%f"
+        echo "%F{red}~%f"
     else
-        echo "%F{blue}%2~%f"
+        echo "%F{red}%2~%f"
     fi
 }
 

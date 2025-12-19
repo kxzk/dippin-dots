@@ -1,3 +1,4 @@
+vim.loader.enable()
 vim.opt.shortmess:append("sI")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "

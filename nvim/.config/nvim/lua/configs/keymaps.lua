@@ -1,14 +1,4 @@
--- helper for simple mappings
-local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
--- easier escape for weird keyboard
--- map("i", "jk", "<esc>")
+local map = vim.keymap.set
 
 -- fast saves/quit
 map("n", "<leader>w", ":w!<cr>")
@@ -35,7 +25,6 @@ map("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>")
 map("v", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>")
 
 -- telescope
--- map("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fr", "<cmd>Telescope lsp_references<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
