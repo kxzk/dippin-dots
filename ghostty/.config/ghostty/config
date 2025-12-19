@@ -130,4 +130,4 @@ keybind = ctrl+a>p=previous_tab
 keybind = ctrl+a>,=prompt_tab_title
 
 # command palette
-keybind = ctrl+a>h=toggle_command_palette
+keybind = ctrl+a>u=toggle_command_palette
