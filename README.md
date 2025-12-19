@@ -1,4 +1,4 @@
-<h1 align="center">🍦 dippin dots</h1>
+<h3 align="center">🍦 dippin dots</h3>
 
 <p align="center">
   <em>dotfiles managed with <a href="https://www.gnu.org/software/stow/">GNU Stow</a></em>
@@ -6,7 +6,7 @@
 
 <br>
 
-## Quick Start
+### Quick Start
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh | bash
@@ -14,7 +14,7 @@ curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh 
 
 <br>
 
-## Stow Commands
+### Stow Commands
 
 ```bash
 cd dippin-dots
@@ -30,7 +30,7 @@ restow_dirs
 
 <br>
 
-## Post-Install
+### Post-Install
 
 #### GitHub CLI
 ```bash
