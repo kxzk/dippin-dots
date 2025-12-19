@@ -2,11 +2,6 @@
 alias ..="z .."
 alias ...="z ../.."
 
-# python
-alias ativ="source .venv/bin/activate.fish"
-alias dativ="deactivate"
-alias pipi="cd ~/dippin-dots/ && pip3 install -r requirements.txt --break-system-packages"
-
 # ignores
 alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,macos,data,jupyternotebooks > .gitignore"
 alias ignorego="curl https://www.toptal.com/developers/gitignore/api/go,macos > .gitignore"
@@ -32,6 +27,7 @@ alias dots="cd dippin-dots"
 alias h="cd desktop"
 alias dev="cd ~/dev"
 
+alias mkd="mkdir"
 mk() { mkdir -p "$1" && cd "$1"; }
 
 # eza (ls)
@@ -49,7 +45,7 @@ alias cldp="claude --dangerously-skip-permissions --disallowedTools NotebookEdit
 alias cl="claude --disallowedTools NotebookEdit,NotebookWrite"
 
 # codex
-alias cx="codex --yolo -c model_reasoning_summary_format=experimental -c model_reasoning_effort='high'"
+# alias cx="codex --yolo -c model_reasoning_summary_format=experimental -c model_reasoning_effort='high'"
 
 # sp
 alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'
