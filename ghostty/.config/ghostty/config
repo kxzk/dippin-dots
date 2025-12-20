@@ -29,11 +29,6 @@ macos-auto-secure-input = true
 quick-terminal-position = center
 quick-terminal-animation-duration = 0
 
-macos-icon = "custom-style"
-macos-icon-frame = "plastic"
-macos-icon-ghost-color = "#1a1a1a"
-macos-icon-screen-color = "#000000"
-
 window-title-font-family = "Berkeley Mono Retina"
 split-divider-color = #282a3a
 unfocused-split-fill = #0d0e14
