@@ -1,12 +1,12 @@
 <h3 align="center">🍦 dippin dots</h3>
 
 <p align="center">
-  <em>dotfiles managed with <a href="https://www.gnu.org/software/stow/">GNU Stow</a></em>
+  <em>dotfiles managed with <a href="https://www.gnu.org/software/stow/">stow</a></em>
 </p>
 
 <br>
 
-### Quick Start
+### quick start
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh | bash
@@ -14,7 +14,7 @@ curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh 
 
 <br>
 
-### Stow Commands
+### stow commands
 
 ```bash
 cd dippin-dots
@@ -30,16 +30,16 @@ restow_dirs
 
 <br>
 
-### Post-Install
+### post-install
 
-#### GitHub CLI
+#### github cli
 ```bash
 gh auth login
 gh config set editor nvim
 gh config set pager delta
 ```
 
-#### Atuin (shell history)
+#### atuin (shell history)
 ```bash
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 atuin register -u <USERNAME> -e <EMAIL>
@@ -47,28 +47,24 @@ atuin import auto
 atuin sync
 ```
 
-#### Claude Code
+#### claude code
 ```bash
 curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-#### Bun
+#### bun
 ```bash
 curl -fsSL https://bun.sh/install | bash
 ```
 
-#### DuckDB
+#### duckdb
 ```bash
 curl https://install.duckdb.org | sh
 ```
 
-#### Go Air (hot reload)
+#### go air (hot reload)
 ```bash
 go install github.com/air-verse/air@latest
 ```
 
 <br>
-
-<p align="center">
-  <sub>macOS • zsh • neovim • ghostty</sub>
-</p>
