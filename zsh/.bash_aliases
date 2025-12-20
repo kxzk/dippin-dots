@@ -42,11 +42,13 @@ alias prrev="gh search prs --review-requested=@me --state=open"
 alias prme="gh search prs --sort=updated --author=@me --state=open"
 
 # claude code
-alias cldp="claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
-alias cl="claude --disallowedTools NotebookEdit,NotebookWrite"
+alias cl="claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
+# alias cl="claude --disallowedTools NotebookEdit,NotebookWrite"
+
 
 # codex
 # alias cx="codex --yolo -c model_reasoning_summary_format=experimental -c model_reasoning_effort='high'"
 
 # sp
+
 alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'

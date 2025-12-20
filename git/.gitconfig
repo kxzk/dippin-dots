@@ -7,7 +7,10 @@
   pager = delta
 [interactive]
   diffFilter = delta --color-only
+[include]
+  path = ~/dippin-dots/git/themes.gitconfig
 [delta]
+  features = monokai-pro-octagon
   navigate = true
   dark = true
   line-numbers = true

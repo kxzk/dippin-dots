@@ -69,6 +69,7 @@ require("nvim-treesitter.configs").setup({
 		"haskell",
 		"javascript",
 		"glimmer",
+		"ruby",
 	},
 	auto_install = false,
 	highlight = { enable = true },

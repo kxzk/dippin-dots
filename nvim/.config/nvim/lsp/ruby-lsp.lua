@@ -1,5 +1,5 @@
 return {
-	cmd = { "ruby-lsp" },
+	cmd = { "/opt/homebrew/lib/ruby/gems/3.4.0/bin/ruby-lsp" },
 	root_markers = { "Gemfile", ".git" },
 	filetypes = { "ruby", "eruby" },
 	init_options = {
