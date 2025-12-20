@@ -62,6 +62,21 @@ curl -fsSL https://bun.sh/install | bash
 curl https://install.duckdb.org | sh
 ```
 
+#### ghostty (terminal)
+```bash
+# download from https://ghostty.org/download
+```
+
+#### tableplus (database gui)
+```bash
+# download from https://tableplus.com/
+```
+
+#### dash (api docs)
+```bash
+# download from https://kapeli.com/dash
+```
+
 #### go air (hot reload)
 ```bash
 go install github.com/air-verse/air@latest
