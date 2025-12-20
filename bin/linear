@@ -1,0 +1,123 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "httpx",
+#     "rich",
+# ]
+# ///
+
+import os
+import sys
+from collections import defaultdict
+from datetime import datetime, timedelta
+
+import httpx
+from rich.console import Console
+from rich.table import Table
+
+LINEAR_API = "https://api.linear.app/graphql"
+
+QUERY = """
+query CompletedIssues($cursor: String, $since: DateTimeOrDuration!) {
+  issues(
+    filter: {
+      state: { type: { eq: "completed" } }
+      estimate: { gt: 0 }
+      completedAt: { gte: $since }
+    }
+    first: 100
+    after: $cursor
+  ) {
+    nodes {
+      estimate
+      assignee { id name }
+      team { id name }
+    }
+    pageInfo { hasNextPage endCursor }
+  }
+}
+"""
+
+
+def fetch_issues(api_key: str, since: str) -> list[dict]:
+    headers = {"Authorization": api_key, "Content-Type": "application/json"}
+    issues = []
+    cursor = None
+
+    with httpx.Client(timeout=30) as client:
+        while True:
+            resp = client.post(
+                LINEAR_API,
+                headers=headers,
+                json={"query": QUERY, "variables": {"cursor": cursor, "since": since}},
+            )
+            resp.raise_for_status()
+            data = resp.json()
+
+            if errors := data.get("errors"):
+                Console().print(f"[red]GraphQL error:[/] {errors}")
+                sys.exit(1)
+
+            page = data["data"]["issues"]
+            issues.extend(page["nodes"])
+
+            if not page["pageInfo"]["hasNextPage"]:
+                break
+            cursor = page["pageInfo"]["endCursor"]
+
+    return issues
+
+
+def aggregate(issues: list[dict], by_team: bool) -> dict[str, dict]:
+    key = "team" if by_team else "assignee"
+    totals = defaultdict(lambda: {"name": "Unknown", "points": 0, "issues": 0})
+
+    for issue in issues:
+        if entity := issue.get(key):
+            eid = entity["id"]
+            totals[eid]["name"] = entity.get("name", "Unknown")
+            totals[eid]["points"] += issue.get("estimate", 0)
+            totals[eid]["issues"] += 1
+
+    return dict(totals)
+
+
+def render(data: dict[str, dict], by_team: bool, since: str):
+    console = Console()
+    ranked = sorted(data.values(), key=lambda x: x["points"], reverse=True)[:20]
+
+    label = "Team" if by_team else "Person"
+    table = Table(title=f"Top 20 by Points (since {since[:10]})", show_lines=False)
+    table.add_column("#", justify="right", style="dim")
+    table.add_column(label, style="cyan")
+    table.add_column("Points", justify="right", style="green")
+    table.add_column("Issues", justify="right", style="yellow")
+
+    for i, row in enumerate(ranked, 1):
+        table.add_row(str(i), row["name"], str(row["points"]), str(row["issues"]))
+
+    console.print()
+    console.print(table)
+
+    total_pts = sum(r["points"] for r in data.values())
+    total_iss = sum(r["issues"] for r in data.values())
+    console.print(f"\n[dim]Total: {total_pts} points across {total_iss} issues[/]")
+
+
+def main():
+    api_key = os.environ.get("LINEAR_API_KEY")
+    if not api_key:
+        Console().print("[red]LINEAR_API_KEY not set[/]")
+        sys.exit(1)
+
+    by_team = "--rank" in sys.argv and "team" in sys.argv
+    since = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%dT00:00:00Z")
+
+    issues = fetch_issues(api_key, since)
+    data = aggregate(issues, by_team)
+    render(data, by_team, since)
+
+
+if __name__ == "__main__":
+    main()
