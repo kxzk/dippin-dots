@@ -6,9 +6,7 @@
 ▀▀▀▀▀• ▀▀▀.▀   .▀   ▀▀▀▀▀ █▪    ▀▀▀▀▀•  ▀█▄▀▪ ▀▀▀  ▀▀▀▀
 ```
 
-<p align="center">
-  <em>dotfiles managed with <a href="https://www.gnu.org/software/stow/">stow</a></em>
-</p>
+> dotfiles managed with [stow](https://www.gnu.org/software/stow/)
 
 <br>
 
