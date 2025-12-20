@@ -49,7 +49,7 @@ atuin sync
 
 #### Claude Code
 ```bash
-brew install --cask claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 #### Bun
