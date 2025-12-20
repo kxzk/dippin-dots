@@ -148,7 +148,7 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				go = { "goimports", "gofmt", "golines" },
+				go = { "goimports", "golines" },
 				cpp = { "clang-format" },
 				python = { "ruff_format", "ruff_organize_imports" },
 				-- javascript = { "prettierd" },

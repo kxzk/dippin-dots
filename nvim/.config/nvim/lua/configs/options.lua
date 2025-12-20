@@ -26,7 +26,6 @@ opt.fillchars = {
 
 -- [[ CORE ]] --
 
-opt.syntax = "on" -- syntax highlighting on, duh
 opt.laststatus = 3 -- global statusline
 opt.completeopt = "menuone,noinsert,noselect" -- autocomplete options
 opt.mouse = "a" -- turn on mouse support
@@ -46,7 +45,6 @@ opt.shiftround = true -- round indent to multiple of shiftwidth
 
 -- [[ PERF ]] --
 
-opt.hidden = true -- enable background buffers
 opt.history = 50 -- remember n commands :example
 opt.backup = false -- no backups
 opt.writebackup = false -- no backups while editing (living on the edge)
