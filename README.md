@@ -18,7 +18,8 @@ curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh 
 
 <br>
 
-### stow commands
+<details>
+<summary>stow commands</summary>
 
 ```bash
 cd dippin-dots
@@ -29,9 +30,9 @@ stow -R <package>     # restow (unlink + link)
 stow -nv <package>    # dry run (simulate)
 ```
 
-<br>
+</details>
 
-### post-install
+<br>
 
 #### github cli
 ```bash
