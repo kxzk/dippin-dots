@@ -10,27 +10,13 @@
 
 <br>
 
-### quick start
+#### quick start
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh | bash
 ```
 
-<br>
-
-<details>
-<summary>stow commands</summary>
-
-```bash
-cd dippin-dots
-
-stow <package>        # symlink a package
-stow -D <package>     # unlink a package
-stow -R <package>     # restow (unlink + link)
-stow -nv <package>    # dry run (simulate)
-```
-
-</details>
+---
 
 <br>
 
