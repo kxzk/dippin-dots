@@ -16,6 +16,8 @@
 curl -fsSL https://raw.githubusercontent.com/kxzk/dippin-dots/main/bootstrap.sh | bash
 ```
 
+<br>
+
 ---
 
 <br>
