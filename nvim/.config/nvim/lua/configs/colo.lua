@@ -23,6 +23,11 @@ local function apply_highlights()
 	hl(0, "BlinkCmpDocSeparator", { fg = "#3a4058", bg = "#2a2e3f" })
 	hl(0, "BlinkCmpScrollBarThumb", { bg = "#3a4058" })
 	hl(0, "BlinkCmpScrollBarGutter", { bg = "#2a2e3f" })
+
+	hl(0, "TelescopeBorder", { fg = "#3a4058" })
+	hl(0, "TelescopePromptBorder", { fg = "#3a4058" })
+	hl(0, "TelescopeResultsBorder", { fg = "#3a4058" })
+	hl(0, "TelescopePreviewBorder", { fg = "#3a4058" })
 end
 
 apply_highlights()
