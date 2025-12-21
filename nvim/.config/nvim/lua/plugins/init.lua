@@ -20,6 +20,9 @@ return {
 			icons = {
 				enabled = false,
 			},
+			hl = {
+				active_file = "FFFCursor",
+			},
 		},
 		keys = {
 			{
@@ -194,7 +197,10 @@ return {
 				["<C-e>"] = { "scroll_documentation_down" },
 			},
 			appearance = { nerd_font_variant = "Nerd Font Mono" },
-			completion = { documentation = { auto_show = false } },
+			completion = {
+				documentation = { auto_show = false },
+				menu = { scrollbar = false },
+			},
 			signature = { enabled = true },
 			sources = { default = { "lsp", "path", "snippets", "buffer" } },
 			fuzzy = { implementation = "prefer_rust_with_warning" },
