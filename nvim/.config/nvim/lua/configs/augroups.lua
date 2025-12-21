@@ -97,3 +97,11 @@ autocmd("TermOpen", {
 		vim.opt_local.relativenumber = false
 	end,
 })
+
+augroup("highlight_yank", { clear = true })
+autocmd("TextYankPost", {
+	group = "highlight_yank",
+	callback = function()
+		vim.hl.on_yank({ higroup = "Visual", timeout = 200 })
+	end,
+})
