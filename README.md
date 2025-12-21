@@ -27,9 +27,6 @@ stow <package>        # symlink a package
 stow -D <package>     # unlink a package
 stow -R <package>     # restow (unlink + link)
 stow -nv <package>    # dry run (simulate)
-
-# stow all packages
-restow_dirs
 ```
 
 <br>
@@ -43,7 +40,7 @@ gh config set editor nvim
 gh config set pager delta
 ```
 
-#### atuin (shell history)
+#### atuin
 ```bash
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 atuin register -u <USERNAME> -e <EMAIL>
@@ -51,39 +48,16 @@ atuin import auto
 atuin sync
 ```
 
-#### claude code
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
+#### other tools
 
-#### bun
-```bash
-curl -fsSL https://bun.sh/install | bash
-```
-
-#### duckdb
-```bash
-curl https://install.duckdb.org | sh
-```
-
-#### ghostty (terminal)
-```bash
-# download from https://ghostty.org/download
-```
-
-#### tableplus (database gui)
-```bash
-# download from https://tableplus.com/
-```
-
-#### dash (api docs)
-```bash
-# download from https://kapeli.com/dash
-```
-
-#### go air (hot reload)
-```bash
-go install github.com/air-verse/air@latest
-```
+| tool | install |
+|------|---------|
+| claude code | `curl -fsSL https://claude.ai/install.sh \| bash` |
+| bun | `curl -fsSL https://bun.sh/install \| bash` |
+| duckdb | `curl https://install.duckdb.org \| sh` |
+| go air | `go install github.com/air-verse/air@latest` |
+| ghostty | [ghostty.org/download](https://ghostty.org/download) |
+| tableplus | [tableplus.com](https://tableplus.com/) |
+| dash | [kapeli.com/dash](https://kapeli.com/dash) |
 
 <br>
