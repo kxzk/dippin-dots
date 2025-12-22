@@ -28,6 +28,9 @@ local function apply_highlights()
 	hl(0, "TelescopePromptBorder", { fg = "#3a4058" })
 	hl(0, "TelescopeResultsBorder", { fg = "#3a4058" })
 	hl(0, "TelescopePreviewBorder", { fg = "#3a4058" })
+
+	hl(0, "NormalFloat", { bg = "#2a2e3f" })
+	hl(0, "FloatBorder", { fg = "#3a4058", bg = "#2a2e3f" })
 end
 
 apply_highlights()
