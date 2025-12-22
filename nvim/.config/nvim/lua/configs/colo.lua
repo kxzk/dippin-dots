@@ -35,6 +35,25 @@ end
 
 apply_highlights()
 
+-- Strip italics from all highlight groups except comments.
+-- Many colorschemes overuse italics which reduces readability.
+local function strip_italics()
+	for _, group in ipairs(vim.fn.getcompletion("", "highlight")) do
+		if not group:lower():match("comment") then
+			local hl = vim.api.nvim_get_hl(0, { name = group })
+			if hl.italic then
+				hl.italic = false
+				vim.api.nvim_set_hl(0, group, hl)
+			end
+		end
+	end
+end
+
+strip_italics()
+
 vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = apply_highlights,
+	callback = function()
+		apply_highlights()
+		strip_italics()
+	end,
 })
