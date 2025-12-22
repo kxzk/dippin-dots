@@ -52,5 +52,3 @@ fi
 
 git commit -F "$TEMP_MSG"
 rm "$TEMP_MSG"
-
-echo -e "${GREEN}| ✓${NC}"

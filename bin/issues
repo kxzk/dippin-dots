@@ -1,0 +1,63 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "httpx",
+#     "rich",
+# ]
+# ///
+
+import httpx
+from rich.console import Console
+from rich.table import Table
+from datetime import datetime, timezone
+
+REPOS = [
+    "ghostty-org/ghostty",
+    "astral-sh/uv",
+    "astral-sh/ruff",
+]
+
+def fetch_issues(repo: str, limit: int = 10) -> list[dict]:
+    url = f"https://api.github.com/repos/{repo}/issues"
+    params = {"state": "open", "per_page": limit * 3, "sort": "created", "direction": "desc"}
+    response = httpx.get(url, params=params, headers={"Accept": "application/vnd.github.v3+json"})
+    response.raise_for_status()
+    return [issue for issue in response.json() if "pull_request" not in issue][:limit]
+
+def is_created_today(created_at: str) -> bool:
+    created = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
+    now = datetime.now(timezone.utc)
+    return created.date() == now.date()
+
+def format_labels(labels: list[dict], created_at: str) -> str:
+    label_names = [label["name"] for label in labels]
+    if is_created_today(created_at):
+        label_names.insert(0, "new")
+    return ", ".join(label_names) if label_names else "-"
+
+def main():
+    console = Console()
+
+    for repo in REPOS:
+        table = Table(title=f"[bold]{repo}[/bold]", show_header=True, header_style="bold cyan", expand=True)
+        table.add_column("#", style="dim", width=6)
+        table.add_column("Title", style="white", max_width=60)
+        table.add_column("Labels", style="yellow")
+
+        try:
+            issues = fetch_issues(repo)
+            for issue in issues:
+                labels = format_labels(issue["labels"], issue["created_at"])
+                if "new" in labels:
+                    labels = labels.replace("new", "[green bold]new[/green bold]")
+                table.add_row(str(issue["number"]), issue["title"], labels)
+        except httpx.HTTPError as e:
+            console.print(f"[red]Failed to fetch issues for {repo}: {e}[/red]")
+            continue
+
+        console.print(table)
+        console.print()
+
+if __name__ == "__main__":
+    main()

@@ -56,5 +56,3 @@ git commit -F "$TEMP_MSG"
 rm "$TEMP_MSG"
 
 git push 2>/dev/null || git push -u origin "$(git branch --show-current)"
-
-echo -e "${GREEN}| ✓${NC}"
