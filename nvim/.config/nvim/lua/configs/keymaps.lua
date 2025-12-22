@@ -24,6 +24,15 @@ map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>")
 map("n", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>")
 map("v", "<leader>sh", "<cmd>Gitsigns stage_hunk<cr>")
 
+-- lsp hover
+map("n", "K", function()
+  vim.lsp.buf.hover({
+    max_height = math.floor(vim.o.lines * 0.8),
+    max_width = math.floor(vim.o.columns * 0.6),
+    focusable = true,
+  })
+end)
+
 -- telescope
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
