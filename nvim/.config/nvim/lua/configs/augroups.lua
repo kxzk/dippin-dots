@@ -56,6 +56,18 @@ autocmd("FileType", {
 	end,
 })
 
+augroup("zig", { clear = true })
+autocmd("FileType", {
+	group = "zig",
+	pattern = "zig",
+	callback = function()
+		vim.keymap.set("n", "<leader>r", function()
+			local output = vim.fn.system("zig run " .. vim.fn.expand("%"))
+			print(output)
+		end, { buffer = true })
+	end,
+})
+
 augroup("templates", { clear = true })
 autocmd("BufNewFile", {
 	group = "templates",
