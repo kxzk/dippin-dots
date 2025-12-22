@@ -7,6 +7,7 @@ alias ignorepy="curl https://www.toptal.com/developers/gitignore/api/python,maco
 alias ignorego="curl https://www.toptal.com/developers/gitignore/api/go,macos > .gitignore"
 alias ignorerust="curl https://www.toptal.com/developers/gitignore/api/rust,rust-analyzer,macos > .gitignore"
 alias ignoreruby="curl https://www.toptal.com/developers/gitignore/api/ruby,macos > .gitignore"
+alias ignorezig="curl https://www.toptal.com/developers/gitignore/api/zig,macos > .gitignore"
 
 # util
 alias checkports="lsof -i -n -P | grep TCP"

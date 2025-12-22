@@ -55,6 +55,7 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"go",
 		"rust",
+		"zig",
 		"markdown",
 		"html",
 		"json",
@@ -83,4 +84,4 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-vim.lsp.enable({ "ty", "gopls", "ruby-lsp", "rust_analyzer" })
+vim.lsp.enable({ "ty", "gopls", "ruby-lsp", "rust_analyzer", "zls" })
