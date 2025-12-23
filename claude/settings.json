@@ -44,5 +44,9 @@
     ]
   },
   "spinnerTipsEnabled": false,
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/kade.killary/dippin-dots/claude/status_line.sh"
+  }
 }
