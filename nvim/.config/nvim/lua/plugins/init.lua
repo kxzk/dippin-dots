@@ -48,7 +48,7 @@ return {
 			},
 		},
 	},
-	{ "github/copilot.vim", event = "InsertEnter" },
+	{ "github/copilot.vim" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- Fuzzy Finder (files, lsp, etc)
 	{
