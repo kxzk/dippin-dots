@@ -1,17 +1,19 @@
 #!/bin/bash
-read -r current size cwd < <(jq -r '
-  [
-    (.context_window.current_usage | if . then .input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens else 0 end),
-    (.context_window.context_window_size // 0),
-    (.cwd // "")
-  ] | @tsv
-')
+read -r current size cwd < <(jq -r '[
+  (.context_window.current_usage | if . then .input_tokens + .cache_creation_input_tokens + .cache_read_input_tokens else 0 end),
+  (.context_window.context_window_size // 0),
+  (.cwd // "")
+] | @tsv')
 
-if [ "$size" -gt 0 ]; then
-    printf '\033[48;2;35;37;51m\033[38;2;186;215;97m ◂C▸ %d%% \033[0m' "$((current * 100 / size))"
+out=""
+
+if [[ -n "$cwd" ]]; then
+  read -r added removed branch < <(git -C "$cwd" diff --numstat 2>/dev/null | awk '{a+=$1; r+=$2} END {printf "%d %d ", a, r}'; git -C "$cwd" rev-parse --abbrev-ref HEAD 2>/dev/null)
+  ((added > 0)) && out+=" \033[38;2;158;206;106m● \033[38;2;84;92;126m${added}  "
+  ((removed > 0)) && out+="\033[38;2;247;118;142m● \033[38;2;84;92;126m${removed}  "
 fi
 
-if [ -n "$cwd" ] && [ -d "$cwd/.git" ]; then
-    branch=$(git -C "$cwd" rev-parse --abbrev-ref HEAD 2>/dev/null) && \
-        printf '\033[48;2;35;37;51m\033[38;2;195;154;201m ◂B▸ %s \033[0m' "$branch"
-fi
+((size > 0)) && out+="\033[38;2;125;207;255m● $((current * 100 / size))%  "
+[[ -n "$branch" ]] && out+="\033[38;2;195;154;201m● \033[38;2;84;92;126m${branch} "
+
+[[ -n "$out" ]] && printf '%b\033[0m' "$out"

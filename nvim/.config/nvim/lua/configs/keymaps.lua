@@ -33,6 +33,21 @@ map("n", "K", function()
   })
 end)
 
+-- copy @filepath to clipboard for claude code (git-relative if in repo)
+map("n", "<leader>yf", function()
+  local filepath = vim.fn.expand("%")
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+
+  if vim.v.shell_error == 0 and git_root then
+    local abs_path = vim.fn.expand("%:p")
+    filepath = abs_path:sub(#git_root + 2)
+  end
+
+  local result = "@" .. filepath
+  vim.fn.setreg("+", result)
+  vim.notify("Copied: " .. result)
+end)
+
 -- telescope
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")

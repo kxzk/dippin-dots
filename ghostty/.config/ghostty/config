@@ -11,7 +11,6 @@ font-family-bold-italic = ""
 font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
 font-size = 16
-# title = " "
 
 theme = "Monokai Pro Octagon"
 
@@ -126,3 +125,19 @@ keybind = ctrl+a>,=prompt_tab_title
 
 # command palette
 keybind = ctrl+a>u=toggle_command_palette
+
+# TESTING
+# keybind = foo/
+# keybind = foo/ctrl+space=activate_key_table:foo
+# keybind = foo/global:super+x=new_window
+# keybind = foo/catch_all=ignore
+# keybind = foo/arrow_up=adjust_selection:up
+# keybind = foo/arrow_down=adjust_selection:down
+# keybind = foo/escape=deactivate_key_table
+# keybind = bar/
+# keybind = bar/ctrl+space=activate_key_table:bar
+# keybind = bar/global:shift+x=new_window
+# keybind = bar/catch_all=ignore
+# keybind = bar/arrow_up=adjust_selection:up
+# keybind = bar/arrow_down=adjust_selection:down
+# keybind = bar/escape=deactivate_key_table
