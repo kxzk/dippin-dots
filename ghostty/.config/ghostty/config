@@ -67,9 +67,7 @@ keybind = shift+enter=text:\x1b\r
 keybind = ctrl+equal=increase_font_size:1
 keybind = ctrl+minus=decrease_font_size:1
 
-# copy / paste
-keybind = ctrl+a>v=select_all
-keybind = ctrl+a>y=copy_to_clipboard
+# quick terminal
 keybind = ctrl+a>t=toggle_quick_terminal
 
 # tmux style keybindings - using sequences (prefix model)
@@ -88,12 +86,6 @@ keybind = ctrl+a>;=goto_split:previous
 # new window/tab (was tmux 'c')
 keybind = ctrl+a>c=new_tab
 
-# resize splits - matching tmux arrow keys
-keybind = ctrl+a>left=resize_split:left,40
-keybind = ctrl+a>right=resize_split:right,40
-keybind = ctrl+a>up=resize_split:up,40
-keybind = ctrl+a>down=resize_split:down,40
-
 # equalize splits
 keybind = ctrl+a>w=equalize_splits
 
@@ -105,12 +97,6 @@ keybind = ctrl+a>r=reload_config
 
 # toggle zoom (tmux 'z' equivalent)
 keybind = ctrl+a>z=toggle_split_zoom
-
-# scrolling
-keybind = ctrl+q>j=scroll_page_lines:3
-keybind = ctrl+q>k=scroll_page_lines:-3
-keybind = ctrl+q>n=scroll_page_fractional:0.5
-keybind = ctrl+q>p=scroll_page_fractional:-0.5
 
 # quick tab switching
 keybind = ctrl+a>1=goto_tab:1
@@ -132,18 +118,21 @@ keybind = ctrl+a>,=prompt_tab_title
 # command palette
 keybind = ctrl+a>u=toggle_command_palette
 
-# TESTING
-# keybind = ctrl+a>]=activate_key_table:copy
-# keybind = copy/
-# keybind = foo/global:super+x=new_window
-# keybind = foo/catch_all=ignore
-# keybind = foo/arrow_up=adjust_selection:up
-# keybind = foo/arrow_down=adjust_selection:down
-# keybind = foo/escape=deactivate_key_table
-# keybind = bar/
-# keybind = bar/ctrl+space=activate_key_table:bar
-# keybind = bar/global:shift+x=new_window
-# keybind = bar/catch_all=ignore
-# keybind = bar/arrow_up=adjust_selection:up
-# keybind = bar/arrow_down=adjust_selection:down
-# keybind = bar/escape=deactivate_key_table
+# copy / paste
+keybind = ctrl+a>v=select_all
+keybind = ctrl+a>y=copy_to_clipboard
+
+# tmux-style copy mode
+keybind = ctrl+a>]=activate_key_table:copy
+keybind = copy/
+keybind = copy/k=scroll_page_lines:-3
+keybind = copy/j=scroll_page_lines:3
+keybind = copy/ctrl+c=deactivate_key_table
+
+# resizing mode
+keybind = ctrl+a>m=activate_key_table:resize
+keybind = resize/j=resize_split:left,40
+keybind = resize/l=resize_split:right,40
+keybind = resize/i=resize_split:up,40
+keybind = resize/k=resize_split:down,40
+keybind = resize/ctrl+c=deactivate_key_table
