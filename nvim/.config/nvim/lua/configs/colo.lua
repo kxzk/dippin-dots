@@ -31,14 +31,14 @@ local function apply_highlights()
 	hl(0, "TelescopeResultsBorder", { fg = "#3a4058" })
 	hl(0, "TelescopePreviewBorder", { fg = "#3a4058" })
 
-	hl(0, "NormalFloat", { bg = "#2a2e3f" })
-	hl(0, "FloatBorder", { fg = "#3a4058", bg = "#2a2e3f" })
+	-- hl(0, "NormalFloat", { bg = "#2a2e3f" })
+	-- hl(0, "FloatBorder", { fg = "#3a4058", bg = "#2a2e3f" })
 end
 
 apply_highlights()
 
--- Strip italics from all highlight groups except comments.
--- Many colorschemes overuse italics which reduces readability.
+-- strip italics from all highlight groups except comments
+-- many colorschemes overuse italics which reduces readability
 local function strip_italics()
 	for _, group in ipairs(vim.fn.getcompletion("", "highlight")) do
 		if not group:lower():match("comment") then

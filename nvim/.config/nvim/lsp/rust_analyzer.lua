@@ -9,7 +9,7 @@ return {
 		["rust-analyzer"] = {
 			checkOnSave = true,
 			check = { command = "clippy" },
-			cargo = { allFeatures = false },
+			cargo = { allFeatures = false, targetDir = true },
 			procMacro = { enable = true },
 			diagnostics = { disabled = { "unresolved-proc-macro" } },
 		},

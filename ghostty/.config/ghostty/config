@@ -10,7 +10,8 @@ font-family-italic = "Berkeley Mono Retina Oblique"
 font-family-bold-italic = ""
 font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 
-font-size = 16
+font-size = 14
+# title = " "
 
 theme = "Monokai Pro Octagon"
 
@@ -19,9 +20,13 @@ background-blur = false
 
 app-notifications = false
 
+macos-icon = custom-style
+macos-icon-frame = chrome
+macos-icon-ghost-color = #B8C4CE
+macos-icon-screen-color = #1a1a1a
 # macos-non-native-fullscreen = true
-macos-titlebar-style = tabs
-# macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = native
+macos-titlebar-proxy-icon = hidden
 macos-window-shadow = true
 macos-auto-secure-input = true
 # macos-window-buttons = hidden
@@ -32,9 +37,10 @@ window-title-font-family = "Berkeley Mono Retina"
 split-divider-color = #282a3a
 unfocused-split-fill = #0d0e14
 window-theme = ghostty
-window-decoration = client
+window-decoration = auto
 window-new-tab-position = end
 window-inherit-working-directory = true
+working-directory = inherit
 window-padding-x = 5
 window-padding-y = 5
 
@@ -127,8 +133,8 @@ keybind = ctrl+a>,=prompt_tab_title
 keybind = ctrl+a>u=toggle_command_palette
 
 # TESTING
-# keybind = foo/
-# keybind = foo/ctrl+space=activate_key_table:foo
+# keybind = ctrl+a>]=activate_key_table:copy
+# keybind = copy/
 # keybind = foo/global:super+x=new_window
 # keybind = foo/catch_all=ignore
 # keybind = foo/arrow_up=adjust_selection:up

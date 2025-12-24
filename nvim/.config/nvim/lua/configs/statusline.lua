@@ -17,6 +17,14 @@ end
 hl("StatusColor", "#32374b", "#2a2e3f")
 hl("StatusColor1", "#3a4058", "#2a2e3f")
 hl("StatusColor2", "#ffd76d", "#2a2e3f")
+hl("StatusModified", "#f9e2af", "#2a2e3f")
+
+local function modified_indicator()
+	if vim.bo.modified then
+		return "●"
+	end
+	return ""
+end
 
 function status_line()
 	return table.concat({
@@ -30,9 +38,9 @@ function status_line()
 		"%f",
 		"%#StatusColor2#",
 		"%=",
-		"%m",
+		modified_indicator(),
 		" ",
 	})
 end
 
-vim.opt.statusline = "%!luaeval('status_line()')"
+vim.opt.statusline = "%!v:lua.status_line()"
