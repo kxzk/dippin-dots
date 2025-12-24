@@ -12,6 +12,13 @@ local function apply_highlights()
 	hl(0, "StatusLineNC", { bold = false })
 	hl(0, "@string.documentation.python", { fg = "#3a4058", italic = true })
 
+	hl(0, "RenderMarkdownH1", { fg = "#ff657a", bold = false })
+	hl(0, "RenderMarkdownH1Bg", { bg = "#3d2a35" })
+	hl(0, "RenderMarkdownH3", { fg = "#c39ac9", bold = false })
+	hl(0, "RenderMarkdownH3Bg", { bg = "#332a3d" })
+	hl(0, "@markup.heading.1.markdown", { fg = "#82aaff", bold = false })
+	hl(0, "@markup.heading.3.markdown", { fg = "#c39ac9", bold = false })
+
 	hl(0, "BlinkCmpMenu", { bg = "#2a2e3f" })
 	hl(0, "BlinkCmpMenuBorder", { fg = "#3a4058" })
 	hl(0, "BlinkCmpMenuSelection", { bg = "#3a4058" })

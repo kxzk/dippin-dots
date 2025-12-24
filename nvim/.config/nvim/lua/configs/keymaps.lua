@@ -48,6 +48,12 @@ map("n", "<leader>yf", function()
 	vim.notify("Copied: " .. result)
 end)
 
+map("n", "<leader>yd", function()
+	local d = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+	if #d == 0 then return end
+	vim.fn.setreg("+", d[1].message)
+end)
+
 -- telescope
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
 map("n", "<leader>fc", "<cmd>Telescope git_commits<cr>")
