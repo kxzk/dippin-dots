@@ -15,6 +15,8 @@ font-size = 14
 
 theme = "Monokai Pro Octagon"
 
+custom-shader = shaders/cursor_warp.glsl
+
 # background-opacity = 0.95
 background-blur = false
 
