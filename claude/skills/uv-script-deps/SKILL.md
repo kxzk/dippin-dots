@@ -1,5 +1,5 @@
 ---
-name: uv-script-dependencies
+name: uv-script-deps
 description: Run Python scripts with inline dependencies using uv and PEP 723.
 ---
 
