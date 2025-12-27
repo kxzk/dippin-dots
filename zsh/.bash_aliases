@@ -45,11 +45,10 @@ alias prco="gh pr checkout"
 alias prlist="gh pr list"
 
 # claude code
-alias clc="claude --dangerously-skip-permissions --disallowedTools NotebookEdit,NotebookWrite"
+alias clc="claude --dangerously-skip-permissions --disallowedTools NotebookEdit --no-chrome"
 
 # codex
 # alias cx="codex --yolo -c model_reasoning_summary_format=experimental -c model_reasoning_effort='high'"
 
 # sp
-
 alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'

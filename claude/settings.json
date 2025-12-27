@@ -43,10 +43,13 @@
       }
     ]
   },
-  "spinnerTipsEnabled": false,
-  "alwaysThinkingEnabled": false,
   "statusLine": {
     "type": "command",
     "command": "/Users/kade.killary/dippin-dots/claude/status_line.sh"
-  }
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "spinnerTipsEnabled": false,
+  "alwaysThinkingEnabled": false
 }
