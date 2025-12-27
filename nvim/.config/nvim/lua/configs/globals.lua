@@ -13,8 +13,6 @@ else
 	g.python3_host_prog = "/usr/bin/python3"
 end
 
--- g.python_recommended_style = 0
-
 -- netrw cheatsheet --
 -- - -> up directory
 -- a -> dots yes/no
@@ -35,5 +33,4 @@ g.netrw_hide = 0
 g.netrw_cursor = 0
 
 -- copilot
--- g.copilot_filtypes = { '*': v:false, 'python': v:true }
 g.copilot_node_command = "/opt/homebrew/bin/node"
