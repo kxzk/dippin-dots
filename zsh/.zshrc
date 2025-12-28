@@ -4,7 +4,12 @@
 # homebrew setup - default to apple silicon path, add completions to fpath
 : ${HOMEBREW_PREFIX:=/opt/homebrew}
 FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+else
+    compinit -C
+fi
 
 # source aliases (zsh can use bash aliases)
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
@@ -13,53 +18,35 @@ autoload -Uz compinit && compinit
 # enable variable expansion in prompt string
 setopt PROMPT_SUBST
 
-# get current git branch name, suppress errors for non-git dirs
-git_branch() {
-    git rev-parse --abbrev-ref HEAD 2>/dev/null
-}
-
-# build git portion of prompt: branch name + dirty indicator
 git_prompt() {
-    local branch=$(git_branch)
-    if [[ -n $branch ]]; then
-        local dirty=""
-        git diff-index --quiet HEAD 2>/dev/null || dirty=" %F{8}✱%f"
-        local branch_color="magenta"
-        [[ $branch =~ ^feature/ml-[0-9]{3,4} ]] && branch_color="8"
-        echo " %F{$branch_color}❨$branch❩%f$dirty"
+    local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    [[ -z $branch ]] && return
+    local dirty="" branch_color="magenta"
+    git diff-index --quiet HEAD 2>/dev/null || dirty=" %F{8}✱%f"
+    if [[ $branch =~ ^feature/(ml-[0-9]{3,4}.*) ]]; then
+        branch="linear/${match[1]}"
+        branch_color="8"
     fi
+    echo " %F{$branch_color}❨$branch❩%f$dirty"
 }
 
-# show ~ at home, otherwise last 2 path components for context without clutter
-dir_prompt() {
-    if [[ "$PWD" == "$HOME" ]]; then
-        echo "%F{red}~%f"
-    else
-        echo "%F{red}%2~%f"
-    fi
-}
 
-# kubernetes context/namespace display with caching to avoid slow kubectl calls
 k8s_prompt() {
-    # only re-query kubectl if kubeconfig changed (hash mismatch)
-    [[ -z $KUBECONFIG_HASH || $KUBECONFIG_HASH != $(md5 -q ~/.kube/config 2>/dev/null) ]] && {
-        KUBECONFIG_HASH=$(md5 -q ~/.kube/config 2>/dev/null)
-        # strip teleport- prefix for cleaner display
-        K8S_CTX=$(kubectl config current-context 2>/dev/null | sed 's/teleport-//')
+    local hash=$(md5 -q ~/.kube/config 2>/dev/null)
+    [[ -z $KUBECONFIG_HASH || $KUBECONFIG_HASH != $hash ]] && {
+        KUBECONFIG_HASH=$hash
+        K8S_CTX=${$(kubectl config current-context 2>/dev/null)#teleport-}
         K8S_NS=$(kubens -c 2>/dev/null)
     }
     [[ -n $K8S_CTX ]] && echo " %F{yellow}⟨k8s|$K8S_CTX${K8S_NS:+:$K8S_NS}⟩%f"
 }
 
-# precmd runs before each prompt - cache expensive operations here
 precmd() {
-    _dir=$(dir_prompt)
     _k8s=$(k8s_prompt)
     _git=$(git_prompt)
 }
 
-# final prompt assembly: user@host lambda dir k8s git
-PROMPT='%F{green}boy@metal%f 𝝺 ${_dir}${_k8s}${_git} '
+PROMPT='%F{green}boy@metal%f 𝝺 %F{red}%2~%f${_k8s}${_git} '
 
 # tool install directories for path construction
 export BUN_INSTALL="$HOME/.bun"
