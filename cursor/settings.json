@@ -1,7 +1,7 @@
 {
     "window.commandCenter": true,
-    "editor.fontFamily": "Berkeley Mono",
-    "editor.inlayHints.fontFamily": "Berkeley Mono",
+    "editor.fontFamily": "Berkeley Mono Retina",
+    "editor.inlayHints.fontFamily": "Berkeley Mono Retina",
     "workbench.tree.renderIndentGuides": "none",
     "editor.guides.indentation": false,
     "extensions.ignoreRecommendations": true,
