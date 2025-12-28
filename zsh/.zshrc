@@ -23,9 +23,10 @@ git_prompt() {
     local branch=$(git_branch)
     if [[ -n $branch ]]; then
         local dirty=""
-        # diff-index is faster than status, returns non-zero if working tree differs from HEAD
         git diff-index --quiet HEAD 2>/dev/null || dirty=" %F{8}✱%f"
-        echo " %F{magenta}❨$branch❩%f$dirty"
+        local branch_color="magenta"
+        [[ $branch =~ ^feature/ml-[0-9]{3,4} ]] && branch_color="8"
+        echo " %F{$branch_color}❨$branch❩%f$dirty"
     fi
 }
 

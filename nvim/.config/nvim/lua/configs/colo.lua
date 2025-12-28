@@ -1,7 +1,7 @@
 local function apply_highlights()
 	local hl = vim.api.nvim_set_hl
-	hl(0, "@comment", { fg = "#7C8599", italic = true })
-	hl(0, "Comment", { fg = "#7C8599", italic = true })
+	hl(0, "@comment", { fg = "#3a4058", italic = true })
+	hl(0, "Comment", { fg = "#3a4058", italic = true })
 	hl(0, "MsgArea", { fg = "#3a4058" })
 	hl(0, "WinSeparator", { fg = "#3a4058" })
 	hl(0, "CursorLine", { bg = "#2a2e3f" })
