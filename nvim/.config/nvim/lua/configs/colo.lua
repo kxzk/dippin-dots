@@ -13,6 +13,7 @@ local function apply_highlights()
 	hl(0, "StatusLineNC", { bold = false })
 	hl(0, "@string.documentation.python", { fg = "#3a4058", italic = true })
 
+	hl(0, "RenderMarkdownCode", { bg = "#2a2e3f" })
 	hl(0, "RenderMarkdownH1", { fg = "#ff657a", bold = false })
 	hl(0, "RenderMarkdownH1Bg", { bg = "#3d2a35" })
 	hl(0, "RenderMarkdownH3", { fg = "#c39ac9", bold = false })
