@@ -138,6 +138,7 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
+				ruby = { "rubocop" },
 				lua = { "stylua" },
 				go = { "goimports", "golines" },
 				cpp = { "clang-format" },

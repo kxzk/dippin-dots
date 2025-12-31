@@ -8,10 +8,14 @@ read -r current size cwd < <(jq -r '[
 out=""
 
 if [[ -n "$cwd" ]]; then
-	read -r added removed branch < <(
-		git -C "$cwd" diff --numstat 2>/dev/null | awk '{a+=$1; r+=$2} END {printf "%d %d ", a, r}'
-		git -C "$cwd" rev-parse --abbrev-ref HEAD 2>/dev/null
+	read -r tracked_added tracked_removed untracked_lines branch < <(
+		cd "$cwd" 2>/dev/null || exit
+		git diff HEAD --numstat 2>/dev/null | awk '{a+=$1; r+=$2} END {printf "%d %d ", a+0, r+0}'
+		git ls-files --others --exclude-standard 2>/dev/null | xargs -r wc -l 2>/dev/null | tail -1 | awk '{printf "%d ", $1+0}'
+		git rev-parse --abbrev-ref HEAD 2>/dev/null
 	)
+	added=$((tracked_added + untracked_lines))
+	removed=$tracked_removed
 	((added > 0)) && out+=" \033[38;2;158;206;106m● \033[38;2;84;92;126m${added}  "
 	((removed > 0)) && out+="\033[38;2;247;118;142m● \033[38;2;84;92;126m${removed}  "
 fi
