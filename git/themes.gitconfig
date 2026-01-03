@@ -73,3 +73,56 @@
     merge-conflict-theirs-diff-header-style = "#ffd76d" bold overline
     merge-conflict-ours-diff-header-decoration-style = "#3a3d4b" box
     merge-conflict-theirs-diff-header-decoration-style = "#3a3d4b" box
+
+[delta "firefly"]
+    # Minimal diff theme - emphasizes changes, fades chrome
+    # author: refined for clarity
+    dark = true
+    syntax-theme = Monokai Extended
+
+    # File headers - the anchor point
+    file-style = "#c9b4ff" bold
+    file-decoration-style = "#c9b4ff" ul
+    file-added-label = +
+    file-copied-label = =
+    file-modified-label = ~
+    file-removed-label = -
+    file-renamed-label = →
+
+    # Hunk headers - minimal
+    hunk-header-style = line-number "#ffd76d" bold
+    hunk-header-decoration-style = "#1a1a1a"
+    hunk-header-line-number-style = "#ffd76d" bold
+
+    # Line numbers - nearly invisible
+    line-numbers = true
+    line-numbers-left-format = "{nm:>3} "
+    line-numbers-right-format = "{np:>3} "
+    line-numbers-left-style = "#2a2a32"
+    line-numbers-right-style = "#1a1a1a"
+    line-numbers-minus-style = "#f92672"
+    line-numbers-plus-style = "#a6e22e"
+    line-numbers-zero-style = "#1a1a1a"
+
+    # The main event - diff content
+    minus-style = syntax "#2d1522"
+    minus-emph-style = syntax "#55203a" bold
+    plus-style = syntax "#1a2a14"
+    plus-emph-style = syntax "#2a4420" bold
+    zero-style = syntax dim
+    whitespace-error-style = "#f92672" reverse
+
+    # Extras - subdued
+    commit-decoration-style = none
+    commit-style = "#52525e"
+    blame-code-style = syntax
+    blame-format = "{author:<12} {commit:>7} "
+    blame-palette = "#0a0a0c" "#0d0d10" "#101014"
+
+    # Merge conflicts
+    merge-conflict-begin-symbol = ↓
+    merge-conflict-end-symbol = ↑
+    merge-conflict-ours-diff-header-style = "#c9b4ff"
+    merge-conflict-theirs-diff-header-style = "#c9b4ff" overline
+    merge-conflict-ours-diff-header-decoration-style = none
+    merge-conflict-theirs-diff-header-decoration-style = none

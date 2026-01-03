@@ -1,14 +1,9 @@
 return {
-	{
-		"loctvl842/monokai-pro.nvim",
-		config = function()
-			require("monokai-pro").setup()
-		end,
-	},
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		ft = "markdown",
-	},
+	{ "datsfilipe/vesper.nvim" },
+	-- {
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- 	ft = "markdown",
+	-- },
 	{
 		"dmtrKovalenko/fff.nvim",
 		build = "cargo build --release",

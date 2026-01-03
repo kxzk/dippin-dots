@@ -10,7 +10,7 @@
 [include]
   path = ~/dippin-dots/git/themes.gitconfig
 [delta]
-  features = monokai-pro-octagon
+  features = firefly
   navigate = true
   dark = true
   line-numbers = true

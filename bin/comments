@@ -1,15 +1,77 @@
-#!/usr/bin/env bash
-set -euo pipefail
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "httpx",
+#     "rich",
+# ]
+# ///
 
-repo=$(gh repo view --json nameWithOwner -q .nameWithOwner)
-pr=${1:-$(gh pr view --json number -q .number)}
+import subprocess
+import sys
 
-gh api "repos/${repo}/pulls/${pr}/comments" --jq '
-  .[] | [
-    "",
-    "────────────────────────────────────────",
-    "\(.path):\(.start_line // .line)-\(.line)",
-    "",
-    "[\(.user.login)]: \(.body | rtrimstr("\n"))"
-  ] | join("\n")
-'
+import httpx
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
+
+
+def run(cmd: list[str]) -> str:
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    if result.returncode != 0:
+        Console().print(f"[red]Command failed:[/] {' '.join(cmd)}")
+        sys.exit(1)
+    return result.stdout.strip()
+
+
+def get_repo() -> str:
+    return run(["gh", "repo", "view", "--json", "nameWithOwner", "-q", ".nameWithOwner"])
+
+
+def get_current_pr() -> str:
+    return run(["gh", "pr", "view", "--json", "number", "-q", ".number"])
+
+
+def fetch_comments(repo: str, pr: str) -> list[dict]:
+    token = run(["gh", "auth", "token"])
+    url = f"https://api.github.com/repos/{repo}/pulls/{pr}/comments"
+    headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+
+    with httpx.Client(timeout=30) as client:
+        resp = client.get(url, headers=headers)
+        resp.raise_for_status()
+        return resp.json()
+
+
+def render(comments: list[dict]):
+    console = Console(width=min(console.width, 100) if (console := Console()).width else 100)
+
+    if not comments:
+        console.print("[dim]No comments found[/]")
+        return
+
+    for c in comments:
+        user = c.get("user", {}).get("login", "unknown")
+        path = c.get("path", "")
+        start = c.get("start_line") or c.get("line")
+        end = c.get("line")
+        body = c.get("body", "").rstrip()
+        location = f"{path}:{start}-{end}" if start != end else f"{path}:{end}"
+
+        header = Text()
+        header.append(user, style="#f92672")
+        header.append(" → ", style="#ffffff")
+        header.append(location, style="#fd971f")
+
+        console.print(Panel(body, title=header, title_align="left", border_style="#282828"))
+
+
+def main():
+    pr = sys.argv[1] if len(sys.argv) > 1 else get_current_pr()
+    repo = get_repo()
+    comments = fetch_comments(repo, pr)
+    render(comments)
+
+
+if __name__ == "__main__":
+    main()

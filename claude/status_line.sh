@@ -16,14 +16,14 @@ if [[ -n "$cwd" ]]; then
 	)
 	added=$((tracked_added + untracked_lines))
 	removed=$tracked_removed
-	((added > 0)) && out+=" \033[38;2;158;206;106m● \033[38;2;84;92;126m${added}  "
-	((removed > 0)) && out+="\033[38;2;247;118;142m● \033[38;2;84;92;126m${removed}  "
+	((added > 0)) && out+=" \033[38;2;158;206;106m+ \033[90m${added}  "
+	((removed > 0)) && out+="\033[31m- \033[90m${removed}  "
 fi
 
 if ((size > 0)); then
 	pct=$((current * 100 / size))
-	((pct > 40)) && out+="\033[31m⚠ !RESET  " || out+="\033[38;2;125;207;255m● ${pct}%  "
+	((pct > 40)) && out+="\033[91m● ${pct}%!!  " || out+="\033[34m● ${pct}%  "
 fi
-[[ -n "$branch" ]] && out+="\033[38;2;195;154;201m● \033[38;2;84;92;126m${branch} "
+[[ -n "$branch" ]] && out+="\033[35m⎇ \033[90m${branch} "
 
 [[ -n "$out" ]] && printf '%b\033[0m' "$out"

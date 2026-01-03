@@ -14,10 +14,11 @@ local function hl(group, fg, bg)
 	vim.cmd("highlight " .. group .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
-hl("StatusColor", "#32374b", "#2a2e3f")
-hl("StatusColor1", "#3a4058", "#2a2e3f")
-hl("StatusColor2", "#ffd76d", "#2a2e3f")
-hl("StatusModified", "#f9e2af", "#2a2e3f")
+local sl_bg = "#161616"
+
+hl("StatusColor", "#282828", sl_bg)
+hl("StatusColor1", "#282828", sl_bg)
+hl("StatusColor2", "#ffffff", sl_bg)
 
 local function modified_indicator()
 	if vim.bo.modified then

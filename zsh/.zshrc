@@ -46,7 +46,7 @@ precmd() {
     _git=$(git_prompt)
 }
 
-PROMPT='%F{green}boy@metal%f 𝝺 %F{red}%2~%f${_k8s}${_git} '
+PROMPT='%F{green}boy@metal%f 𝝺 %F{blue}%2~%f${_k8s}${_git} '
 
 # tool install directories for path construction
 export BUN_INSTALL="$HOME/.bun"

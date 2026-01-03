@@ -4,7 +4,7 @@ local g = vim.g
 vim.deprecate = function() end
 
 vim.o.background = "dark"
-vim.cmd("colorscheme monokai-pro-octagon")
+vim.cmd("colorscheme vesper")
 g.do_filetype_lua = 1
 
 if vim.loop.os_uname().sysname == "Darwin" then
