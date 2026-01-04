@@ -5,11 +5,12 @@
 : ${HOMEBREW_PREFIX:=/opt/homebrew}
 FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-    compinit
-else
-    compinit -C
-fi
+_lazy_compinit() {
+    unfunction _lazy_compinit
+    compinit -C -d ~/.zcompdump
+    zle expand-or-complete
+}
+zle -N expand-or-complete _lazy_compinit
 
 # source aliases (zsh can use bash aliases)
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases

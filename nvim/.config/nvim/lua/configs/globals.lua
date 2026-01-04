@@ -33,4 +33,5 @@ g.netrw_hide = 0
 g.netrw_cursor = 0
 
 -- copilot
+g.copilot_version = false -- use embedded language server (not from npx)
 g.copilot_node_command = "/opt/homebrew/bin/node"
