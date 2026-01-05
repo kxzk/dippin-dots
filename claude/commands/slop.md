@@ -42,3 +42,5 @@ For each issue:
 - **Fix**: concrete suggestion, referencing existing infra when applicable
 
 Flag uncertain calls as uncertain. No preamble, no padding. If the code is clean, say "LGTM" and stop.
+
+COMMENTS ARE NOT OFFENSES (ignore them).
