@@ -22,7 +22,7 @@ hl("StatusColor2", "#ffffff", sl_bg)
 
 local function modified_indicator()
 	if vim.bo.modified then
-		return "●"
+		return "✱"
 	end
 	return ""
 end
