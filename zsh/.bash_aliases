@@ -44,6 +44,10 @@ alias prme="gh search prs --sort=updated --author=@me --state=open"
 alias prco="gh pr checkout"
 alias prlist="gh pr list"
 
+# linear
+alias linru="linearite rank-users"
+alias linrt="linearite rank-teams"
+
 # claude code
 alias clc="claude --dangerously-skip-permissions --disallowedTools NotebookEdit --no-chrome"
 
