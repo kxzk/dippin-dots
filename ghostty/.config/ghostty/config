@@ -37,7 +37,7 @@ quick-terminal-animation-duration = 0
 
 window-title-font-family = "Berkeley Mono Retina"
 split-divider-color = #000000
-unfocused-split-fill = #0a0a0a
+unfocused-split-fill = #000000
 window-theme = ghostty
 window-decoration = auto
 window-new-tab-position = end
