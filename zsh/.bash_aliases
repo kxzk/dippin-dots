@@ -28,6 +28,7 @@ alias today="date '+%B %e, %Y'"
 alias dots="cd dippin-dots"
 alias h="cd desktop"
 alias dev="cd ~/dev"
+alias top="btop"
 
 alias mkd="mkdir"
 mk() { mkdir -p "$1" && cd "$1"; }

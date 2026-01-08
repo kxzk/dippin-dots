@@ -1,9 +1,9 @@
 return {
 	{ "datsfilipe/vesper.nvim" },
-	-- {
-	-- 	"MeanderingProgrammer/render-markdown.nvim",
-	-- 	ft = "markdown",
-	-- },
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
+	},
 	{
 		"dmtrKovalenko/fff.nvim",
 		build = "cargo build --release",
