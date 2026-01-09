@@ -49,4 +49,9 @@ atuin sync
 | tableplus | [tableplus.com](https://tableplus.com/) |
 | dash | [kapeli.com/dash](https://kapeli.com/dash) |
 
+#### macos defaults
+```bash
+defaults write com.apple.screencapture disable-shadow -bool true && killall SystemUIServer
+```
+
 <br>

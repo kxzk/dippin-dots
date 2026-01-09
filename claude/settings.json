@@ -8,7 +8,8 @@
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
     "DISABLE_TELEMETRY": "1",
-    "USE_BUILTIN_RIPGREP": "0"
+    "USE_BUILTIN_RIPGREP": "0",
+    "CLAUDE_CODE_HIDE_ACCOUNT_INFO": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
