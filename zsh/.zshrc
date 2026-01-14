@@ -4,13 +4,7 @@
 # homebrew setup - default to apple silicon path, add completions to fpath
 : ${HOMEBREW_PREFIX:=/opt/homebrew}
 FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:${FPATH}"
-autoload -Uz compinit
-_lazy_compinit() {
-    unfunction _lazy_compinit
-    compinit -C -d ~/.zcompdump
-    zle expand-or-complete
-}
-zle -N expand-or-complete _lazy_compinit
+autoload -Uz compinit && compinit -C -d ~/.zcompdump
 
 # source aliases (zsh can use bash aliases)
 [[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
@@ -89,3 +83,6 @@ if [[ ! -f "$zoxide_cache" || "$commands[zoxide]" -nt "$zoxide_cache" ]]; then
     zoxide init zsh > "$zoxide_cache"
 fi
 source "$zoxide_cache"
+
+# bun completions
+[ -s "/Users/kade.killary/.bun/_bun" ] && source "/Users/kade.killary/.bun/_bun"

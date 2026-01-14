@@ -2,4 +2,4 @@
 set -euo pipefail
 
 git add .
-/Users/kade.killary/dev/docker-dev/bin/sp commit --push
+BUNDLE_GEMFILE=/Users/kade.killary/dev/docker-dev/Gemfile /Users/kade.killary/dev/docker-dev/bin/sp commit --push
