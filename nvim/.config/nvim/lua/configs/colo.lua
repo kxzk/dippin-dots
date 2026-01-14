@@ -1,63 +1,57 @@
 local function apply_highlights()
 	local hl = vim.api.nvim_set_hl
-	hl(0, "EndOfBuffer", { fg = "#101010" })
-	hl(0, "@comment", { fg = "#72adf9", italic = true })
-	hl(0, "Comment", { fg = "#72adf9", italic = true })
-	hl(0, "MsgArea", { fg = "#282828" })
-	hl(0, "WinSeparator", { fg = "#282828" })
-	hl(0, "CursorLine", { bg = "#161616" })
-	hl(0, "Visual", { fg = "#8a7ab0", bg = "#1a1620" })
-	hl(0, "FFFCursor", { bg = "#161616" })
-	hl(0, "CursorLineNr", { fg = "#72adf9", bg = "#161616" })
-	hl(0, "LineNr", { fg = "#282828" })
+	-- hl(0, "EndOfBuffer", { fg = "#101010" })
+	hl(0, "@comment", { fg = "#3a4058", italic = true })
+	hl(0, "Comment", { fg = "#3a4058", italic = true })
+	hl(0, "MsgArea", { fg = "#3a4058" })
+	hl(0, "WinSeparator", { fg = "#3a4058" })
+	hl(0, "CursorLine", { bg = "#2a2e3f" })
+	hl(0, "Visual", { bg = "#1c2430", fg = "#70c0f0" })
+	hl(0, "FFFCursor", { bg = "#2a2e3f" })
+	hl(0, "CursorLineNr", { fg = "#3a4058", bg = "#2a2e3f" })
+	hl(0, "LineNr", { fg = "#3a4058" })
 	hl(0, "StatusLine", { bold = false })
 	hl(0, "StatusLineNC", { bold = false })
-	hl(0, "@string.documentation.python", { fg = "#282828", italic = true })
+	hl(0, "@string.documentation.python", { fg = "#3a4058", italic = true })
 
-	hl(0, "RenderMarkdownCode", { bg = "#141414" })
-	hl(0, "RenderMarkdownCodeBorder", { fg = "#8a7ab0", bg = "#1a1620" })
-	hl(0, "RenderMarkdownH1Bg", { bg = "#1a1418" })
-	hl(0, "RenderMarkdownH2Bg", { bg = "#141820" })
-	hl(0, "RenderMarkdownH3Bg", { bg = "#181a14" })
-	hl(0, "RenderMarkdownH1", { fg = "#a04868", bold = false })
-	hl(0, "RenderMarkdownH2", { fg = "#4a7aa8", bold = false })
-	hl(0, "RenderMarkdownH3", { fg = "#6a8030", bold = false })
-	hl(0, "@markup.heading.1.markdown", { fg = "#a04868", bold = false })
-	hl(0, "@markup.heading.2.markdown", { fg = "#4a7aa8", bold = false })
-	hl(0, "@markup.heading.3.markdown", { fg = "#6a8030", bold = false })
-	hl(0, "RenderMarkdownBullet", { fg = "#505050" })
-	hl(0, "RenderMarkdownLink", { fg = "#72adf9" })
-	hl(0, "RenderMarkdownQuote", { fg = "#505050", italic = true })
+	hl(0, "RenderMarkdownCode", { bg = "#281820" })
+	hl(0, "RenderMarkdownCodeBorder", { fg = "#ffffff", bg = "#181a28" })
+	hl(0, "RenderMarkdownH1Bg", { bg = "#281820" })
+	hl(0, "RenderMarkdownH2Bg", { bg = "#1e281e" })
+	hl(0, "RenderMarkdownH3Bg", { bg = "#1e2038" })
+	hl(0, "RenderMarkdownH1", { fg = "#d95568", bold = true })
+	hl(0, "RenderMarkdownH2", { fg = "#98b860", bold = true })
+	hl(0, "RenderMarkdownH3", { fg = "#6898c0", bold = true })
+	hl(0, "@markup.heading.1.markdown", { fg = "#d95568", bold = false })
+	hl(0, "@markup.heading.2.markdown", { fg = "#98b860", bold = false })
+	hl(0, "@markup.heading.3.markdown", { fg = "#6898c0", bold = false })
+	hl(0, "RenderMarkdownBullet", { fg = "#535763" })
+	hl(0, "RenderMarkdownLink", { fg = "#9cd1bb" })
+	hl(0, "RenderMarkdownQuote", { fg = "#696d77", italic = true })
 
-	-- Menu container: use bgDarker, barely visible border
-	hl(0, "BlinkCmpMenu", { bg = "#1a1a1a" }) -- between bg and bgDark
-	hl(0, "BlinkCmpMenuBorder", { fg = "#1a1a1a" }) -- blend into menu, nearly invisible
-	-- Selection: subtle lift, not a spotlight
-	hl(0, "BlinkCmpMenuSelection", { bg = "#282828" }) -- bgFloat, gentler than #343434
-	-- Labels: muted base, match uses fg not white
-	hl(0, "BlinkCmpLabel", { fg = "#505050" }) -- fgDisabled, very quiet
-	hl(0, "BlinkCmpLabelMatch", { fg = "#A0A0A0" }) -- primary, NOT white
-	-- Kind icons: near-invisible, just enough to parse
-	hl(0, "BlinkCmpKind", { fg = "#3a3a3a" }) -- darker than current
-	-- Documentation panel: continuous with menu
-	hl(0, "BlinkCmpDoc", { bg = "#1a1a1a" })
-	hl(0, "BlinkCmpDocBorder", { fg = "#282828", bg = "#1a1a1a" })
-	hl(0, "BlinkCmpDocSeparator", { fg = "#282828", bg = "#1a1a1a" })
-	-- Scrollbar: barely there
-	hl(0, "BlinkCmpScrollBarThumb", { bg = "#2a2a2a" })
-	hl(0, "BlinkCmpScrollBarGutter", { bg = "#1a1a1a" })
+	hl(0, "BlinkCmpMenu", { bg = "#2a2e3f" })
+	hl(0, "BlinkCmpMenuBorder", { fg = "#3a4058" })
+	hl(0, "BlinkCmpMenuSelection", { bg = "#3a4058" })
+	hl(0, "BlinkCmpLabel", { fg = "#8a92b0" })
+	hl(0, "BlinkCmpLabelMatch", { fg = "#c8d3f5" })
+	hl(0, "BlinkCmpKind", { fg = "#3a4058" })
+	hl(0, "BlinkCmpDoc", { bg = "#2a2e3f" })
+	hl(0, "BlinkCmpDocBorder", { fg = "#3a4058", bg = "#2a2e3f" })
+	hl(0, "BlinkCmpDocSeparator", { fg = "#3a4058", bg = "#2a2e3f" })
+	hl(0, "BlinkCmpScrollBarThumb", { bg = "#3a4058" })
+	hl(0, "BlinkCmpScrollBarGutter", { bg = "#2a2e3f" })
 
-	hl(0, "TelescopeBorder", { fg = "#161616" })
-	hl(0, "TelescopePromptBorder", { fg = "#161616" })
-	hl(0, "TelescopeResultsBorder", { fg = "#161616" })
-	hl(0, "TelescopePreviewBorder", { fg = "#161616" })
+	hl(0, "TelescopeBorder", { fg = "#3a4058" })
+	hl(0, "TelescopePromptBorder", { fg = "#3a4058" })
+	hl(0, "TelescopeResultsBorder", { fg = "#3a4058" })
+	hl(0, "TelescopePreviewBorder", { fg = "#3a4058" })
 
-	hl(0, "FloatBorder", { fg = "#161616" })
+	hl(0, "FloatBorder", { fg = "#3a4058" })
 
-	hl(0, "GitSignsAdd", { fg = "#B9CA4A" })
-	hl(0, "GitSignsDelete", { fg = "#E78C45" })
-	hl(0, "GitSignsChange", { fg = "#7AA6DA" })
-	hl(0, "GitSignsUntracked", { fg = "#505050" })
+	-- hl(0, "GitSignsAdd", { fg = "#B9CA4A" })
+	-- hl(0, "GitSignsDelete", { fg = "#E78C45" })
+	hl(0, "GitSignsChange", { fg = "#c39ac9" })
+	-- hl(0, "GitSignsUntracked", { fg = "#505050" })
 end
 
 apply_highlights()

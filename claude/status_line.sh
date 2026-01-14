@@ -12,11 +12,11 @@ if [[ -n "$cwd" ]]; then
 	)
 	added=$((tracked_added + untracked_lines))
 	removed=$tracked_removed
-	((added > 0)) && out+=" \033[38;5;2m+ \033[38;5;236m${added}  "
-	((removed > 0)) && out+="\033[38;5;1m- \033[38;5;236m${removed}  "
+	((added > 0)) && out+=" \033[38;5;2m+ \033[38;5;8m${added}  "
+	((removed > 0)) && out+="\033[38;5;1m- \033[38;5;8m${removed}  "
 fi
 
-((pct > 0)) && { ((pct > 40)) && out+="\033[38;5;202m● ${pct}% | run /clear  " || out+="\033[34m● ${pct}%  "; }
-[[ -n "$branch" ]] && out+="\033[35m⎇ \033[38;5;236m${branch} "
+((pct > 0)) && { ((pct > 40)) && out+="\033[38;5;1m● ${pct}% | run /clear  " || out+="\033[38;5;5m● ${pct}%  "; }
+[[ -n "$branch" ]] && out+="\033[38;5;4m⎇ \033[38;5;8m${branch} "
 
 [[ -n "$out" ]] && printf '%b\033[0m' "$out"

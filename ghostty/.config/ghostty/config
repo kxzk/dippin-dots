@@ -13,7 +13,7 @@ font-family-bold-italic = "Berkeley Mono SemiBold Oblique"
 font-size = 16
 title = " "
 
-theme = "vesperito"
+theme = "Monokai Pro Octagon"
 
 custom-shader = shaders/cursor_warp.glsl
 
@@ -36,8 +36,8 @@ quick-terminal-position = center
 quick-terminal-animation-duration = 0
 
 window-title-font-family = "Berkeley Mono Retina"
-split-divider-color = #000000
-unfocused-split-fill = #000000
+split-divider-color = #282a3a
+unfocused-split-fill = #0d0e14
 window-theme = ghostty
 window-decoration = auto
 window-new-tab-position = end

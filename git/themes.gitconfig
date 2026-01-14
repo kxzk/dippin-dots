@@ -31,18 +31,18 @@
     dark = true
     syntax-theme = Monokai Extended
     # File
-    file-style = "#ffd76d" bold
+    file-style = "#ffffff" bold
     file-added-label = [+]
     file-copied-label = [==]
     file-modified-label = [*]
     file-removed-label = [-]
     file-renamed-label = [->]
-    file-decoration-style = "#ffd76d" ul
+    file-decoration-style = "#3a3d4b" ul box
     # Hunk headers
-    hunk-header-style = file line-number syntax bold italic
-    hunk-header-decoration-style = "#3a3d4b" box ul
-    hunk-header-file-style = "#c39ac9" ul bold
-    hunk-header-line-number-style = "#ffd76d" box bold
+    hunk-header-style = omit
+    hunk-header-decoration-style = omit
+    hunk-header-file-style = omit
+    hunk-header-line-number-style = omit
     # Line numbers
     line-numbers = true
     line-numbers-left-format = " {nm:>3} │"
@@ -51,13 +51,13 @@
     line-numbers-right-style = "#3a3d4b"
     line-numbers-minus-style = "#ff657a" bold
     line-numbers-plus-style = "#bad761" bold
-    line-numbers-zero-style = "#545c7e" italic
+    line-numbers-zero-style = "#3a3d4b"
     # Diff contents
     minus-style = syntax "#3d1a22"
     minus-emph-style = syntax "#6b2530"
     plus-style = syntax "#1a3d1f"
     plus-emph-style = syntax "#2a5a30"
-    zero-style = syntax
+    zero-style = syntax dim
     whitespace-error-style = "#ff657a" reverse
     # Commit
     commit-decoration-style = "#9cd1bb" box
@@ -73,56 +73,3 @@
     merge-conflict-theirs-diff-header-style = "#ffd76d" bold overline
     merge-conflict-ours-diff-header-decoration-style = "#3a3d4b" box
     merge-conflict-theirs-diff-header-decoration-style = "#3a3d4b" box
-
-[delta "firefly"]
-    # Minimal diff theme - emphasizes changes, fades chrome
-    # author: refined for clarity
-    dark = true
-    syntax-theme = Monokai Extended
-
-    # File headers - the anchor point
-    file-style = "#c9b4ff" bold
-    file-decoration-style = "#c9b4ff" ul
-    file-added-label = +
-    file-copied-label = =
-    file-modified-label = ~
-    file-removed-label = -
-    file-renamed-label = →
-
-    # Hunk headers - minimal
-    hunk-header-style = line-number "#ffd76d" bold
-    hunk-header-decoration-style = "#1a1a1a"
-    hunk-header-line-number-style = "#ffd76d" bold
-
-    # Line numbers
-    line-numbers = true
-    line-numbers-left-format = "{nm:>3} "
-    line-numbers-right-format = "{np:>3} "
-    line-numbers-left-style = "#36363e"
-    line-numbers-right-style = "#36363e"
-    line-numbers-minus-style = "#f92672"
-    line-numbers-plus-style = "#a6e22e"
-    line-numbers-zero-style = "#2c2c32"
-
-    # The main event - diff content
-    minus-style = syntax "#3d1520"
-    minus-emph-style = syntax "#5a2535" bold
-    plus-style = syntax "#1a3518"
-    plus-emph-style = syntax "#2a4a28" bold
-    zero-style = syntax dim
-    whitespace-error-style = "#f92672" reverse
-
-    # Extras - subdued
-    commit-decoration-style = none
-    commit-style = "#52525e"
-    blame-code-style = syntax
-    blame-format = "{author:<12} {commit:>7} "
-    blame-palette = "#0a0a0c" "#0d0d10" "#101014"
-
-    # Merge conflicts
-    merge-conflict-begin-symbol = ↓
-    merge-conflict-end-symbol = ↑
-    merge-conflict-ours-diff-header-style = "#c9b4ff"
-    merge-conflict-theirs-diff-header-style = "#c9b4ff" overline
-    merge-conflict-ours-diff-header-decoration-style = none
-    merge-conflict-theirs-diff-header-decoration-style = none

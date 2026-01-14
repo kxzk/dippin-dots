@@ -1,5 +1,5 @@
 return {
-	{ "datsfilipe/vesper.nvim" },
+	{ "loctvl842/monokai-pro.nvim" },
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = "markdown",
