@@ -16,7 +16,7 @@ if [[ -n "$cwd" ]]; then
 	((removed > 0)) && out+="\033[38;5;1m- \033[38;5;8m${removed}  "
 fi
 
-((pct > 0)) && { ((pct > 40)) && out+="\033[38;5;1m● ${pct}% | run /clear  " || out+="\033[38;5;5m● ${pct}%  "; }
-[[ -n "$branch" ]] && out+="\033[38;5;4m⎇ \033[38;5;8m${branch} "
+((pct > 0)) && { ((pct > 40)) && out+="\033[38;5;1m● ${pct}% | run /clear  " || out+="\033[38;5;2m● ${pct}%  "; }
+[[ -n "$branch" ]] && out+="\033[38;5;5m⎇ \033[38;5;8m${branch} "
 
 [[ -n "$out" ]] && printf '%b\033[0m' "$out"
