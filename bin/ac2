@@ -43,7 +43,7 @@ TEMP_MSG=$(mktemp)
     echo "• Body: blank line after subject, bullets wrapped at 72 chars"
     echo "• Skip obvious details—explain context and impact"
     echo ""
-    echo "IMPORTANT Output ONLY the commit message; DO NOT INCLUDE backticks"
+    echo "Output ONLY the raw commit message. No markdown, no code blocks, no \`\`\`, no explanations."
 } | agent -p --model composer-1 --output-format text > "$TEMP_MSG"
 
 if [[ ! -s "$TEMP_MSG" ]]; then
