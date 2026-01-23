@@ -44,6 +44,7 @@ atuin sync
 | claude code | `curl -fsSL https://claude.ai/install.sh \| bash` |
 | cursor cli | `curl https://cursor.com/install -fsS \| bash` |
 | bun | `curl -fsSL https://bun.sh/install \| bash` |
+| critique | `bun install -g critique` |
 | duckdb | `curl https://install.duckdb.org \| sh` |
 | go air | `go install github.com/air-verse/air@latest` |
 | ghostty | [ghostty.org/download](https://ghostty.org/download) |
