@@ -58,12 +58,12 @@ def render(comments: list[dict]):
         location = f"{path}:{start}-{end}" if start != end else f"{path}:{end}"
 
         header = Text()
-        header.append(user, style="#f92672")
+        header.append(user, style="bright_black")
         header.append(" → ", style="#ffffff")
-        header.append(location, style="#fd971f")
+        header.append(location, style="yellow")
 
         console.print(header)
-        console.print("─" * console.width, style="#282828")
+        console.print("─" * console.width, style="yellow")
         console.print(body)
         console.print()
 

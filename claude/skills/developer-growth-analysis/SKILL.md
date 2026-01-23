@@ -1,6 +1,6 @@
 ---
 name: developer-growth-analysis
-description: Triangulates knowledge gaps from recent Claude Code chat history, searches for resources to fill them, reports back.
+description: Analyzes recent Claude Code chat history to identify knowledge gaps, searches for resources to fill them, and generates a report. Use when the user asks about learning gaps, skill assessment, areas for improvement, or wants to review recent coding sessions for growth opportunities.
 ---
 
 # Developer Growth Analysis

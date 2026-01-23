@@ -9,26 +9,14 @@
     "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
     "DISABLE_TELEMETRY": "1",
     "USE_BUILTIN_RIPGREP": "0",
-    "CLAUDE_CODE_HIDE_ACCOUNT_INFO": "1"
+    "ENABLE_TOOL_SEARCH": "true"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
-      "Bash(git:*)",
-      "Bash(mkdir:*)",
-      "Bash(ls:*)",
-      "Bash(rg:*)",
-      "Bash(cat:*)",
-      "Bash(cp:*)",
-      "Bash(mv:*)",
-      "Bash(grep:*)",
-      "Bash(find:*)",
-      "Bash(tail:*)",
-      "Bash(curl:*)",
-      "Bash(head:*)",
-      "Bash(docker:*)",
-      "List(*)",
-      "Read(*)"
+      "Bash",
+      "WebFetch",
+      "Read"
     ]
   },
   "hooks": {
@@ -51,6 +39,10 @@
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": false,
     "code-simplifier@claude-plugins-official": true
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,

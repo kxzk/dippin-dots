@@ -1,5 +1,5 @@
 #!/bin/bash
-# ac2 - Git Commit with Cursor Agent (title-only)
+# ac3 - Git Commit with Cursor Agent (title-only)
 set -e
 
 RED='\033[0;31m'
@@ -12,7 +12,7 @@ if [[ -z $(git status --porcelain) ]]; then
     exit 0
 fi
 
-echo -e "${GRAY}❨ ac2 | cursor auto-committer ❩${NC}"
+echo -e "${GRAY}❨ ac3 | cursor auto-committer ❩${NC}"
 
 git add -A
 

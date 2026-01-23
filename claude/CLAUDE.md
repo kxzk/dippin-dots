@@ -19,3 +19,4 @@
 # Python
 - use uv, not pip
 - always fully type code with type hints
+- no module docstrings

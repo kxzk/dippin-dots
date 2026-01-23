@@ -1,6 +1,6 @@
 ---
-name: screenshot
-description: Capture screenshots of application windows
+name: capturing-screenshots
+description: Captures screenshots of macOS application windows using ScreenCaptureKit. Use when the user asks to screenshot, capture, or photograph windows, needs visual verification of UI changes, or wants to document application state.
 user-invocable: true
 ---
 
