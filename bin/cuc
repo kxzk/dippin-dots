@@ -1,5 +1,5 @@
 #!/bin/bash
-# ac3 - Git Commit with Cursor Agent (title-only)
+# cc - cursor commit
 set -e
 
 RED='\033[0;31m'
@@ -12,7 +12,7 @@ if [[ -z $(git status --porcelain) ]]; then
     exit 0
 fi
 
-echo -e "${GRAY}❨ ac3 | cursor auto-committer ❩${NC}"
+echo -e "${GRAY}❨ cursor commit ❩${NC}"
 
 git add -A
 
@@ -37,7 +37,7 @@ TEMP_MSG=$(mktemp)
     echo "• Lowercase, no period, imperative mood"
     echo "• Under 50 chars total"
     echo ""
-    echo "Output ONLY the single commit line. No body, no bullets, no explanation."
+    echo "Output ONLY the raw commit line. No backticks, no code fences, no body, no explanation."
 } | agent -p --model composer-1 --output-format text > "$TEMP_MSG"
 
 if [[ ! -s "$TEMP_MSG" ]]; then
