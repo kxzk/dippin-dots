@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+main_branch="${1:-main}"
+dry_run=false
+
+if [[ "${2:-}" == "--dry-run" ]]; then
+    dry_run=true
+fi
+
+git fetch --prune
+
+is_merged() {
+    local branch="$1"
+    local remote_ref="origin/$main_branch"
+
+    # Check traditional merge
+    if git merge-base --is-ancestor "$branch" "$remote_ref" 2>/dev/null; then
+        return 0
+    fi
+
+    # Check squash merge: branch changes already in main
+    local merge_base
+    merge_base=$(git merge-base "$remote_ref" "$branch" 2>/dev/null) || return 1
+    local tree_diff
+    tree_diff=$(git diff --quiet "$merge_base" "$branch" -- 2>/dev/null && echo "empty") || tree_diff="has_diff"
+
+    if [[ "$tree_diff" == "empty" ]]; then
+        return 0
+    fi
+
+    # Check if cherry-pick equivalent exists in main
+    if [[ -z $(git cherry "$remote_ref" "$branch" 2>/dev/null | grep -v '^-') ]]; then
+        return 0
+    fi
+
+    return 1
+}
+
+local_count=0
+remote_count=0
+
+echo "Local:"
+while IFS= read -r branch; do
+    [[ -z "$branch" ]] && continue
+    branch=$(echo "$branch" | sed 's/^[ *]*//')
+    [[ "$branch" == "$main_branch" ]] && continue
+
+    if is_merged "$branch"; then
+        if $dry_run; then
+            echo "  [dry-run] $branch"
+        else
+            git branch -D "$branch" 2>/dev/null && echo "  deleted $branch" || echo "  skipped $branch"
+        fi
+        ((local_count++))
+    fi
+done < <(git branch)
+
+if [[ $local_count -eq 0 ]]; then
+    echo "  (none)"
+fi
+
+echo ""
+echo "Remote:"
+while IFS= read -r branch; do
+    [[ -z "$branch" ]] && continue
+    branch=$(echo "$branch" | sed 's/^[ ]*origin\///')
+    [[ "$branch" == "$main_branch" || "$branch" == "HEAD"* ]] && continue
+
+    if is_merged "origin/$branch"; then
+        if $dry_run; then
+            echo "  [dry-run] origin/$branch"
+        else
+            git push origin --delete "$branch" 2>/dev/null && echo "  deleted origin/$branch" || echo "  skipped origin/$branch"
+        fi
+        ((remote_count++))
+    fi
+done < <(git branch -r | grep -v HEAD)
+
+if [[ $remote_count -eq 0 ]]; then
+    echo "  (none)"
+fi
+
+echo ""
+echo "Summary: $local_count local, $remote_count remote"
