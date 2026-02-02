@@ -53,7 +53,7 @@ alias linrt="linearite rank-teams"
 alias clc="claude --dangerously-skip-permissions --disallowedTools NotebookEdit --no-chrome"
 
 # codex
-# alias cx="codex --yolo -c model_reasoning_summary_format=experimental -c model_reasoning_effort='high'"
+alias cx="codex --yolo"
 
 # sp
 alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'

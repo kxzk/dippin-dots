@@ -19,17 +19,13 @@ git add -A
 
 TEMP_MSG=$(mktemp)
 
-# Generate commit message with structured prompt
+# Generate commit message (title only)
 {
-    echo "Create a conventional commit message with this exact structure:"
+    echo "Generate a single-line conventional commit message."
     echo ""
-    echo "type(scope): imperative subject under 50 chars"
+    echo "Format: type(scope): imperative description"
     echo ""
-    echo "- Bullet point explaining WHY this change matters"
-    echo "- Bullet point for each significant change"
-    echo "- Focus on user/system impact, not implementation"
-    echo ""
-    echo "Changes to analyze:"
+    echo "Changes:"
     echo "---"
     git status --short
     echo "---"
@@ -39,12 +35,11 @@ TEMP_MSG=$(mktemp)
     echo "---"
     echo "Rules:"
     echo "• Types: feat|fix|docs|refactor|perf|test|chore"
-    echo "• Subject: lowercase, no period, imperative mood"
-    echo "• Body: blank line after subject, bullets wrapped at 72 chars"
-    echo "• Skip obvious details—explain context and impact"
+    echo "• Lowercase, no period, imperative mood"
+    echo "• Under 50 chars total"
     echo ""
-    echo "IMPORTANT Output ONLY the commit message; DO NOT INCLUDE backticks"
-} | claude -p --model claude-haiku-4-5-20251001 --allowedTools "Bash,Write,Read" --permission-mode acceptEdits > "$TEMP_MSG"
+    echo "Output ONLY the raw commit line. No backticks, no code fences, no body, no explanation."
+} | claude -p --model claude-haiku-4-5-20251001 > "$TEMP_MSG"
 
 if [[ ! -s "$TEMP_MSG" ]]; then
     echo -e "${RED}failed to generate commit message${NC}"
