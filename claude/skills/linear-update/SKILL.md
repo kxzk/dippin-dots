@@ -58,7 +58,7 @@ Write in a **conversational, human tone** — like a quick Slack post to your te
 Use this structure as a guide (adapt naturally, don't copy rigidly):
 
 ```
-Hey team — here's what happened in [repo] this past week ([date range]).
+What happened in [repo] this past week ([date range]).
 
 **What shipped**
 - [Thing] — [why it matters in one sentence]
