@@ -7,7 +7,7 @@ if [[ -n "$cwd" ]]; then
 	read -r tracked_added tracked_removed untracked_lines branch < <(
 		cd "$cwd" 2>/dev/null || exit
 		git diff HEAD --numstat 2>/dev/null | awk '{a+=$1; r+=$2} END {printf "%d %d ", a+0, r+0}'
-		git ls-files --others --exclude-standard 2>/dev/null | xargs -r wc -l 2>/dev/null | tail -1 | awk '{printf "%d ", $1+0}'
+		git ls-files --others --exclude-standard 2>/dev/null | while IFS= read -r f; do wc -l < "$f"; done 2>/dev/null | awk '{s+=$1} END{printf "%d ", s+0}'
 		git rev-parse --abbrev-ref HEAD 2>/dev/null
 	)
 	added=$((tracked_added + untracked_lines))

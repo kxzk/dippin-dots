@@ -22,6 +22,24 @@ All operations happen in `/Users/kade.killary/dev/langfuse-rb/`.
 
 ## Workflow
 
+### Step 0: Pre-flight — Detect Untagged Release Commit
+
+Before anything else, check if the last release was partially completed (commit pushed but tag forgotten):
+
+```bash
+cd /Users/kade.killary/dev/langfuse-rb
+git log --oneline --grep="chore(release): bump version" -1
+```
+
+If a `chore(release): bump version to X.Y.Z` commit exists and the corresponding `vX.Y.Z` tag does **not** exist:
+
+1. Extract the version and commit SHA from the log line
+2. Create the tag on that commit: `git tag vX.Y.Z <sha>`
+3. Push only the tag: `git push origin vX.Y.Z`
+4. Tell the user the tag was retroactively applied and stop — the release is now complete
+
+If the tag already exists, or no orphaned release commit is found, continue with Step 1.
+
 ### Step 1: Determine What's Unreleased
 
 Find the latest tag and gather all commits since it:
@@ -97,29 +115,33 @@ git add CHANGELOG.md lib/langfuse/version.rb Gemfile.lock
 git commit -m "chore(release): bump version to X.Y.Z"
 ```
 
-### Step 6: Tag
+### Step 6: Tag and Push
+
+Create the tag and push both the commit and the tag. Use an explicit `git push origin vX.Y.Z` — do NOT rely on `--follow-tags` (it silently skips lightweight tags).
 
 ```bash
 git tag vX.Y.Z
+git push origin main
+git push origin vX.Y.Z
 ```
 
-### Step 7: Push
+### Step 7: Remind User to Publish
+
+Do NOT run `gem push` — the user must do this manually for MFA.
+
+Build the gem, then tell the user to publish it:
 
 ```bash
-git push origin main --follow-tags
+cd /Users/kade.killary/dev/langfuse-rb && gem build langfuse.gemspec
 ```
 
-### Step 8: Build and Publish
+Print a message like:
 
-```bash
-cd /Users/kade.killary/dev/langfuse-rb && gem build langfuse.gemspec && gem push langfuse-rb-X.Y.Z.gem
-```
-
-After a successful push, clean up the `.gem` file:
-
-```bash
-rm langfuse-rb-X.Y.Z.gem
-```
+> Release is ready. Run the following to publish and clean up:
+>
+> ```
+> cd /Users/kade.killary/dev/langfuse-rb && gem push langfuse-rb-X.Y.Z.gem && rm langfuse-rb-X.Y.Z.gem
+> ```
 
 ## Rules
 
