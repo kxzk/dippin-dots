@@ -34,7 +34,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "afplay /Users/kade.killary/dippin-dots/claude/SFX_PRESS_AB.aiff"
+            "command": "afplay /Users/kade.killary/dippin-dots/claude/SFX_DEX_PAGE_ADDED.aiff"
           }
         ]
       }
