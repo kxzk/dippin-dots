@@ -71,10 +71,28 @@ git commit -m "[<ISSUE-ID>] <issue title>"
 git push -u origin <branch-name>
 ```
 
-Create the PR with the same title as the commit:
+Create the PR with the same title as the commit.
+
+Before generating the body, check if the repo has a pull request template at any of these paths:
+- `.github/pull_request_template.md`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `docs/pull_request_template.md`
+- `PULL_REQUEST_TEMPLATE.md`
+
+If a template exists, read it and use its structure as the PR body — fill in each section with the relevant details from the issue and implementation.
+
+Before creating the PR, select the most appropriate GitHub label by running `gh label list` and matching against the nature of the change:
+
+- **bug** — the issue fixes broken behavior
+- **enhancement** — the issue adds new functionality or improves existing behavior
+- **documentation** — the issue is purely docs changes
+
+Default to `enhancement` if the issue doesn't clearly fit another category. Use a single label — don't over-tag.
+
+If no template exists, fall back to the default body:
 
 ```bash
-gh pr create --title "[<ISSUE-ID>] <issue title>" --body "$(cat <<'EOF'
+gh pr create --title "[<ISSUE-ID>] <issue title>" --label "<label>" --body "$(cat <<'EOF'
 ## Summary
 <brief description of what was done>
 
