@@ -5,6 +5,10 @@
   excludesfile = ~/.gitignore_global
   editor = nvim
   pager = delta
+  # Use filesystem notifications to avoid full-disk scans in status/add.
+  fsmonitor = true
+  # Cache untracked-file state to speed up status when many untracked files exist.
+  untrackedCache = true
 [interactive]
   diffFilter = delta --color-only
 [include]

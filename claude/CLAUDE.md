@@ -20,3 +20,7 @@
 - use uv, not pip
 - always fully type code with type hints
 - no module docstrings
+
+# Linear
+- when creating a linear issue make the team Machine Learning
+- assign it to Kade Killary
