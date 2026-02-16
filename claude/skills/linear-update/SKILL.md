@@ -9,9 +9,14 @@ Analyzes the past week of commits, PRs, and diffs to produce a structured update
 
 ## When to Use
 
-- User asks for a weekly update, status report, or changelog
-- User wants to summarize recent work for a team or stakeholder
-- User says "linear-update" or "/linear-update"
+- User says "linear-update" or "/linear-update <project-name>"
+
+## Arguments
+
+The skill accepts an optional project name argument: `/linear-update <project-name>`
+
+- If provided, use it directly as the `project` parameter when posting to Linear (skip project selection in Step 4).
+- If omitted, prompt the user or list their active projects.
 
 ## Workflow
 
@@ -79,9 +84,23 @@ Quick stats: N commits, N PRs merged, +N/-N lines across N files.
 [Infer from open PRs, draft PRs, or recent branch activity. If nothing is inferrable, drop this section.]
 ```
 
-### Step 4: Copy to Clipboard
+### Step 4: Post to Linear
 
-After generating the update, copy the final text to the clipboard using `pbcopy` so the user can paste directly into Linear.
+After generating the update, post it directly to Linear as a project status update.
+
+1. **Identify the project** — Use the project name passed as an argument (e.g. `/linear-update My Project`). If no argument was provided, call `mcp__linear-server__list_projects` (filter by `member: "me"`, `state: "started"`) to show active projects and let the user pick.
+
+2. **Determine health** — Based on the analysis from Step 2:
+   - `onTrack` — work is shipping, no blockers
+   - `atRisk` — open blockers, slipping timelines, or stalled PRs
+   - `offTrack` — empty week with expected deliverables, or significant regression
+   Default to `onTrack` unless the data clearly suggests otherwise. State your reasoning and let the user override before posting.
+
+3. **Post the update** — Call `mcp__linear-server__save_status_update` with:
+   - `type`: `"project"`
+   - `project`: the project name or ID from step 1
+   - `body`: the markdown update from Step 3
+   - `health`: the health status from step 2
 
 ## Formatting Rules
 
