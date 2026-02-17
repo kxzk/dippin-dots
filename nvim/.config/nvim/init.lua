@@ -32,7 +32,6 @@ require("configs.globals")
 require("configs.colo")
 require("configs.statusline")
 
-pcall(require("telescope").load_extension, "fzf")
 
 vim.diagnostic.config({
 	virtual_lines = { current_line = true },
