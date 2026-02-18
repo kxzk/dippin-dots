@@ -1,8 +1,25 @@
-model = "gpt-5-codex"
-# model_reasoning_summary = "concise"
-approval_policy = "on-request"
-# untrusted, on-failure, never
-sandbox_mode = "danger-full-access"
-# hide_agent_reasoning = true
-[tools]
-web_search = true
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "high"
+web_search = "live"
+cli_auth_credentials_store = "keyring"
+mcp_oauth_credentials_store = "keyring"
+file_opener = "cursor"
+personality = "pragmatic"
+
+[projects."/Users/kade.killary"]
+trust_level = "trusted"
+
+[features]
+unified_exec = true
+multi_agent = true
+
+shell_snapshot = true
+search_tool = true
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.ref]
+url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
+
+[analytics]
+enabled = false

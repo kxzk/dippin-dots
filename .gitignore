@@ -15,3 +15,8 @@ zsh/.bash_keys
 codex/.codex/*.json
 codex/.codex/*.jsonl
 codex/.codex/sessions/
+
+# Keep only codex runtime policies and config under version control.
+codex/.codex/*
+!codex/.codex/AGENTS.md
+!codex/.codex/config.toml

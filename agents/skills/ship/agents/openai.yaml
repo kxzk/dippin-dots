@@ -1,0 +1,18 @@
+interface:
+  display_name: "Ship Issue"
+  short_description: "Implement and ship a Linear issue end-to-end."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  brand_color: "#3B82F6"
+  default_prompt: "Use this skill to read a Linear issue, implement it, push a PR, and return to main."
+
+policy:
+  allow_implicit_invocation: false
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "linear"
+      description: "Linear MCP server"
+      transport: "streamable_http"
+      url: "https://mcp.linear.app/mcp"
