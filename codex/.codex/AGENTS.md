@@ -14,10 +14,6 @@
 - Match existing project conventions unless they actively cause harm
 - Lean into performance where it shapes design (data structures, algorithms, hot paths). Do not micro-optimize
 
-## Agentic behavior
-- If a command fails, surface the error with a proposed fix - don't retry silently
-- Flag adjacent issues; don't fix them unless asked
-
 ## Python
 - use uv, not pip
 - always fully type code with type hints
