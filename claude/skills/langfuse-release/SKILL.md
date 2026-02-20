@@ -22,24 +22,6 @@ All operations happen in `/Users/kade.killary/dev/langfuse-rb/`.
 
 ## Workflow
 
-### Step 0: Pre-flight — Detect Untagged Release Commit
-
-Before anything else, check if the last release was partially completed (commit pushed but tag forgotten):
-
-```bash
-cd /Users/kade.killary/dev/langfuse-rb
-git log --oneline --grep="chore(release): bump version" -1
-```
-
-If a `chore(release): bump version to X.Y.Z` commit exists and the corresponding `vX.Y.Z` tag does **not** exist:
-
-1. Extract the version and commit SHA from the log line
-2. Create the tag on that commit: `git tag vX.Y.Z <sha>`
-3. Push only the tag: `git push origin vX.Y.Z`
-4. Tell the user the tag was retroactively applied and stop — the release is now complete
-
-If the tag already exists, or no orphaned release commit is found, continue with Step 1.
-
 ### Step 1: Determine What's Unreleased
 
 Find the latest tag and gather all commits since it:

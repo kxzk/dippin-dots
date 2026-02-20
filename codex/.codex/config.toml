@@ -1,7 +1,6 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.3-codex-spark"
 model_reasoning_effort = "high"
 web_search = "live"
-cli_auth_credentials_store = "keyring"
 mcp_oauth_credentials_store = "keyring"
 file_opener = "cursor"
 personality = "pragmatic"
