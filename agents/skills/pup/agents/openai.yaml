@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pup CLI"
+  short_description: "Datadog checks and debugging via datadog-labs/pup CLI."
+  default_prompt: "Use this skill for running Pup CLI checks, debugging Datadog state, and troubleshooting command behavior."
+policy:
+  allow_implicit_invocation: false

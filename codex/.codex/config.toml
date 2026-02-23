@@ -20,5 +20,11 @@ url = "https://mcp.linear.app/mcp"
 [mcp_servers.ref]
 url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
 
+# [mcp_servers.semaphore]
+# url = "https://mcp.semaphoreci.com/mcp"
+# bearer_token_env_var = "SEMAPHORE_API_TOKEN"
+# startup_timeout_sec = 30
+# tool_timeout_sec = 300
+
 [analytics]
 enabled = false

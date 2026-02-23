@@ -10,7 +10,6 @@
 ## Code style
 - Comments explain why, never what. Reserve for invariants and non-obvious logic
 - Naming should encode intent
-- Prefer patterns that reduce code over patterns that add abstraction
 - Match existing project conventions unless they actively cause harm
 - Lean into performance where it shapes design (data structures, algorithms, hot paths). Do not micro-optimize
 

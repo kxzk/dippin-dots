@@ -1,40 +1,78 @@
 ---
 name: ship
-description: Implement a Linear issue end-to-end by reading the issue, branching, coding, committing, opening a PR, and returning to main. Use when the user provides a Linear issue ID and wants full implementation flow.
+description: Implement and ship a Linear issue end-to-end with one of two modes selected from input: `ML-123 linear` (Linear branch + `[ML-123] Title` commit) or `ML-123` (strip issue token from branch + conventional commit). Use when the user provides a Linear issue ID and wants branch/commit/PR automation.
 ---
 
 # Ship Issue
 
-Take a Linear issue ID and execute through implementation and PR creation.
+Take a Linear issue input and execute through implementation and PR creation.
 
 ## Input
 
-A Linear issue identifier such as `ML-123`.
+- Required: Linear issue identifier like `ML-123`.
+- Optional mode token: `linear`.
+
+Interpret input as:
+
+- `ML-123 linear` -> `linear-mode`
+- `ML-123` -> `conventional-mode`
+
+Both modes always start from a Linear issue lookup.
 
 ### Step 1: Read the issue
 
-Fetch issue details, especially title, description, and branch name.
+Fetch issue details: title, description, and branch name from Linear.
 
-### Step 2: Create branch
+If no branch name exists, generate fallback: `<issue-id-lowercase>/<slugified-title>`.
+
+### Step 2: Resolve mode, branch, and commit title
+
+If `linear-mode`:
+
+- Branch name: use Linear branch name as-is.
+- Commit/PR title: `[<ISSUE-ID>] <Issue Title>`.
+
+If `conventional-mode`:
+
+- Start from Linear branch name (or fallback branch).
+- Remove the issue token from the branch name.
+
+Normalize using these rules:
+
+- Strip leading `ml-<number>/`
+- Strip leading `ml-<number>-`
+- Strip `/ml-<number>-` from prefixed branches
+
+Examples:
+
+- `ml-123/feature-refactor` -> `feature-refactor`
+- `ml-123-feature-refactor` -> `feature-refactor`
+- `feature/ml-123-refactor` -> `feature/refactor`
+
+Build first commit/PR title as conventional commit:
+
+- `feat|fix|chore(<short-scope>): <short summary>`
+- `short-scope` should come from stripped branch scope.
+
+### Step 3: Create branch
 
 ```bash
 git checkout main
 git pull origin main
-git checkout -b <branch-name-from-linear>
+git checkout -b <resolved-branch-name>
 ```
 
-If no branch name exists, generate: `<issue-id-lowercase>/<slugified-title>`.
-
-### Step 3: Implement
+### Step 4: Implement
 
 Use the issue description as scope.
 
-### Step 4: Commit
+### Step 5: Commit
 
-- Stage relevant files
-- Commit message format: `[<ISSUE-ID>] <Issue Title>`
+- Stage relevant files.
+- Use the resolved commit title format from Step 2.
+- In `conventional-mode`, ensure the first commit is conventional commit format.
 
-### Step 5: Push and open PR
+### Step 6: Push and open PR
 
 ```bash
 git push -u origin <branch-name>
@@ -42,7 +80,7 @@ git push -u origin <branch-name>
 
 If a PR template exists, apply it first and then append the generated summary block after the template body.
 
-Use available PR template if present, then open PR with PR title matching commit title.
+Use available PR template if present, then open PR with PR title matching the commit title.
 
 ```bash
 # Determine PR template path
@@ -80,15 +118,15 @@ Choose one PR label:
 
 Default to `enhancement`.
 
-### Step 6: Return to main
+### Step 7: Return to main
 
 ```bash
 git checkout main
 ```
 
-### Step 7: Update issue state
+### Step 8: Update issue state
 
-Move the Linear issue to review state if available.
+Move the Linear issue to `In Review` after PR creation.
 
 ## Mermaid guideline
 
@@ -100,4 +138,5 @@ Move the Linear issue to review state if available.
 
 - Commit and PR titles should match.
 - Return to `main` at the end.
+- Always move the issue to `In Review` in both modes.
 - Run lint/tests before commit when possible.
