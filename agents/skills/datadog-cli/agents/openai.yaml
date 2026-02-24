@@ -1,0 +1,6 @@
+interface:
+  display_name: "Datadog CLI"
+  short_description: "Query and debug Datadog logs/metrics/monitors via pup CLI."
+  default_prompt: "Use $datadog-cli when Datadog state must be queried or debugged (logs, metrics, monitors, incidents, auth errors, or pup command failures)."
+policy:
+  allow_implicit_invocation: false

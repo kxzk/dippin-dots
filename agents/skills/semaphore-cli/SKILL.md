@@ -1,96 +1,87 @@
 ---
 name: semaphore-cli
-description: Use this skill for Semaphore CI operations through the `sem` CLI. Trigger it when a user needs to authenticate or switch organizations, list or edit resources (projects, pipelines, workflows, jobs, secrets, deployment targets, notifications), debug or attach to jobs, stream logs, port-forward to running jobs, rebuild or stop execution, or gather `sem troubleshoot` diagnostics.
+description: Debug and triage Semaphore CI pipelines/jobs for SimplePractice with `sem` (pipelines, workflows, jobs, logs, attach/debug, stop/rebuild). Trigger when CI is failing, flaky, stuck, queued, or when pipeline/workflow/job IDs must be inspected.
 ---
 
-# Semaphore CLI
+# Semaphore CI Debugging (SimplePractice)
 
-Use this skill to execute Semaphore operational workflows from a terminal-first interface.
+Use this skill for CI troubleshooting only.
 
-## When To Use
+## Trigger
 
-- Use when the task is operational, not code-authoring:
-  - inspect runtime state
-  - mutate Semaphore resources
-  - debug failing jobs/pipelines/workflows
-- Use when the request mentions:
-  - `sem` commands
-  - pipeline/workflow/job IDs
-  - secrets, deployment targets, notifications
-  - attach/debug/log/stop/rebuild/troubleshoot actions
-- Do not use this skill for:
-  - writing `.semaphore/*.yml` from scratch without CLI execution needs
-  - local app build/test work unrelated to Semaphore state
+- CI is failing, flaky, stuck, or slow.
+- The request mentions `sem`, pipeline/workflow/job IDs, logs, attach/debug, stop, or rebuild.
+- You need real Semaphore runtime state before taking action.
 
-## How To Use
+## Out Of Scope
 
-1. Set active org and verify context:
+- Generic Semaphore admin (secrets, dashboards, deployment targets) unless explicitly requested.
+- Authoring `.semaphore/*.yml` without live CI operations.
+- Local build/test work unrelated to Semaphore state.
+
+## Session Start
 
 ```bash
-sem connect <org>.semaphoreci.com <API_TOKEN>
+sem connect simplepractice.semaphoreci.com "$SEMAPHORE_API_TOKEN"
 sem context
-sem version
 ```
 
-2. Discover exact command signature before mutation:
+Fallback if env var is missing:
 
 ```bash
-sem help
-sem help <command>
+sem connect simplepractice.semaphoreci.com <YOUR_API_TOKEN>
 ```
 
-3. Identify resource IDs before acting:
-- `sem get jobs --all`
-- `sem get pipelines -p <project-name>`
-- `sem get workflows -p <project-name>`
+Expected: `sem context` shows `simplepractice.semaphoreci.com` with `*`.
 
-4. Execute targeted operation (read first, then mutate):
-- read: `sem get ...`, `sem logs ...`, `sem troubleshoot ...`
-- mutate: `sem apply ...`, `sem edit ...`, `sem delete ...`, `sem stop ...`, `sem rebuild ...`
+## Command Quick Reference
 
-## Command Selection
+```bash
+# Discovery
+sem get pipelines -p simplepractice
+sem get workflows -p simplepractice
+sem get workflow <workflow-id>
+sem get pipeline <pipeline-id>
+sem get jobs
 
-- Inspect resources:
-  - `sem get <resource-type>`
-  - `sem get <resource-type> <resource-name-or-id>`
-- Create/update config-backed resources:
-  - `sem create -f <resource.yaml>`
-  - `sem apply -f <resource.yaml>`
-  - `sem edit <resource-type> <resource-name>`
-  - `sem delete <resource-type> <resource-name>`
-- Job and execution control:
-  - `sem get jobs --all`
-  - `sem logs <job-id>`
-  - `sem attach <job-id>`
-  - `sem debug <job-id> --duration <duration>`
-  - `sem stop job <job-id>`
-  - `sem stop pipeline <pipeline-id>`
-  - `sem port-forward <job-id> <local-port> <remote-port>`
-- Pipeline/workflow replay:
-  - `sem rebuild pipeline <pipeline-id>`
-  - `sem rebuild workflow <workflow-id>`
-- Diagnostics:
-  - `sem troubleshoot <resource-type> <resource-id>`
-  - add `-v` for verbose API interactions
+# Debugging
+sem logs <job-id>
+sem attach <job-id>   # running jobs only
+sem debug <job-id>    # finished jobs
+# then in debug shell:
+source ~/commands.sh
+
+# Recovery
+sem stop job <job-id>
+sem stop pipeline <pipeline-id>
+sem rebuild pipeline <pipeline-id>
+sem rebuild pipeline <pipeline-id> --follow
+sem rebuild workflow <workflow-id>
+```
+
+## Fast Incident Workflow
+
+1. `sem get pipelines -p simplepractice`
+2. `sem get pipeline <pipeline-id>`
+3. `sem logs <job-id>`
+4. `sem debug <job-id>` then `source ~/commands.sh`
+5. `sem rebuild pipeline <pipeline-id> --follow`
 
 ## Guardrails
 
-- Resolve ambiguous nouns first:
-  - `pipeline` and `workflow` rebuild behavior is different.
-  - `sem rebuild pipeline` reruns failed jobs only.
-  - `sem rebuild workflow` reruns all jobs.
-- Fetch IDs before mutate/stop:
-  - Use `sem get` output to source job/pipeline/workflow IDs.
-- Treat secret edits as full replacement:
-  - `sem edit secret` does not expose prior secret values and can overwrite content.
-- Respect execution state requirements:
-  - `sem attach` and `sem port-forward` require running jobs.
-  - `sem debug` targets finished jobs and supports `--duration`.
-- Adjust editor behavior only when needed:
-  - `sem config set editor <editor>`
-  - or set `$EDITOR`.
+- Read before mutate: inspect with `sem get`/`sem logs` before stop/rebuild.
+- `sem attach` only works on running jobs.
+- `sem debug` is for finished jobs; run `source ~/commands.sh` before reproducing.
+- `rebuild pipeline` reruns failed jobs only.
+- `rebuild workflow` reruns all jobs.
+- If flags are unclear, run `sem help <command>` first.
 
-## References
+## Repo-Aware Check
 
-- Use `references/command-map.md` for aliases and high-frequency command patterns.
-- Official docs: `https://docs.semaphore.io/reference/semaphore-cli`
+- CI behavior is defined by repo files. Confirm before assumptions:
+  - `<app-repo>/.semaphore/ci.yml`
+  - `<app-repo>/.semaphore/*.sh`
+  - `<app-repo>/scripts/*ci*`
+- For `simplepractice`, treat `change_in` and branch-specific rules as the source of truth from CI config.
+
+Reference: `https://docs.semaphore.io/reference/semaphore-cli`

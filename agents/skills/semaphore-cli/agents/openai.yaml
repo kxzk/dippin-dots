@@ -1,6 +1,6 @@
 interface:
   display_name: "Semaphore CLI"
-  short_description: "Operate Semaphore via sem CLI workflows and debugging."
-  default_prompt: "Use $semaphore-cli to run, inspect, and troubleshoot Semaphore resources with sem."
+  short_description: "Debug and triage SimplePractice CI pipelines/jobs with sem."
+  default_prompt: "Use $semaphore-cli when Semaphore CI is failing/stuck/flaky: inspect pipelines/workflows/jobs, read logs, run attach/debug sessions, and recover with stop/rebuild."
 policy:
   allow_implicit_invocation: false

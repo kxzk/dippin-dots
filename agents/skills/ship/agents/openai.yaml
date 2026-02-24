@@ -1,10 +1,10 @@
 interface:
   display_name: "Ship Issue"
-  short_description: "Implement and ship a Linear issue end-to-end."
+  short_description: "Ship a Linear issue to PR from issue ID input."
   icon_small: "./assets/small-logo.svg"
   icon_large: "./assets/large-logo.png"
   brand_color: "#3B82F6"
-  default_prompt: "Use this skill to read a Linear issue, implement it, push a PR, and return to main."
+  default_prompt: "Use $ship when given a Linear issue ID (for example `ML-123`) to implement changes, push the Linear branch, open a PR, and move the issue to In Review."
 
 policy:
   allow_implicit_invocation: false

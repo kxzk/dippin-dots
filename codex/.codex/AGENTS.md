@@ -21,3 +21,9 @@
 ## Linear
 - when creating a linear issue make the team Machine Learning
 - assign it to Kade Killary
+- auto-map project by repo:
+  - if repo is `amadeus` -> `Amadeus | LLM Gateway`
+  - if repo is `ai-sdk` -> `AI SDK | Ruby Gem`
+  - if repo is `langfuse-rb` -> `Langfuse | Ruby Gem`
+  - otherwise -> `Kade | Explorations`
+- if estimate is not specified, default estimate to `xs`

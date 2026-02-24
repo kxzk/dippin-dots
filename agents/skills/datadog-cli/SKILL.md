@@ -1,9 +1,9 @@
 ---
-name: pup
-description: Use this skill only for Datadog usage and debugging via `datadog-labs/pup` CLI. Use when the user asks to query/inspect Datadog state, validate outputs, or troubleshoot `pup` command behavior. Do not use for repo maintenance, contribution, or build/development tasks.
+name: datadog-cli
+description: Query and debug Datadog state with `datadog-labs/pup` CLI (logs, metrics, monitors, incidents, auth). Trigger when the user asks to inspect Datadog data, validate alert/query output, or troubleshoot `pup` auth/command/rate-limit failures.
 ---
 
-# Pup CLI
+# Datadog CLI (pup)
 
 Use this skill for Datadog operations only.
 

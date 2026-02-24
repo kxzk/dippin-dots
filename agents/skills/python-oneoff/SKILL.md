@@ -1,9 +1,9 @@
 ---
-name: uv-inline-script
-description: Author and run single-file Python scripts with PEP 723 inline dependency blocks using `uv`.
+name: python-oneoff
+description: Write and run one-off Python scripts with external dependencies using `uv` and PEP 723 inline metadata. Trigger for quick scripts, throwaway automation, API probes, and data checks that need third-party packages.
 ---
 
-# uv Inline Scripts
+# Python One-Off Scripts
 
 Embed dependencies directly in a script file with PEP 723 metadata.
 
