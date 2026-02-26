@@ -1,0 +1,6 @@
+interface:
+  display_name: "Staging Server Promote"
+  short_description: "Find free staging namespace and promote CI."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  default_prompt: "Use $staging-server-promote to select a free staging namespace and promote my CI pipeline to it."

@@ -1,9 +1,10 @@
 model = "gpt-5.3-codex"
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 web_search = "live"
 mcp_oauth_credentials_store = "keyring"
 file_opener = "cursor"
 personality = "pragmatic"
+suppress_unstable_features_warning = true
 
 [projects."/Users/kade.killary"]
 trust_level = "trusted"
@@ -11,20 +12,19 @@ trust_level = "trusted"
 [features]
 unified_exec = true
 multi_agent = true
+voice_transcription = true
 
 shell_snapshot = true
 search_tool = true
+
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
 
 [mcp_servers.ref]
 url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
 
-# [mcp_servers.semaphore]
-# url = "https://mcp.semaphoreci.com/mcp"
-# bearer_token_env_var = "SEMAPHORE_API_TOKEN"
-# startup_timeout_sec = 30
-# tool_timeout_sec = 300
-
 [analytics]
 enabled = false
+
+[tui]
+theme = "monokai-extended-bright"

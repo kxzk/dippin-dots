@@ -1,6 +1,8 @@
 interface:
   display_name: "Semaphore CLI"
   short_description: "Debug and triage SimplePractice CI pipelines/jobs with sem."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
   default_prompt: "Use $semaphore-cli when Semaphore CI is failing/stuck/flaky: inspect pipelines/workflows/jobs, read logs, run attach/debug sessions, and recover with stop/rebuild."
 policy:
   allow_implicit_invocation: false

@@ -1,0 +1,8 @@
+interface:
+  display_name: "Staging Kube Connect"
+  short_description: "Use when asked to connect to staging servers."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  default_prompt: "Use $staging-kube-connect when the user asks to connect to staging servers. Authenticate with Teleport, connect kubectl to staging-main, and only set a namespace when explicitly provided."
+policy:
+  allow_implicit_invocation: false

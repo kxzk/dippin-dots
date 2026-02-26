@@ -1,0 +1,4 @@
+interface:
+  display_name: "Suggest Reviewers"
+  short_description: "Suggest top PR reviewers from git history"
+  default_prompt: "Use $suggest-reviewers to suggest the top 3 active reviewers for this PR branch."
