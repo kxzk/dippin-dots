@@ -13,15 +13,17 @@ trust_level = "trusted"
 unified_exec = true
 multi_agent = true
 voice_transcription = true
-
+default_mode_request_user_input = true
+responses_websockets_v2 = true
 shell_snapshot = true
-search_tool = true
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
 
 [mcp_servers.ref]
 url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
+# Optional OAuth resource hint for MCP streamable HTTP login (RFC 8707).
+# oauth_resource = "https://api.ref.tools"
 
 [analytics]
 enabled = false
