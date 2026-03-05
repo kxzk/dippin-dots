@@ -1,0 +1,9 @@
+interface:
+  display_name: "Langfuse Observability"
+  short_description: "Add or audit Langfuse tracing."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  default_prompt: "Use $langfuse-observability to add or audit Langfuse tracing in an LLM app and recommend the right instrumentation pattern."
+
+policy:
+  allow_implicit_invocation: false

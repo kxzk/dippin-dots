@@ -6,4 +6,4 @@ interface:
   default_prompt: "Use $python-oneoff to write and run a throwaway Python script with inline dependencies via uv."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true
