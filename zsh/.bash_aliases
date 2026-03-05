@@ -50,7 +50,7 @@ alias linru="linearite rank-users"
 alias linrt="linearite rank-teams"
 
 # claude code
-alias clc="claude --dangerously-skip-permissions --disallowedTools NotebookEdit --no-chrome"
+alias cl="claude --dangerously-skip-permissions --disallowedTools NotebookEdit --no-chrome"
 
 # codex
 alias cx="codex --yolo"

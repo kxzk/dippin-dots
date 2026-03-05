@@ -1,7 +1,8 @@
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "xhigh"
 web_search = "live"
 mcp_oauth_credentials_store = "keyring"
+approval_policy = "never"
 file_opener = "cursor"
 personality = "pragmatic"
 suppress_unstable_features_warning = true
@@ -30,3 +31,23 @@ enabled = false
 
 [tui]
 theme = "monokai-extended-bright"
+
+[[skills.config]]
+path = "/Users/kade.killary/dev/langfuse-rb/.agents/skills/langfuse-observability/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/dev/langfuse-rb/.agents/skills/langfuse-prompt-migration/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/dev/langfuse-rb/.agents/skills/langfuse/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/dippin-dots/agents/skills/datadog-cli/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/dippin-dots/agents/skills/suggest-reviewers/SKILL.md"
+enabled = false
