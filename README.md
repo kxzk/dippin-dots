@@ -8,6 +8,9 @@
 
 > dotfiles managed with [stow](https://www.gnu.org/software/stow/)
 
+The `codex` stow package manages `AGENTS.md`, `config.toml`, and repo-owned skill folders.
+Live Codex runtime state and ad hoc skill installs stay local in `~/.codex`.
+
 <br>
 
 #### quick start

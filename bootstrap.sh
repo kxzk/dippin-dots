@@ -59,6 +59,12 @@ bootstrap() {
 	STOW_DIRS=(atuin codex cursor ghostty git hushlogin ipython irb nvim tmux zsh)
 	for dir in "${STOW_DIRS[@]}"; do
 		if [[ -d "${dir}" ]]; then
+			if [[ "${dir}" == "codex" ]]; then
+				# Keep ~/.codex and ~/.codex/skills as real directories so runtime state
+				# and ad hoc skill installs stay local instead of mutating the repo.
+				mkdir -p "${HOME}/.codex"
+				mkdir -p "${HOME}/.codex/skills"
+			fi
 			echo "Stowing ${dir}..."
 			stow "${dir}"
 		fi

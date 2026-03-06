@@ -1,42 +1,60 @@
-model = "gpt-5.4"
-model_reasoning_effort = "xhigh"
-web_search = "live"
-mcp_oauth_credentials_store = "keyring"
 approval_policy = "never"
+cli_auth_credentials_store = "file"
 file_opener = "cursor"
-personality = "pragmatic"
+mcp_oauth_credentials_store = "file"
+model = "gpt-5.4"
+model_auto_compact_token_limit = 270000
+model_context_window = 1000000
+model_reasoning_effort = "xhigh"
+personality = "friendly"
+sandbox_mode = "danger-full-access"
 service_tier = "fast"
 suppress_unstable_features_warning = true
+web_search = "live"
 
-[projects."/Users/kade.killary"]
-trust_level = "trusted"
+[analytics]
+enabled = false
 
 [features]
-unified_exec = true
-multi_agent = true
-voice_transcription = true
 default_mode_request_user_input = true
+multi_agent = true
 responses_websockets_v2 = true
 shell_snapshot = true
+unified_exec = true
+voice_transcription = true
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
 
 [mcp_servers.ref]
 url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
-# Optional OAuth resource hint for MCP streamable HTTP login (RFC 8707).
-# oauth_resource = "https://api.ref.tools"
 
-[analytics]
-enabled = false
+[projects."/Users/kade.killary"]
+trust_level = "trusted"
+
+[shell_environment_policy]
+inherit = "all"
+
+[shell_environment_policy.set]
+CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "true"
+CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY = "1"
+CLAUDE_CODE_DISABLE_TERMINAL_TITLE = "1"
+CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION = "false"
+CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1"
+CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL = "true"
+DISABLE_BUG_COMMAND = "1"
+DISABLE_COST_WARNINGS = "1"
+DISABLE_ERROR_REPORTING = "1"
+DISABLE_NON_ESSENTIAL_MODEL_CALLS = "1"
+DISABLE_TELEMETRY = "1"
+ENABLE_TOOL_SEARCH = "true"
+USE_BUILTIN_RIPGREP = "0"
 
 [tui]
+status_line = [
+    "model-with-reasoning",
+    "context-remaining",
+    "git-branch",
+    "context-window-size",
+]
 theme = "monokai-extended-bright"
-
-[[skills.config]]
-path = "/Users/kade.killary/dippin-dots/agents/skills/datadog-cli/SKILL.md"
-enabled = false
-
-[[skills.config]]
-path = "/Users/kade.killary/dippin-dots/agents/skills/suggest-reviewers/SKILL.md"
-enabled = false
