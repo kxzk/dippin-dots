@@ -32,6 +32,9 @@ url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
 [projects."/Users/kade.killary"]
 trust_level = "trusted"
 
+[projects."/Users/kade.killary/dev"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "all"
 
@@ -58,3 +61,31 @@ status_line = [
     "context-window-size",
 ]
 theme = "monokai-extended-bright"
+
+[[skills.config]]
+path = "/Users/kade.killary/Desktop/symphony/.codex/skills/pull/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/Desktop/symphony/.codex/skills/push/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/Desktop/symphony/.codex/skills/debug/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/Desktop/symphony/.codex/skills/commit/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/Desktop/codex/.codex/skills/babysit-pr/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/Desktop/symphony/.codex/skills/land/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/dippin-dots/codex/.codex/skills/datadog-cli/SKILL.md"
+enabled = false

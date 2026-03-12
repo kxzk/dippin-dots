@@ -1,0 +1,44 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "slack-sdk>=3.27.0",
+# ]
+# ///
+
+import argparse
+import os
+import sys
+
+from slack_sdk import WebClient
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Post a message to Slack")
+    parser.add_argument("message", nargs="*", help="Message text (or pipe via stdin)")
+    parser.add_argument(
+        "--channel", "-c", default="#ask-ai-team", help="Slack channel (default: #ask-ai-team)"
+    )
+    args = parser.parse_args()
+
+    token = os.environ.get("SLACK_BOT_TOKEN")
+    if not token:
+        sys.exit("SLACK_BOT_TOKEN not set")
+
+    if not sys.stdin.isatty():
+        text = sys.stdin.read().strip()
+    elif args.message:
+        text = " ".join(args.message)
+    else:
+        parser.print_usage(sys.stderr)
+        sys.exit(1)
+
+    if not text:
+        sys.exit("empty message")
+
+    response = WebClient(token=token).chat_postMessage(channel=args.channel, text=text)
+    print(f"posted to {args.channel} (ts={response['ts']})")
+
+
+if __name__ == "__main__":
+    main()

@@ -170,7 +170,34 @@ git checkout main
 
 Use `mcp__linear-server__update_issue` to move the issue to "In Review" state.
 
-### Step 11: Confirm
+### Step 11: Post Changelog to Slack
+
+Rewrite the changelog entry from Step 4 into a concise, human-readable Slack message. Do NOT paste the raw markdown. Instead:
+
+- Lead with `:package: *ai-sdk vX.Y.Z released*`
+- Summarize changes as plain-English bullet points — no markdown headers, no PR number links, no Keep a Changelog formatting
+- Group related items; drop anything trivial (CI tweaks, test-only changes)
+- Keep it short — a teammate skimming Slack should get the gist in 5 seconds
+
+Example:
+
+```
+:package: *ai-sdk v0.5.0 released*
+
+- Added streaming support for chat completions
+- Fixed token counting for multi-turn conversations
+- Switched default timeout from 30s to 60s
+```
+
+Write the final message to a temp file, then pipe it to the `slack` CLI:
+
+```bash
+slack < /tmp/ai-sdk-release-slack.txt
+```
+
+The `slack` command defaults to `#ask-ai-team`. Requires `SLACK_BOT_TOKEN` in the environment. If the token is missing or the post fails, warn the user but do not fail the release — the PR is already open.
+
+### Step 12: Confirm
 
 Tell the user:
 
