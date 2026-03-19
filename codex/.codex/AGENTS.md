@@ -11,7 +11,7 @@
 - Comments explain why, never what. Reserve for invariants and non-obvious logic
 - Naming should encode intent
 - Match existing project conventions unless they actively cause harm
-- Lean into performance where it shapes design (data structures, algorithms, hot paths). Do not micro-optimize
+- Lean into performance where it shapes design (data structures, algorithms, hot paths)
 
 ## Python
 - use uv, not pip
@@ -25,5 +25,6 @@
   - if repo is `amadeus` -> `Amadeus | LLM Gateway`
   - if repo is `ai-sdk` -> `AI SDK | Ruby Gem`
   - if repo is `langfuse-rb` -> `Langfuse | Ruby Gem`
+  - if repo is `notetaker-drift` -> `Note Taker | Drift`
   - otherwise -> `Kade | Explorations`
-- if estimate is not specified, default estimate to `xs`
+- if estimate is not specified, set it based on the issues difficulty

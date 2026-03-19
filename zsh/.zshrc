@@ -86,3 +86,4 @@ source "$zoxide_cache"
 
 # bun completions
 [ -s "/Users/kade.killary/.bun/_bun" ] && source "/Users/kade.killary/.bun/_bun"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

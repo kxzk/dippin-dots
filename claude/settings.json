@@ -26,6 +26,7 @@
       "Read"
     ]
   },
+  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -48,7 +49,8 @@
   },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "autoUpdatesChannel": "latest",
-  "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "high"
+  "voiceEnabled": true,
+  "skipDangerousModePermissionPrompt": true
 }

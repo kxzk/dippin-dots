@@ -23,5 +23,6 @@
   - if repo is `amadeus` -> `Amadeus | LLM Gateway`
   - if repo is `ai-sdk` -> `AI SDK | Ruby Gem`
   - if repo is `langfuse-rb` -> `Langfuse | Ruby Gem`
+  - if repo is `notetaker-drift` -> `Note Taker | Drift`
   - otherwise -> `Kade | Explorations`
 - if estimate is not specified, default estimate to `xs`
