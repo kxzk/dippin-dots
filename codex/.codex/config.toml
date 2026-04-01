@@ -25,6 +25,7 @@ voice_transcription = true
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
+enabled = true
 
 [mcp_servers.ref]
 url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
@@ -33,6 +34,18 @@ url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
 trust_level = "trusted"
 
 [projects."/Users/kade.killary/dev"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/simplepractice"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/ai-sdk"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/amadeus"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/langfuse-rb"]
 trust_level = "trusted"
 
 [shell_environment_policy]
@@ -87,5 +100,20 @@ path = "/Users/kade.killary/Desktop/symphony/.codex/skills/land/SKILL.md"
 enabled = false
 
 [[skills.config]]
-path = "/Users/kade.killary/dippin-dots/codex/.codex/skills/datadog-cli/SKILL.md"
+path = "/Users/kade.killary/.codex/skills/.system/imagegen/SKILL.md"
 enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/.codex/skills/.system/skill-installer/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/.codex/skills/.system/skill-creator/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/.codex/skills/.system/plugin-creator/SKILL.md"
+enabled = false
+
+[plugins."github@openai-curated"]
+enabled = true

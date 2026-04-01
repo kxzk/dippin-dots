@@ -16,7 +16,10 @@ Analyzes the past week of commits, PRs, and diffs to produce a structured update
 The skill accepts an optional project name argument: `/linear-update <project-name>`
 
 - If provided, use it directly as the `project` parameter when posting to Linear (skip project selection in Step 4).
-- If omitted, prompt the user or list their active projects.
+- If omitted, map from the current repo name to the Linear project:
+  - `amadeus` → `Amadeus | LLM Gateway`
+  - `ai-sdk` → `AI SDK | Ruby Gem`
+  - `langfuse-rb` → `Langfuse | Ruby Gem`
 
 ## Workflow
 
@@ -88,13 +91,9 @@ Quick stats: N commits, N PRs merged, +N/-N lines across N files.
 
 After generating the update, post it directly to Linear as a project status update.
 
-1. **Identify the project** — Use the project name passed as an argument (e.g. `/linear-update My Project`). If no argument was provided, call `mcp__linear-server__list_projects` (filter by `member: "me"`, `state: "started"`) to show active projects and let the user pick.
+1. **Identify the project** — Use the project name passed as an argument (e.g. `/linear-update My Project`). If no argument was provided, derive the repo name from the current working directory and map it to the Linear project using the repo→project mapping in Arguments above.
 
-2. **Determine health** — Based on the analysis from Step 2:
-   - `onTrack` — work is shipping, no blockers
-   - `atRisk` — open blockers, slipping timelines, or stalled PRs
-   - `offTrack` — empty week with expected deliverables, or significant regression
-   Default to `onTrack` unless the data clearly suggests otherwise. State your reasoning and let the user override before posting.
+2. **Determine health** — Always set to `onTrack` unless the user explicitly specifies otherwise.
 
 3. **Post the update** — Call `mcp__linear-server__save_status_update` with:
    - `type`: `"project"`

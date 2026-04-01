@@ -88,4 +88,5 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
-vim.lsp.enable({ "ty", "gopls", "ruby-lsp", "rust_analyzer", "zls" })
+-- vim.lsp.enable({ "ty", "gopls", "ruby-lsp", "rust_analyzer", "zls" })
+vim.lsp.enable({ "ty", "gopls", "rust_analyzer", "zls" })
