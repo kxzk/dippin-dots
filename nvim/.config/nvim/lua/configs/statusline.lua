@@ -27,10 +27,33 @@ local function modified_indicator()
 	return ""
 end
 
+local function diagnostics()
+	local status = vim.diagnostic.status(0)
+	if not status then
+		return ""
+	end
+	local parts = {}
+	if (status[vim.diagnostic.severity.ERROR] or 0) > 0 then
+		table.insert(parts, "E:" .. status[vim.diagnostic.severity.ERROR])
+	end
+	if (status[vim.diagnostic.severity.WARN] or 0) > 0 then
+		table.insert(parts, "W:" .. status[vim.diagnostic.severity.WARN])
+	end
+	if #parts == 0 then
+		return ""
+	end
+	return table.concat(parts, " ") .. " "
+end
+
+local function progress()
+	return vim.ui.progress_status() or ""
+end
+
 function status_line()
 	return table.concat({
 		"%#StatusColor1#",
 		" ",
+		diagnostics(),
 		"%<",
 		"%#StatusColor#",
 		"%=",
@@ -39,6 +62,7 @@ function status_line()
 		"%f",
 		"%#StatusColor2#",
 		"%=",
+		progress(),
 		modified_indicator(),
 		" ",
 	})

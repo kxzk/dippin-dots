@@ -30,6 +30,9 @@ enabled = true
 [mcp_servers.ref]
 url = "https://api.ref.tools/mcp?apiKey=ref-1f02a8227a14b6bfa1b7"
 
+[mcp_servers.datadog]
+url = "https://mcp.datadoghq.com/api/unstable/mcp-server/mcp"
+
 [projects."/Users/kade.killary"]
 trust_level = "trusted"
 
@@ -46,6 +49,21 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/kade.killary/dev/langfuse-rb"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dippin-dots"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/hoth"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/hoth/work"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/poc-session-copilot-v2"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/poc-session-sidekick"]
 trust_level = "trusted"
 
 [shell_environment_policy]

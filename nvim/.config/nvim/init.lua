@@ -9,6 +9,7 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
 vim.opt.termguicolors = true
 vim.o.winborder = "rounded"
+vim.o.pumborder = "rounded"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -51,32 +52,14 @@ vim.diagnostic.config({
 	},
 })
 
--- treesitter --
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"python",
-		"bash",
-		"lua",
-		"go",
-		"rust",
-		"zig",
-		"markdown",
-		"html",
-		"json",
-		"yaml",
-		"css",
-		"dockerfile",
-		"sql",
-		"c",
-		"cpp",
-		"haskell",
-		"javascript",
-		"glimmer",
-		"ruby",
-	},
-	auto_install = false,
-	highlight = { enable = true },
-	indent = { enable = false },
+-- ui2 (experimental 0.12) --
+require("vim._core.ui2").enable({})
+
+-- treesitter (native 0.12) --
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		pcall(vim.treesitter.start)
+	end,
 })
 
 -- lsp --

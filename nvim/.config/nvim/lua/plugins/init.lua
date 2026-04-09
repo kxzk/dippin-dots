@@ -45,16 +45,6 @@ return {
 	},
 	{ "github/copilot.vim" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		opts = {
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
-			},
-		},
-	},
 	-- {
 	-- 	"laytan/tailwind-sorter.nvim",
 	-- 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
