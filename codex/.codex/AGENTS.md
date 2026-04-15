@@ -19,11 +19,12 @@
 - no module docstrings
 
 ## Linear
-- when creating a linear issue make the team Machine Learning
+- when creating a linear issue make the team Applied AI
 - assign it to Kade Killary
 - auto-map label by repo:
   - if repo is `amadeus` -> `amadeus`
   - if repo is `ai-sdk` -> `ai-sdk`
   - if repo is `langfuse-rb` -> `langfuse-rb`
   - otherwise -> `kade`
+- and if work is related to evals, also add `eval` label
 - if estimate is not specified, set it based on the issues difficulty

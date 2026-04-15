@@ -66,6 +66,9 @@ trust_level = "trusted"
 [projects."/Users/kade.killary/Desktop/poc-session-sidekick"]
 trust_level = "trusted"
 
+[projects."/Users/kade.killary/dev/docker-dev"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "all"
 

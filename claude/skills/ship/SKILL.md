@@ -25,8 +25,6 @@ Use the `mcp__linear-server__get_issue` tool with the provided issue identifier 
 - Description
 - Git branch name
 
-Store these — they drive everything downstream.
-
 ### Step 2: Create and Checkout Branch
 
 ```bash
@@ -35,7 +33,7 @@ git pull origin main
 git checkout -b <branch-name-from-linear>
 ```
 
-Use the `branchName` field from the Linear issue response. If no branch name exists, derive one: `<issue-id-lowercase>/<slugified-title>` (e.g. `ml-123/add-retry-logic`).
+Use the `branchName` field from the Linear issue response.
 
 ### Step 3: Implement the Issue
 
@@ -81,26 +79,7 @@ Before generating the body, check if the repo has a pull request template at any
 
 If a template exists, read it and use its structure as the PR body — fill in each section with the relevant details from the issue and implementation.
 
-Before creating the PR, select the most appropriate GitHub label by running `gh label list` and matching against the nature of the change:
-
-- **bug** — the issue fixes broken behavior
-- **enhancement** — the issue adds new functionality or improves existing behavior
-- **documentation** — the issue is purely docs changes
-
-Default to `enhancement` if the issue doesn't clearly fit another category. Use a single label — don't over-tag.
-
-If no template exists, fall back to the default body:
-
-```bash
-gh pr create --title "[<ISSUE-ID>] <issue title>" --label "<label>" --body "$(cat <<'EOF'
-## Summary
-<brief description of what was done>
-
-## Linear Issue
-<ISSUE-ID>
-EOF
-)"
-```
+Before creating the PR, select the most appropriate GitHub label by running `gh label list` and matching against the nature of the change.
 
 ### Step 6: Return to Main
 
