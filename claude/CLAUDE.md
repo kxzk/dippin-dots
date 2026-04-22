@@ -20,7 +20,7 @@
 - when creating a linear issue make the team Applied AI
 - assign it to Kade Killary
 - auto-map label by repo:
-  - if repo is `amadeus` -> `amadesu`
+  - if repo is `amadeus` -> `amadeus`
   - if repo is `ai-sdk` -> `ai-sdk`
   - if repo is `langfuse-rb` -> `langfuse-rb`
   - otherwise -> `kade`

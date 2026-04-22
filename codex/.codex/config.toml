@@ -12,6 +12,8 @@ service_tier = "fast"
 suppress_unstable_features_warning = true
 web_search = "live"
 
+notify = ["/Users/kade.killary/.codex/plugins/cache/openai-bundled/computer-use/1.0.750/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
 [analytics]
 enabled = false
 
@@ -22,6 +24,7 @@ responses_websockets_v2 = true
 shell_snapshot = true
 unified_exec = true
 voice_transcription = true
+memories = true
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
@@ -67,6 +70,33 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/kade.killary/dev/docker-dev"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/simplepractice-video"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/synthetic-data"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-20-is-fix-http-honor-per-host"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-20-can-you-create-a-linear-issue"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-20-can-you-create-a-linear-issue-2"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-20-what-woudl-be-other-good-automations"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-20-explain-how-this-works-in-rails"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-20-can-you-list-my-created-notion"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-21-what-is-a-codec"]
 trust_level = "trusted"
 
 [shell_environment_policy]
@@ -136,5 +166,32 @@ enabled = false
 path = "/Users/kade.killary/.codex/skills/.system/plugin-creator/SKILL.md"
 enabled = false
 
+[[skills.config]]
+name = "notion:notion-knowledge-capture"
+enabled = false
+
+[[skills.config]]
+name = "notion:notion-meeting-intelligence"
+enabled = false
+
+[[skills.config]]
+name = "notion:notion-research-documentation"
+enabled = false
+
+[[skills.config]]
+name = "notion:notion-spec-to-implementation"
+enabled = false
+
 [plugins."github@openai-curated"]
 enabled = true
+
+[plugins."plugin-eval@openai-curated"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[marketplaces.openai-bundled]
+last_updated = "2026-04-21T00:39:09Z"
+source_type = "local"
+source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"

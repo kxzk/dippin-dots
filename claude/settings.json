@@ -4,6 +4,7 @@
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "true",
     "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_NO_FLICKER": "1",
@@ -25,7 +26,8 @@
       "Bash",
       "WebFetch",
       "Read"
-    ]
+    ],
+    "defaultMode": "bypassPermissions"
   },
   "model": "opus[1m]",
   "hooks": {
@@ -45,12 +47,9 @@
     "type": "command",
     "command": "/Users/kade.killary/dippin-dots/claude/status_line.sh"
   },
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": false
-  },
   "spinnerTipsEnabled": false,
   "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
   "voiceEnabled": true,
   "skipDangerousModePermissionPrompt": true
