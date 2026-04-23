@@ -2,7 +2,7 @@ approval_policy = "never"
 cli_auth_credentials_store = "file"
 file_opener = "cursor"
 mcp_oauth_credentials_store = "file"
-model = "gpt-5.4"
+model = "gpt-5.5"
 model_auto_compact_token_limit = 270000
 model_context_window = 1000000
 model_reasoning_effort = "xhigh"
@@ -12,7 +12,8 @@ service_tier = "fast"
 suppress_unstable_features_warning = true
 web_search = "live"
 
-notify = ["/Users/kade.killary/.codex/plugins/cache/openai-bundled/computer-use/1.0.750/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
+notify = ["/Users/kade.killary/.codex/plugins/cache/openai-bundled/computer-use/1.0.755/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 
 [analytics]
 enabled = false
@@ -97,6 +98,12 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/kade.killary/Documents/Codex/2026-04-21-what-is-a-codec"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-22-move-all-of-my-cycle-24"]
+trust_level = "trusted"
+
+[projects."/"]
 trust_level = "trusted"
 
 [shell_environment_policy]
@@ -191,7 +198,24 @@ enabled = true
 [plugins."computer-use@openai-bundled"]
 enabled = true
 
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
 [marketplaces.openai-bundled]
-last_updated = "2026-04-21T00:39:09Z"
+last_updated = "2026-04-23T18:51:28Z"
 source_type = "local"
 source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-04-23T18:25:29Z"
+source_type = "local"
+source = "/Users/kade.killary/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
