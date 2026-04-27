@@ -1,8 +1,8 @@
 interface:
   display_name: "Langfuse"
   short_description: "Query Langfuse data and docs."
-  icon_small: "./assets/small-logo.svg"
-  icon_large: "./assets/large-logo.png"
+  icon_small: "./assets/logo.png"
+  icon_large: "./assets/logo.png"
   default_prompt: "Use $langfuse to inspect Langfuse data via the CLI or fetch Langfuse docs for a feature, SDK, or API workflow."
 
 policy:

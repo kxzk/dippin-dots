@@ -24,5 +24,6 @@
   - if repo is `ai-sdk` -> `ai-sdk`
   - if repo is `langfuse-rb` -> `langfuse-rb`
   - otherwise -> `kade`
-- also if work involves evals, add `eval` label
+- if work involves evals, add `eval` label
+- if work is a POC, add `poc` label
 - if estimate is not specified, set it based on issues difficulty

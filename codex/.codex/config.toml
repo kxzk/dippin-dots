@@ -5,7 +5,7 @@ mcp_oauth_credentials_store = "file"
 model = "gpt-5.5"
 model_auto_compact_token_limit = 270000
 model_context_window = 1000000
-model_reasoning_effort = "xhigh"
+model_reasoning_effort = "high"
 personality = "friendly"
 sandbox_mode = "danger-full-access"
 service_tier = "fast"
@@ -106,6 +106,18 @@ trust_level = "trusted"
 [projects."/"]
 trust_level = "trusted"
 
+[projects."/Users/kade.killary/dev/therapyfinder"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/pokemon-champions"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/rspec-impact"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/poc-note-format-schema-gen"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "all"
 
@@ -133,6 +145,9 @@ status_line = [
 ]
 theme = "monokai-extended-bright"
 
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
 [[skills.config]]
 path = "/Users/kade.killary/Desktop/symphony/.codex/skills/pull/SKILL.md"
 enabled = false
@@ -155,10 +170,6 @@ enabled = false
 
 [[skills.config]]
 path = "/Users/kade.killary/Desktop/symphony/.codex/skills/land/SKILL.md"
-enabled = false
-
-[[skills.config]]
-path = "/Users/kade.killary/.codex/skills/.system/imagegen/SKILL.md"
 enabled = false
 
 [[skills.config]]
@@ -189,29 +200,37 @@ enabled = false
 name = "notion:notion-spec-to-implementation"
 enabled = false
 
+[[skills.config]]
+path = "/Users/kade.killary/dippin-dots/codex/.codex/skills/linear-update/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/Users/kade.killary/.codex/skills/.system/openai-docs/SKILL.md"
+enabled = false
+
 [plugins."github@openai-curated"]
 enabled = true
 
 [plugins."plugin-eval@openai-curated"]
-enabled = true
+enabled = false
 
 [plugins."computer-use@openai-bundled"]
 enabled = true
 
 [plugins."documents@openai-primary-runtime"]
-enabled = true
+enabled = false
 
 [plugins."spreadsheets@openai-primary-runtime"]
-enabled = true
+enabled = false
 
 [plugins."presentations@openai-primary-runtime"]
-enabled = true
+enabled = false
 
 [plugins."browser-use@openai-bundled"]
 enabled = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-23T18:51:28Z"
+last_updated = "2026-04-24T20:18:34Z"
 source_type = "local"
 source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -219,3 +238,6 @@ source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"
 last_updated = "2026-04-23T18:25:29Z"
 source_type = "local"
 source = "/Users/kade.killary/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e]
+enabled = false
