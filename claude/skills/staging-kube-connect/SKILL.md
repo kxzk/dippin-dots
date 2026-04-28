@@ -54,6 +54,37 @@ kubectl auth can-i get pods
 - Do not mutate workload resources; this skill is access/bootstrap only.
 - Keep cluster fixed to `staging-main` unless the user explicitly requests a different cluster.
 
+## SimplePractice staging Rails runner gotcha
+
+In Kubernetes staging, do not validate Rails/AI SDK behavior with plain
+`kubectl exec ... bundle exec rails runner`.
+
+The pod env contains encrypted `kms://...` placeholders from ConfigMaps. The
+actual SimplePractice server is launched through `aws-env exec`, which decrypts
+those values before starting `/sbin/my_init` / Passenger. A fresh `kubectl exec`
+process does not inherit that decrypted server env, so plain runner probes can
+produce false failures like:
+
+`AI::AuthenticationError: AMADEUS_API_KEY is invalid or missing`
+
+Use this shape instead:
+
+```bash
+kubectl exec -n "$NAMESPACE" -c simplepractice "$POD" -- \
+  aws-env exec -- bash -lc 'FCM_CREDENTIALS_JSON="{}" FCM_WEB_API_KEY=dummy FCM_IOS_BUNDLE_ID=dummy FCM_ANDROID_PROJECT_ID=dummy bundle exec rails runner "<ruby>"'
+```
+
+Before blaming config, compare sanitized env:
+
+```bash
+kubectl exec -n "$NAMESPACE" -c simplepractice "$POD" -- \
+  aws-env exec -- ruby -e 'v=ENV["AMADEUS_API_KEY"].to_s; puts "aws_env_exec AMADEUS_API_KEY=#{v[0,6]} len=#{v.length}"'
+```
+
+If plain `kubectl exec` shows `kms://...` but `aws-env exec` shows a decrypted-looking value, the config is present and the plain probe is invalid.
+
+First principles: `aws-env exec` decrypts env for the process tree it starts. `kubectl exec` starts a separate process with the original pod env. Plain exec is testing the wrong runtime.
+
 ## Related
 
 - Namespace reservation + deploy workflow: `staging-server-promote`
