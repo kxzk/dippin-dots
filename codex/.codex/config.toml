@@ -118,6 +118,9 @@ trust_level = "trusted"
 [projects."/Users/kade.killary/Desktop/poc-note-format-schema-gen"]
 trust_level = "trusted"
 
+[projects."/Users/kade.killary/dev/langfuse-rb/langfuse-python"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "all"
 
@@ -230,12 +233,12 @@ enabled = false
 enabled = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-24T20:18:34Z"
+last_updated = "2026-04-29T01:59:02Z"
 source_type = "local"
 source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-04-23T18:25:29Z"
+last_updated = "2026-04-28T08:25:35Z"
 source_type = "local"
 source = "/Users/kade.killary/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 

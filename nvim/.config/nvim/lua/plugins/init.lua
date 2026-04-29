@@ -45,7 +45,6 @@ return {
 			},
 		},
 	},
-	{ "github/copilot.vim" },
 	{ "rizzatti/dash.vim", event = "VeryLazy" },
 	-- {
 	-- 	"laytan/tailwind-sorter.nvim",
