@@ -121,6 +121,9 @@ trust_level = "trusted"
 [projects."/Users/kade.killary/dev/langfuse-rb/langfuse-python"]
 trust_level = "trusted"
 
+[projects."/Users/kade.killary/Desktop/codex"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "all"
 
