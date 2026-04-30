@@ -24,8 +24,8 @@ multi_agent = true
 responses_websockets_v2 = true
 shell_snapshot = true
 unified_exec = true
-voice_transcription = true
 memories = true
+goals = true
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
@@ -122,6 +122,18 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/kade.killary/Desktop/codex"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/simplepractice-dbt"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/simplepractice-dbt-bc"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/data-metaflow"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-04-30/where-can-i-get-an-api"]
 trust_level = "trusted"
 
 [shell_environment_policy]
@@ -236,12 +248,12 @@ enabled = false
 enabled = true
 
 [marketplaces.openai-bundled]
-last_updated = "2026-04-29T01:59:02Z"
+last_updated = "2026-04-30T18:38:30Z"
 source_type = "local"
 source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-04-28T08:25:35Z"
+last_updated = "2026-04-30T19:25:55Z"
 source_type = "local"
 source = "/Users/kade.killary/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
