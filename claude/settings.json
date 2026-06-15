@@ -29,7 +29,6 @@
     ],
     "defaultMode": "bypassPermissions"
   },
-  "model": "opus[1m]",
   "hooks": {
     "Stop": [
       {
@@ -52,6 +51,6 @@
   "effortLevel": "xhigh",
   "autoUpdatesChannel": "latest",
   "skipDangerousModePermissionPrompt": true,
-  "voiceEnabled": true,
-  "autoCompactEnabled": false
+  "autoCompactEnabled": false,
+  "voiceEnabled": true
 }

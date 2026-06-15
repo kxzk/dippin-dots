@@ -18,7 +18,9 @@ return {
 				enabled = false,
 			},
 			hl = {
-				active_file = "FFFCursor",
+				normal = "FFFNormal",
+				border = "FFFBorder",
+				cursor = "FFFCursor",
 			},
 		},
 		keys = {

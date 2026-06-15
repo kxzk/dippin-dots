@@ -1,21 +1,48 @@
 ---
 name: langfuse
 description: Interact with Langfuse and access its documentation. Use when needing to (1) query or modify Langfuse data programmatically via the CLI — traces, prompts, datasets, scores, sessions, and any other API resource, (2) look up Langfuse documentation, concepts, integration guides, or SDK usage, or (3) understand how any Langfuse feature works. This skill covers CLI-based API access (via npx) and multiple documentation retrieval methods.
+allowed-tools:
+  - WebFetch(domain:langfuse.com)
+  - Bash(curl *langfuse.com/*)
+  - Bash(npx langfuse-cli api __schema *)
+  - Bash(npx langfuse-cli api * --help *)
+  - Bash(npx langfuse-cli api * list *)
+  - Bash(npx langfuse-cli api * get *)
+  - Bash(bunx langfuse-cli api __schema *)
+  - Bash(bunx langfuse-cli api * --help *)
+  - Bash(bunx langfuse-cli api * list *)
+  - Bash(bunx langfuse-cli api * get *)
 ---
 
 # Langfuse
 
-Two core capabilities: **programmatic API access** via the Langfuse CLI, and **documentation retrieval** via llms.txt, page fetching, and search.
+This skill helps you use Langfuse effectively across all common workflows: instrumenting applications, migrating prompts, debugging traces, and accessing data programmatically.
+
+## Core Principles
+
+Follow these principles for ALL Langfuse work:
+
+1. **Documentation First**: NEVER implement based on memory. Always fetch current docs before writing code (Langfuse updates frequently) See the section below on how to access documentation.
+2. **CLI for Data Access**: Use `langfuse-cli` when querying/modifying Langfuse data. See the section below on how to use the CLI. 
+3. **Best Practices by Use Case**: Check the relevant reference file below for use-case-specific guidelines before implementing
+4. **Use latest Langfuse versions**: Unless the user specified otherwise or there's a good reason, always use the latest version of Langfuse SDKs/APIs.
+
+
+## Use case specific references
+
+- instrumenting an existing function/application: references/instrumentation.md
+- migrating prompts from a codebase into Langfuse: references/prompt-migration.md
+- capturing user feedback (thumbs, ratings, implicit signals) as scores on traces: references/user-feedback.md
+- further tips on using the Langfuse CLI: references/cli.md
+- upgrading or migrating Langfuse SDKs to the latest version: references/sdk-upgrade.md
+- systematic error analysis — reading traces, building failure taxonomy, deciding what to fix: references/error-analysis.md
+- submitting feedback about this skill: references/skill-feedback.md
 
 ## 1. Langfuse API via CLI
 
 Use the `langfuse-cli` to interact with the full Langfuse REST API from the command line. Run via npx (no install required):
 
-```bash
-npx langfuse-cli api <resource> <action>
-```
-
-### Quick Start
+Start by discovering the schema and available arguments:
 
 ```bash
 # Discover all available resources
@@ -35,10 +62,10 @@ Set environment variables before making calls:
 ```bash
 export LANGFUSE_PUBLIC_KEY=pk-lf-...
 export LANGFUSE_SECRET_KEY=sk-lf-...
-export LANGFUSE_HOST=https://cloud.langfuse.com  # optional, default is EU
+export LANGFUSE_HOST=https://cloud.langfuse.com # example for EU cloud. For US cloud it's us.cloud.langfuse.com, and can also be a self-hosted URL. The server must always be specified in order to access Langfuse.
 ```
 
-If not set, ask the user for their API keys (found in Langfuse UI → Settings → API Keys) and which host they use (`cloud.langfuse.com`, `us.cloud.langfuse.com`, or self-hosted URL).
+If not set, ask the user to set them in their shell or a `.env` file (do not ask them to paste keys into chat for security reasons). Keys are found in Langfuse UI → Settings → API Keys.
 
 ### Detailed CLI Reference
 
@@ -46,7 +73,7 @@ For common workflows, tips, and full usage patterns, see [references/cli.md](ref
 
 ## 2. Langfuse Documentation
 
-Three methods to access Langfuse docs, in order of preference:
+Three methods to access Langfuse docs, in order of preference. **Always prefer your application's native web fetch and search tools** (e.g., `WebFetch`, `WebSearch`, `mcp_fetch`, etc.) over `curl` when available. The URLs and patterns below work with any fetching method — the `curl` examples are just illustrative.
 
 ### 2a. Documentation Index (llms.txt)
 
@@ -62,7 +89,7 @@ Alternatively, you can start on `https://langfuse.com/docs` and explore the site
 
 ### 2b. Fetch Individual Pages as Markdown
 
-Any page listed in llms.txt can be fetched as markdown by appending `.md` to its path or by using Accept: text/markdown in the request headers. Use this when you know which page contains the information needed. Returns clean markdown with code examples and configuration details.
+Any page listed in llms.txt can be fetched as markdown by appending `.md` to its path or by using `Accept: text/markdown` in the request headers. Use this when you know which page contains the information needed. Returns clean markdown with code examples and configuration details.
 
 ```bash
 curl -s "https://langfuse.com/docs/observability/overview.md"
@@ -98,3 +125,16 @@ Search is a great fallback if you cannot find the relevant pages or need more co
 1. Start with **llms.txt** to orient — scan for relevant page titles
 2. **Fetch specific pages** when you identify the right one
 3. Fall back to **search** when the topic is unclear and you want more context
+
+## Skill Feedback
+
+When the user expresses that something about this skill is not working as expected, gives incorrect guidance, is missing information, or could be improved — offer to submit feedback to the Langfuse skill maintainers. This includes when:
+
+- The skill gave wrong or outdated instructions
+- A workflow didn't produce the expected result
+- The user wishes the skill covered something it doesn't
+- The user explicitly says something like "this should work differently" or "this is wrong"
+
+**Do NOT trigger this** for issues with Langfuse itself (the product) — only for issues with this skill's instructions and behavior.
+
+When triggered, follow the process in [references/skill-feedback.md](references/skill-feedback.md).

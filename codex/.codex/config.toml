@@ -12,9 +12,6 @@ service_tier = "fast"
 suppress_unstable_features_warning = true
 web_search = "live"
 
-
-notify = ["/Users/kade.killary/.codex/plugins/cache/openai-bundled/computer-use/1.0.755/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
-
 [analytics]
 enabled = false
 
@@ -136,6 +133,30 @@ trust_level = "trusted"
 [projects."/Users/kade.killary/Documents/Codex/2026-04-30/where-can-i-get-an-api"]
 trust_level = "trusted"
 
+[projects."/Users/kade.killary/Desktop/timeline"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-05-01/can-you-install-codex-hatch-a"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/docker-images"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/dev/helm-charts"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-05-02/can-you-install-the-hatch-a"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Documents/Codex/2026-05-02/files-mentioned-by-the-user-img"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/poke-search"]
+trust_level = "trusted"
+
+[projects."/Users/kade.killary/Desktop/manager-tui"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "all"
 
@@ -223,6 +244,10 @@ path = "/Users/kade.killary/dippin-dots/codex/.codex/skills/linear-update/SKILL.
 enabled = false
 
 [[skills.config]]
+path = "/Users/kade.killary/dippin-dots/codex/.codex/skills/amadeus-promote-and-verify/SKILL.md"
+enabled = true
+
+[[skills.config]]
 path = "/Users/kade.killary/.codex/skills/.system/openai-docs/SKILL.md"
 enabled = false
 
@@ -244,16 +269,19 @@ enabled = false
 [plugins."presentations@openai-primary-runtime"]
 enabled = false
 
-[plugins."browser-use@openai-bundled"]
+[plugins."browser@openai-bundled"]
 enabled = true
 
+[plugins."chrome@openai-bundled"]
+enabled = false
+
 [marketplaces.openai-bundled]
-last_updated = "2026-04-30T18:38:30Z"
+last_updated = "2026-05-16T08:18:07Z"
 source_type = "local"
 source = "/Users/kade.killary/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-04-30T19:25:55Z"
+last_updated = "2026-05-16T08:25:31Z"
 source_type = "local"
 source = "/Users/kade.killary/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 

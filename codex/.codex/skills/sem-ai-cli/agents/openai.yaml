@@ -1,0 +1,7 @@
+interface:
+  display_name: "sem-ai CLI"
+  short_description: "Reference Semaphore sem-ai commands and sem replacement patterns."
+  default_prompt: "Use $sem-ai-cli when you need the exact sem-ai command surface, output format, or legacy sem replacement."
+
+policy:
+  allow_implicit_invocation: true

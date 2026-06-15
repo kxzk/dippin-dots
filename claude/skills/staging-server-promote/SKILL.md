@@ -13,7 +13,7 @@ Pick a free namespace by checking active `.reserved` labels in Linear, then prom
 
 - `LINEAR_API_KEY` to read reservations from Linear GraphQL.
 - `SEMAPHORE_API_TOKEN` to trigger promotions.
-- A CI pipeline id to promote (for example from `sem get workflow <workflow-id>`).
+- A CI pipeline id to promote (for example from `sem-ai workflow show <workflow-id>`).
 
 ## Workflow
 
@@ -23,8 +23,8 @@ Pick a free namespace by checking active `.reserved` labels in Linear, then prom
 2. Promote the selected pipeline:
    - Run `scripts/promote_staging.py` with pipeline id + namespace.
 3. Validate deployment result:
-   - Use `sem get workflow <workflow-id>` to get the deploy pipeline id.
-   - Use `sem get pipeline <deploy-pipeline-id>` and `sem logs <job-id>` to confirm final `passed` and Helm success markers.
+   - Use `sem-ai workflow show <workflow-id>` to get the deploy pipeline id.
+   - Use `sem-ai pipeline show <deploy-pipeline-id>` and `sem-ai job log <job-id>` to confirm final `passed` and Helm success markers.
 
 ## Commands
 

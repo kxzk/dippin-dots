@@ -1,0 +1,8 @@
+interface:
+  display_name: "Semaphore Debugging"
+  short_description: "Debug and triage Semaphore CI with sem-ai first, sem only for shell fallback."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  default_prompt: "Use $semaphore-debugging when Semaphore CI is failing/stuck/flaky: inspect with sem-ai, read logs, diagnose failures, and recover safely; use sem only for attach/debug shells."
+policy:
+  allow_implicit_invocation: false

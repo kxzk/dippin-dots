@@ -1,5 +1,5 @@
 #!/bin/bash
-read -r pct cwd < <(jq -r '[(.context_window.used_percentage // 0), (.cwd // "")] | @tsv')
+read -r pct cwd < <(jq -r '[((.context_window.used_percentage // 0) | floor), (.cwd // "")] | @tsv')
 
 out=""
 

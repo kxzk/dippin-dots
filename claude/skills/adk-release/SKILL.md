@@ -26,7 +26,7 @@ All operations happen in `/Users/kade.killary/dev/ai-sdk/`.
 
 Use `mcp__linear-server__create_issue` to create an issue:
 
-- **Team**: Machine Learning
+- **Team**: Applied AI
 - **Project**: AI SDK | Ruby Gem
 - **Title**: `Bump version to X.Y.Z`
 - **Description**: `Bump AI::VERSION to X.Y.Z and update CHANGELOG.md for release.`

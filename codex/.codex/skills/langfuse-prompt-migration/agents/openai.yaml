@@ -1,9 +1,0 @@
-interface:
-  display_name: "Langfuse Prompt Migration"
-  short_description: "Move hardcoded prompts into Langfuse."
-  icon_small: "./assets/logo.png"
-  icon_large: "./assets/logo.png"
-  default_prompt: "Use $langfuse-prompt-migration to move hardcoded prompts into Langfuse, create prompt objects, and refactor the app to fetch them."
-
-policy:
-  allow_implicit_invocation: false

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rename Pinned Threads"
+  short_description: "Rename pinned Codex threads by intent."
+  default_prompt: "Use $rename-pinned-threads to rename my pinned Codex threads to short intent or feature titles."

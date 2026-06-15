@@ -27,7 +27,7 @@ macos-icon-frame = chrome
 macos-icon-ghost-color = #B8C4CE
 macos-icon-screen-color = #1a1a1a
 # macos-non-native-fullscreen = true
-macos-titlebar-style = native
+macos-titlebar-style = tabs
 macos-titlebar-proxy-icon = hidden
 macos-window-shadow = true
 macos-auto-secure-input = true
@@ -61,9 +61,6 @@ shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo
 confirm-close-surface = false
 
 keybind = ctrl+enter=toggle_maximize
-
-# shift for claude code
-keybind = shift+enter=text:\x1b\r
 
 # font size
 keybind = ctrl+equal=increase_font_size:1
