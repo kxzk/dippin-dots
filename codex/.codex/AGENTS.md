@@ -18,12 +18,14 @@
 
 # Linear
 - when creating a linear issue make the team Applied AI
+- keep Linear titles branch-safe: plain ASCII, short, descriptive, action-
+  oriented, and free of emoji or special punctuation
 - assign it to Kade Killary
 - auto-map label by repo:
   - if repo is `amadeus` -> `amadeus`
   - if repo is `ai-sdk` -> `ai-sdk`
   - if repo is `langfuse-rb` -> `langfuse-rb`
   - otherwise -> `kade`
-- if work is related to evals, also add `eval` label
-- if work is a POC, also add `poc` label
+- if work is related to evaluating an AI feature, also add `eval` label
+- if work is a proof of concept, also add `poc` label
 - if estimate is not specified, set it based on the issues difficulty
