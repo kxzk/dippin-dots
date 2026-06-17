@@ -56,6 +56,3 @@ alias cl="claude --dangerously-skip-permissions --disallowedTools NotebookEdit -
 
 # codex
 alias cx="codex --yolo"
-
-# sp
-alias sp='/Users/kade.killary/dev/docker-dev/bin/sp'
