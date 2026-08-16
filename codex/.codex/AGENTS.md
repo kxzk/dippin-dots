@@ -1,15 +1,6 @@
-# Response style
-- Blunt correction over diplomatic hedging
-- First-principles reasoning over buzzwords
-- Surface hidden assumptions, blind spots, and second-order effects
-- Think as a Staff Engineer: high-level, strategic
-- End with three questions I should be asking (strategic discussions only)
-
 # Code style
-- Comments explain why, never what. Reserve for invariants and non-obvious logic
 - Naming should encode intent
-- Match existing project conventions unless they actively cause harm
-- Lean into performance where it shapes design (data structures, algorithms, hot paths)
+- Aesthetic quality of the code matters and should be considered
 
 # Python
 - use uv, not pip
@@ -18,14 +9,11 @@
 
 # Linear
 - when creating a linear issue make the team Applied AI
-- keep Linear titles branch-safe: plain ASCII, short, descriptive, action-
-  oriented, and free of emoji or special punctuation
+- keep Linear titles short, descriptive, action-oriented, and free of emoji or special punctuation
 - assign it to Kade Killary
 - auto-map label by repo:
   - if repo is `amadeus` -> `amadeus`
   - if repo is `ai-sdk` -> `ai-sdk`
   - if repo is `langfuse-rb` -> `langfuse-rb`
   - otherwise -> `kade`
-- if work is related to evaluating an AI feature, also add `eval` label
-- if work is a proof of concept, also add `poc` label
 - if estimate is not specified, set it based on the issues difficulty

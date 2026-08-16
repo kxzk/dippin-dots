@@ -1,0 +1,8 @@
+interface:
+  display_name: "Staging Kube Connect"
+  short_description: "Connect and inspect staging through SPX."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  default_prompt: "Use $staging-kube-connect to connect and inspect the explicit staging namespace through spx without changing the default namespace."
+policy:
+  allow_implicit_invocation: false

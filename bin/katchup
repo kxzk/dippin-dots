@@ -1,0 +1,290 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly DEFAULT_REPOSITORY_ROOT="/Users/kade.killary/dev"
+KATCHUP_WORK_DIRECTORY=""
+
+usage() {
+    cat <<'EOF'
+Usage: katchup [--root PATH] [--jobs COUNT]
+
+Pull every clean repository that is checked out on origin's default branch.
+Repositories are processed concurrently. The default root is
+/Users/kade.killary/dev.
+EOF
+}
+
+available_job_count() {
+    local detected_count=""
+
+    if command -v sysctl >/dev/null 2>&1; then
+        detected_count=$(sysctl -n hw.logicalcpu 2>/dev/null || true)
+    fi
+
+    if [[ ! "$detected_count" =~ ^[1-9][0-9]*$ ]] && command -v getconf >/dev/null 2>&1; then
+        detected_count=$(getconf _NPROCESSORS_ONLN 2>/dev/null || true)
+    fi
+
+    if [[ "$detected_count" =~ ^[1-9][0-9]*$ ]]; then
+        printf '%s\n' "$detected_count"
+    else
+        printf '8\n'
+    fi
+}
+
+write_result() {
+    local results_directory="$1"
+    local status="$2"
+    local repository_name="$3"
+    local repository_path="$4"
+    local summary="$5"
+    local details="${6:-}"
+    local result_path
+
+    result_path=$(mktemp "$results_directory/result.XXXXXX")
+    {
+        printf '%s\n' "$status"
+        printf '%s\n' "$repository_name"
+        printf '%s\n' "$repository_path"
+        printf '%s\n' "$summary"
+        if [[ -n "$details" ]]; then
+            printf '%s\n' "$details"
+        fi
+    } > "$result_path"
+}
+
+origin_default_branch() {
+    local repository_path="$1"
+    local cached_default_ref
+    local remote_head_output
+    local remote_default_branch
+
+    cached_default_ref=$(
+        git -C "$repository_path" symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null || true
+    )
+    if [[ -n "$cached_default_ref" ]]; then
+        printf '%s\n' "${cached_default_ref#origin/}"
+        return 0
+    fi
+
+    if ! remote_head_output=$(git -C "$repository_path" ls-remote --symref origin HEAD 2>&1); then
+        printf '%s\n' "$remote_head_output" >&2
+        return 1
+    fi
+
+    remote_default_branch=$(
+        printf '%s\n' "$remote_head_output" |
+            awk '$1 == "ref:" && $3 == "HEAD" { sub("^refs/heads/", "", $2); print $2; exit }'
+    )
+    if [[ -z "$remote_default_branch" ]]; then
+        printf 'origin did not advertise a default branch\n' >&2
+        return 1
+    fi
+
+    printf '%s\n' "$remote_default_branch"
+}
+
+process_repository() {
+    local results_directory="$1"
+    local repository_path="$2"
+    local repository_name
+    local current_branch
+    local default_branch
+    local default_branch_error
+    local working_tree_status
+    local pull_output
+    local pull_summary
+
+    repository_name=$(basename "$repository_path")
+
+    if ! git -C "$repository_path" remote get-url origin >/dev/null 2>&1; then
+        write_result "$results_directory" skip "$repository_name" "$repository_path" \
+            "no origin remote"
+        return
+    fi
+
+    current_branch=$(git -C "$repository_path" symbolic-ref --quiet --short HEAD 2>/dev/null || true)
+    if [[ -z "$current_branch" ]]; then
+        write_result "$results_directory" skip "$repository_name" "$repository_path" \
+            "detached HEAD"
+        return
+    fi
+
+    if ! working_tree_status=$(git -C "$repository_path" status --porcelain --untracked-files=normal 2>&1); then
+        write_result "$results_directory" failure "$repository_name" "$repository_path" \
+            "could not inspect working tree" "$working_tree_status"
+        return
+    elif [[ -n "$working_tree_status" ]]; then
+        write_result "$results_directory" skip "$repository_name" "$repository_path" \
+            "working tree has changes"
+        return
+    fi
+
+    if default_branch=$(origin_default_branch "$repository_path" 2>&1); then
+        :
+    else
+        default_branch_error="$default_branch"
+        write_result "$results_directory" failure "$repository_name" "$repository_path" \
+            "could not determine origin's default branch" "$default_branch_error"
+        return
+    fi
+
+    if [[ "$current_branch" != "$default_branch" ]]; then
+        write_result "$results_directory" skip "$repository_name" "$repository_path" \
+            "on $current_branch; default branch is $default_branch"
+        return
+    fi
+
+    if pull_output=$(git -C "$repository_path" pull --ff-only 2>&1); then
+        pull_summary=$(printf '%s\n' "$pull_output" | awk 'NF { last_line = $0 } END { print last_line }')
+        if [[ -z "$pull_summary" ]]; then
+            pull_summary="pull completed"
+        fi
+        write_result "$results_directory" success "$repository_name" "$repository_path" "$pull_summary"
+    else
+        write_result "$results_directory" failure "$repository_name" "$repository_path" \
+            "git pull --ff-only failed" "$pull_output"
+    fi
+}
+
+print_result_group() {
+    local expected_status="$1"
+    local heading="$2"
+    local index_path="$3"
+    local result_path
+    local status
+    local repository_name
+    local repository_path
+    local summary
+    local details
+
+    printf '%s\n' "$heading"
+    while IFS=$'\t' read -r repository_name result_path; do
+        [[ -n "$result_path" ]] || continue
+        status=$(sed -n '1p' "$result_path")
+        [[ "$status" == "$expected_status" ]] || continue
+
+        repository_path=$(sed -n '3p' "$result_path")
+        summary=$(sed -n '4p' "$result_path")
+        printf '  %-24s %s\n' "$repository_name" "$summary"
+
+        details=$(sed -n '5,$p' "$result_path")
+        if [[ -n "$details" ]]; then
+            printf '%s\n' "$details" | sed 's/^/      /'
+            printf '      repository: %s\n' "$repository_path"
+        fi
+    done < "$index_path"
+    printf '\n'
+}
+
+run_katchup() {
+    local repository_root="$DEFAULT_REPOSITORY_ROOT"
+    local job_count
+    local repository_list_path
+    local results_directory
+    local result_index_path
+    local repository_path
+    local result_path
+    local repository_name
+    local repository_count=0
+    local success_count=0
+    local skip_count=0
+    local failure_count=0
+    local status
+
+    job_count=$(available_job_count)
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --root)
+                [[ $# -ge 2 ]] || { printf 'katchup: --root requires a path\n' >&2; return 2; }
+                repository_root="$2"
+                shift 2
+                ;;
+            --jobs)
+                [[ $# -ge 2 ]] || { printf 'katchup: --jobs requires a count\n' >&2; return 2; }
+                job_count="$2"
+                shift 2
+                ;;
+            -h|--help)
+                usage
+                return 0
+                ;;
+            *)
+                printf 'katchup: unknown argument: %s\n' "$1" >&2
+                usage >&2
+                return 2
+                ;;
+        esac
+    done
+
+    if [[ ! "$job_count" =~ ^[1-9][0-9]*$ ]]; then
+        printf 'katchup: --jobs must be a positive integer\n' >&2
+        return 2
+    fi
+
+    if [[ ! -d "$repository_root" ]]; then
+        printf 'katchup: repository root does not exist: %s\n' "$repository_root" >&2
+        return 2
+    fi
+
+    KATCHUP_WORK_DIRECTORY=$(mktemp -d "${TMPDIR:-/tmp}/katchup.XXXXXX")
+    repository_list_path="$KATCHUP_WORK_DIRECTORY/repositories"
+    results_directory="$KATCHUP_WORK_DIRECTORY/results"
+    result_index_path="$KATCHUP_WORK_DIRECTORY/result-index"
+    mkdir "$results_directory"
+    : > "$repository_list_path"
+
+    cleanup() {
+        if [[ -n "$KATCHUP_WORK_DIRECTORY" && -d "$KATCHUP_WORK_DIRECTORY" ]]; then
+            rm -rf -- "$KATCHUP_WORK_DIRECTORY"
+        fi
+    }
+    trap cleanup EXIT
+
+    while IFS= read -r -d '' repository_path; do
+        if [[ -d "$repository_path/.git" || -f "$repository_path/.git" ]]; then
+            printf '%s\0' "$repository_path" >> "$repository_list_path"
+            repository_count=$((repository_count + 1))
+        fi
+    done < <(find -H "$repository_root" -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -print0)
+
+    if [[ "$repository_count" -eq 0 ]]; then
+        printf 'Katchup found no repositories in %s\n' "$repository_root"
+        return 0
+    fi
+
+    printf 'Katchup is checking %d repositories with up to %d concurrent jobs...\n\n' \
+        "$repository_count" "$job_count"
+
+    xargs -0 -n 1 -P "$job_count" "$0" --worker "$results_directory" < "$repository_list_path"
+
+    : > "$result_index_path"
+    for result_path in "$results_directory"/result.*; do
+        repository_name=$(sed -n '2p' "$result_path")
+        printf '%s\t%s\n' "$repository_name" "$result_path" >> "$result_index_path"
+
+        status=$(sed -n '1p' "$result_path")
+        case "$status" in
+            success) success_count=$((success_count + 1)) ;;
+            skip) skip_count=$((skip_count + 1)) ;;
+            failure) failure_count=$((failure_count + 1)) ;;
+        esac
+    done
+    LC_ALL=C sort -o "$result_index_path" "$result_index_path"
+
+    print_result_group success "SUCCEEDED ($success_count)" "$result_index_path"
+    print_result_group skip "SKIPPED ($skip_count)" "$result_index_path"
+    print_result_group failure "FAILED ($failure_count)" "$result_index_path"
+    printf 'Summary: %d succeeded, %d skipped, %d failed\n' \
+        "$success_count" "$skip_count" "$failure_count"
+
+    [[ "$failure_count" -eq 0 ]]
+}
+
+if [[ "${1:-}" == "--worker" ]]; then
+    [[ $# -eq 3 ]] || exit 2
+    process_repository "$2" "$3"
+else
+    run_katchup "$@"
+fi

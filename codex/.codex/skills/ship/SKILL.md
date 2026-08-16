@@ -1,25 +1,27 @@
 ---
 name: ship
-description: "Ship a Linear issue end-to-end: read issue, create Linear branch, implement, commit, push, open PR, and move issue to In Review. Trigger when the user provides a Linear issue ID (for example `ML-123`) and asks to implement/ship."
+description: Ship one Linear issue from start to PR. Read the issue, create the Linear branch, implement, commit, push, open a PR, and move the issue to In Review. Use when the user gives a Linear issue ID, such as `ML-123`, and asks to implement or ship it.
 ---
 
 # Ship Issue
 
-Execute a Linear issue from input to PR with one default flow.
+Ship a Linear issue from input to PR with one default flow.
 
 ## Input
 
-- Required: Linear issue identifier like `ML-123`.
+- Required: Linear issue ID such as `ML-123`.
 
-## Default Mode (Only Mode)
+## Default Mode
 
-- Branch name: use Linear branch name as-is.
+This skill has one mode.
+
+- Branch name: use the Linear branch name without edits.
 - Commit title: `[<ISSUE-ID>] <Issue Title>`.
-- PR title: match the commit title.
+- PR title: use the same title as the commit.
 
 ## Workflow
 
-### Step 1: Read issue
+### Step 1: Read Issue
 
 Fetch issue details from Linear:
 
@@ -27,7 +29,7 @@ Fetch issue details from Linear:
 - description
 - branch name
 
-### Step 2: Create branch
+### Step 2: Create Branch
 
 ```bash
 git checkout main
@@ -37,36 +39,36 @@ git checkout -b <resolved-branch-name>
 
 ### Step 3: Implement
 
-Use the issue description as scope.
+Use the issue description as the work scope.
 
 ### Step 4: Commit
 
-- Stage relevant files.
-- Use commit title format: `[<ISSUE-ID>] <Issue Title>`.
+- Stage the relevant files.
+- Use this commit title format: `[<ISSUE-ID>] <Issue Title>`.
 
-### Step 5: Push and open PR
+### Step 5: Push And Open PR
 
 ```bash
 git push -u origin <branch-name>
 ```
 
-If a PR template exists, apply it first and append the generated summary after template content.
+If a PR template exists, apply it first. Then append the generated summary after the template content.
 
-Choose a PR label. First, consult the repo's existing labels (`gh label list`) for a match based on issue type or content. If no suitable label is found, ignore label assignment.
+Choose a PR label. First, check the repo labels with `gh label list`. Select a label that matches the issue type or content. If no good label exists, skip label assignment.
 
-### Step 6: Return to main
+### Step 6: Return To Main
 
 ```bash
 git checkout main
 ```
 
-### Step 7: Update issue state
+### Step 7: Update Issue State
 
 Move the Linear issue to `In Review` after PR creation.
 
 ## Rules
 
-- Commit and PR titles must match.
+- Commit title and PR title must match.
 - Always return to `main` at the end.
-- Always move issue to `In Review`.
-- Run lint/tests before commit when possible.
+- Always move the issue to `In Review`.
+- Run lint and tests before commit when possible.

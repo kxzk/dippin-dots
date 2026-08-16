@@ -1,0 +1,7 @@
+interface:
+  display_name: "SPX Cursor Agents"
+  short_description: "Control Cursor Cloud Agent runs through SPX."
+  default_prompt: "Use $spx-agent to control this Cursor Cloud Agent run through spx without opening Cursor."
+
+policy:
+  allow_implicit_invocation: true

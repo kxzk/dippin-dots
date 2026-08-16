@@ -64,6 +64,11 @@ bootstrap() {
 				# and ad hoc skill installs stay local instead of mutating the repo.
 				mkdir -p "${HOME}/.codex"
 				mkdir -p "${HOME}/.codex/skills"
+			elif [[ "${dir}" == "cursor" ]]; then
+				mkdir -p "${HOME}/.cursor"
+				echo "Stowing ${dir}..."
+				stow -Rv "${dir}" -t "${HOME}/.cursor"
+				continue
 			fi
 			echo "Stowing ${dir}..."
 			stow "${dir}"

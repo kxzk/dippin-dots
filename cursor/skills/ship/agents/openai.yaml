@@ -1,0 +1,18 @@
+interface:
+  display_name: "Ship Issue"
+  short_description: "Ship a Linear issue to PR from issue ID input."
+  icon_small: "./assets/small-logo.svg"
+  icon_large: "./assets/large-logo.png"
+  brand_color: "#3B82F6"
+  default_prompt: "Use $ship when given a Linear issue ID (for example `ML-123`) to implement changes, push the Linear branch, open a PR, and move the issue to In Review."
+
+policy:
+  allow_implicit_invocation: false
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "linear"
+      description: "Linear MCP server"
+      transport: "streamable_http"
+      url: "https://mcp.linear.app/mcp"

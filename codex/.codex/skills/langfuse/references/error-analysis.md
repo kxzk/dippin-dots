@@ -8,6 +8,9 @@ description: Deep-dive error analysis of an LLM pipeline or AI application using
   errors", "build a failure taxonomy", "what's going wrong with my pipeline", or any
   request to systematically inspect, annotate, or score Langfuse traces. If the user
   is trying to understand or improve the quality of an AI system's outputs, use this skill.
+metadata:
+  required_access:
+    - LANGFUSE_PROJECT_INTERFACE
 ---
 
 # Error Analysis
@@ -24,43 +27,28 @@ Read it in full. It defines the authoritative 5-step process (sample selection �
 
 **2. Guide the user through this step by step**
 
-You as a coding agent and the user go through this together to perform a full error analysis with their data in langfuse. Do everything you can achieve via CLI (look up traces, create annotation queues, ...) for the user. Provide them with direct links to UI wherever their action is required. Be proactive and narrate what is going on for the user. 
+You as a coding agent and the user go through this together to perform a full error analysis with their data in langfuse. Do as much of the work as you can directly for the user (look up traces, create annotation queues, ...). Provide them with direct links to UI wherever their action is required. Be proactive and narrate what is going on for the user.
 
 ## Rules CRITICAL
-Use Langfuse CLI wherever possible
+Perform interactions with the user's Langfuse instance yourself rather than telling the user to do them — don't say "now do this in Langfuse" when you can do it directly
+But don't barrel through on assumptions: where a step needs the user's judgment or input (e.g. what to fix, how to label, which evaluator), pause and ask before acting
 Use charts where possible to display data
 
 ---
 
 ## Langfuse Implementation Notes
 
-The guide describes the process. These notes cover the Langfuse-specific API and CLI mechanics required to execute it.
+The guide describes the process. These notes cover the Langfuse-specific mechanics required to execute it.
 
 ### Credentials
 
-```bash
-echo $LANGFUSE_PUBLIC_KEY   # pk-lf-...
-echo $LANGFUSE_SECRET_KEY   # sk-lf-...
-echo $LANGFUSE_HOST         # https://cloud.langfuse.com (EU), https://us.cloud.langfuse.com (US), https://jp.cloud.langfuse.com (JP) or self-hosted
-```
+Make sure Langfuse credentials are available before starting — a public key (`pk-lf-...`), a secret key (`sk-lf-...`), and the host (e.g. `https://cloud.langfuse.com` for EU, `https://us.cloud.langfuse.com` for US, `https://jp.cloud.langfuse.com` for JP, or a self-hosted URL). If they aren't configured, ask the user to set them — do not ask them to paste secret values into chat.
 
-If not set, check `.env` in the project root: `export $(grep -v '^#' .env | xargs)`. If `LANGFUSE_BASE_URL` is used instead of `LANGFUSE_HOST`, run `export LANGFUSE_HOST="$LANGFUSE_BASE_URL"`.
-
-```bash
-AUTH=$(echo -n "${LANGFUSE_PUBLIC_KEY}:${LANGFUSE_SECRET_KEY}" | base64)
-
-# Verify before proceeding
-STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-  -H "Authorization: Basic $AUTH" \
-  "${LANGFUSE_HOST}/api/public/projects")
-echo "Auth check: $STATUS"
-```
-
-If status is not `200`, stop and ask the user to check their credentials and host before continuing.
+Verify you can actually reach the user's project before proceeding. If access fails, stop and ask the user to check their credentials and host.
 
 ### Annotation target: OBSERVATION versus TRACE
 
-> **CRITICAL:** In OpenTelemetry-instrumented apps, trace-level `input`/`output` can be null — content often lives in a GENERATION observation. Always consider if the right objectType to add is `objectType: OBSERVATION` pointing to the GENERATION observation ID to annotation queues. 
+> **CRITICAL:** In OpenTelemetry-instrumented apps, trace-level `input`/`output` can be null — content often lives in a GENERATION observation. In that case, add the GENERATION observation (not the trace) to the annotation queue, so the content being reviewed is actually visible.
 
 ### Annotation queues
 
@@ -73,7 +61,7 @@ If status is not `200`, stop and ask the user to check their credentials and hos
 |------|-------------|
 | EU cloud | `https://cloud.langfuse.com/project/<projectId>/annotation-queues/<queueId>` |
 | US cloud | `https://us.cloud.langfuse.com/project/<projectId>/annotation-queues/<queueId>` |
-| Self-hosted | `<LANGFUSE_HOST>/project/<projectId>/annotation-queues/<queueId>` |
+| Self-hosted | `<LANGFUSE_BASE_URL>/project/<projectId>/annotation-queues/<queueId>` |
 
 Instruction to give: *"Please open code the first ~50 examples. For each trace, write what you observe in the `open_coding` field (describe behaviour, don't diagnose root causes), then set `pass_fail_assessment` to Pass or Fail."*
 
@@ -86,15 +74,15 @@ When a category warrants a prompt fix, always offer the user two options:
 
 ### Setup evaluators
 
-When a category warrants an evaluator setup, propose the type of evaluator and offer to set it up for user via CLI
+When a category warrants an evaluator setup, propose the type of evaluator and offer to set it up for the user
 
 
 ### Common gotchas
 
 | Mistake | Fix |
 |---------|-----|
-| `objectType: TRACE` in queue | Use `objectType: OBSERVATION` with GENERATION obs ID |
-| Creating score config without checking existing | `GET /api/public/score-configs` first; can't delete |
+| Annotating the trace instead of the observation | Target the GENERATION observation, not the trace, when content lives there |
+| Creating a score config without checking existing ones | Check existing score configs first; they can't be deleted |
 | Queue created before score configs | Create configs → collect IDs → create queue |
-| `--limit` > 100 on traces list | API hard cap; paginate with `--page` |
-| No rate limiting on queue item creation | `sleep 0.4` between calls to avoid 429 |
+| Requesting too many traces at once | Page size is capped (max 100); paginate to get more |
+| No rate limiting on bulk queue item creation | Space out requests to avoid hitting rate limits (429) |

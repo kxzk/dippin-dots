@@ -1,32 +1,33 @@
 ---
 name: feature-flags
-description: Creates and manages LaunchDarkly feature flags at SimplePractice. Use when the user needs to create, toggle, target, test, roll out, or clean up feature flags.
+description: Create and manage LaunchDarkly feature flags at SimplePractice. Use when the user must create, toggle, target, test, roll out, or clean up feature flags.
 ---
 
 # Feature Flags
 
-Reference skill for LaunchDarkly feature flag workflows at SimplePractice. Feature flags decouple deployments from releases — they are if-else statements that control which users see which features.
+Use this skill for LaunchDarkly feature flag work at SimplePractice. Feature flags separate deploys from releases. They are code branches that control which users can use a feature.
 
 ## Key Files
 
 | File | Purpose |
 |------|---------|
-| `app/models/concerns/ld_feature_flags.rb` | Flag definitions (backend) |
-| `app/resources/frontend/user_resource.rb` | Auto-exposed to frontend API |
-| `frontend/app/models/user.js` | Frontend flag consumption |
+| `app/models/concerns/ld_feature_flags.rb` | Backend flag definitions |
+| `app/resources/frontend/user_resource.rb` | Flags auto-exposed to the frontend API |
+| `frontend/app/models/user.js` | Frontend flag use |
 | `app/controllers/application_controller.rb` | Mixpanel experiment tracking |
-| `.ld_flag_overrides.yml` (project root) | Local dev overrides |
+| `.ld_flag_overrides.yml` (project root) | Local development overrides |
 
 ## Naming Convention
 
-- Prefix: `feature_` — always
-- Lowercase, underscore_case
-- Verbose and specific to the feature, no abbreviations
+- Always use the `feature_` prefix.
+- Use lowercase `underscore_case`.
+- Use a verbose name that names the feature.
+- Do not use abbreviations.
 - Examples: `feature_new_payment_allocation`, `feature_client_demographics_report`
 
-## Creating a Flag
+## Create A Flag
 
-### 1. Create in LaunchDarkly (Rails console)
+### 1. Create In LaunchDarkly From The Rails Console
 
 ```ruby
 LaunchDarklyScripts::CreateFeatureFlagService.new(
@@ -40,19 +41,23 @@ Available tags: `GROWTH_TAG`, `RCM_TAG`, `PRACTICE_MANAGEMENT_TAG`, `MOBILE_TAG`
 
 For Therapy Finder flags, add `project_key: "monarch"`.
 
-### 2. Register the flag
+### 2. Register The Flag
 
-Add to `app/models/concerns/ld_feature_flags.rb` with `fallback_value: false` for new flags.
+Add the flag to `app/models/concerns/ld_feature_flags.rb`.
 
-### 3. Expose to frontend (if needed)
+Use `fallback_value: false` for new flags.
 
-Add to `frontend/app/models/user.js`. Flags not exposed on the API are unreachable from the frontend. Set `frontend: false` in `ld_feature_flags.rb` to hide from frontend API.
+### 3. Expose To The Frontend, If Needed
 
-### 4. Create a cleanup Linear story immediately
+Add the flag to `frontend/app/models/user.js`.
 
-Link it to the implementation story. Set expected removal date (30-60 days after 100% rollout).
+The frontend cannot use flags that the API does not expose. Set `frontend: false` in `ld_feature_flags.rb` to hide a flag from the frontend API.
 
-### 5. Turn the flag on
+### 4. Create A Cleanup Linear Story Immediately
+
+Link the cleanup story to the implementation story. Set the expected removal date to 30-60 days after 100% rollout.
+
+### 5. Turn The Flag On
 
 ```ruby
 LaunchDarklyScripts::ToggleFeatureFlagService.new(
@@ -62,9 +67,9 @@ LaunchDarklyScripts::ToggleFeatureFlagService.new(
 ).call
 ```
 
-Turning a flag on makes it usable — it does NOT set its value to `true`. Add targeting for that.
+Turning a flag on makes it available. It does not set the flag value to `true`. Add targeting for that.
 
-### 6. Add targeting
+### 6. Add Targeting
 
 ```ruby
 LaunchDarklyScripts::EnableForPracticesService.new(
@@ -76,26 +81,32 @@ LaunchDarklyScripts::EnableForPracticesService.new(
 
 ## Rollout Process
 
-1. Product finds early adopters, enables via admin console
-2. Roll out to 1 test group, **wait 24-48 hours**
-3. Expand test groups incrementally (new rule per expansion for scheduling)
-4. Post to `#product-releases` at each milestone, thread replies
-5. At 100%: update `fallback_value: true` in code within 1 week
-6. After 30+ days at 100%: clean up the flag
+1. Product finds early adopters and enables the flag through the admin console.
+2. Roll out to one test group.
+3. Wait 24-48 hours.
+4. Expand test groups in small steps. Add a new rule for each expansion when scheduling matters.
+5. Post to `#product-releases` at each milestone. Use thread replies.
+6. At 100%, update `fallback_value: true` in code within one week.
+7. After 30 or more days at 100%, clean up the flag.
 
-**Critical:** Always update `fallback_value: true` when at 100% rollout. If LaunchDarkly goes down, flags revert to fallback — leaving it `false` hides shipped features. This caused the October 2025 outage.
+Critical rule: Always update `fallback_value: true` when rollout reaches 100%.
+
+If LaunchDarkly is unavailable, flags use the fallback value. If the fallback stays `false`, shipped features become hidden. This caused the October 2025 outage.
 
 ## Testing
 
 ### RSpec
+
 ```ruby
 stub_flag(:feature_your_flag_name, true)
 ```
 
-### Local development
-Option A: Toggle via [admin dashboard](http://localhost:4005/sa_adm/dashboard)
+### Local Development
 
-Option B: Create `.ld_flag_overrides.yml` in project root (auto-reloads):
+Option A: Toggle through the [admin dashboard](http://localhost:4005/sa_adm/dashboard).
+
+Option B: Create `.ld_flag_overrides.yml` in the project root. It reloads automatically.
+
 ```yaml
 feature_your_flag_name: true
 ```
@@ -106,12 +117,12 @@ For detailed A/B testing setup, Mixpanel tracking, and Therapy Finder flags, see
 
 ## Flag Cleanup Checklist
 
-```
+```text
 - [ ] Feature stable at 100% for 30+ days
 - [ ] fallback_value already set to true
 - [ ] Remove flag from ld_feature_flags.rb
 - [ ] Remove flag from frontend/app/models/user.js
-- [ ] Remove all conditional logic (keep only "true" path)
+- [ ] Remove all conditional logic. Keep only the true path.
 - [ ] Remove stub_flag calls from tests
 - [ ] Run full test suite
 - [ ] Deploy to production
@@ -121,8 +132,9 @@ For detailed A/B testing setup, Mixpanel tracking, and Therapy Finder flags, see
 
 ## Tips
 
-- Most customer-facing changes should be flagged — weigh risk vs cleanup effort
-- Control one thing per flag
-- Check the flag early in the flow, not deep in derived logic
-- Ensure LaunchDarkly "Default rule" matches `fallback_value` in code
-- Flags created in one environment exist in all environments automatically
+- Flag most customer-facing changes. Balance risk against cleanup cost.
+- Control one thing per flag.
+- Check the flag early in the flow.
+- Do not put flag checks deep in derived logic.
+- Make the LaunchDarkly default rule match `fallback_value` in code.
+- Flags created in one environment exist in all environments automatically.

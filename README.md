@@ -9,6 +9,8 @@
 > dotfiles managed with [stow](https://www.gnu.org/software/stow/)
 
 The `codex` stow package manages `AGENTS.md`, `config.toml`, and repo-owned skill folders.
+The `cursor` stow package targets `~/.cursor` and manages user settings plus personal skills.
+Root `AGENTS.md` is a Cursor-facing symlink back to the Codex-owned instruction file.
 Live Codex runtime state and ad hoc skill installs stay local in `~/.codex`.
 
 <br>

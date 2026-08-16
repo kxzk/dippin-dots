@@ -1,19 +1,17 @@
 ---
 name: sem-ai-cli
-description: Reference Semaphore's `sem-ai` CLI command set, command families, output formats, safety defaults, and legacy `sem` replacement patterns.
+description: Reference the Semaphore `sem-ai` CLI commands, command groups, output formats, safety defaults, and replacements for old `sem` commands.
 ---
 
 # sem-ai CLI
 
-Use this skill when you need the exact `sem-ai` command surface before touching
-Semaphore state. It is a reference skill, not the incident workflow itself. For
-active CI triage, pair it with `semaphore-debugging`.
+Use this skill when you need the exact `sem-ai` command surface before you change Semaphore state.
+
+This is a reference skill. It is not the incident workflow. For active CI triage, use it with `semaphore-debugging`.
 
 ## Core Model
 
-`sem-ai` is the agent-oriented Semaphore CLI. It uses structured output by
-default, supports JSON/table/YAML formatting, and shares the same
-`~/.sem.yaml` context file as the legacy `sem` CLI.
+`sem-ai` is the Semaphore CLI for agents. It uses structured output by default. It supports JSON, table, and YAML output. It uses the same `~/.sem.yaml` context file as the old `sem` CLI.
 
 ## Setup
 
@@ -88,10 +86,9 @@ sem-ai pipeline show <pipeline-id> --format yaml
 sem-ai --verbose pipeline show <pipeline-id>
 ```
 
-Default to JSON for automation. Use table output only when a human needs to
-scan the result.
+Use JSON for automation by default. Use table output only when a person must scan the result.
 
-## Replacing Legacy `sem`
+## Replace Old `sem`
 
 ```text
 sem get workflows -p <project>     -> sem-ai workflow list --project <project>
@@ -106,8 +103,7 @@ sem rebuild pipeline <pipeline-id> -> sem-ai pipeline rebuild <pipeline-id>
 sem rebuild workflow <workflow-id> -> sem-ai workflow rerun <workflow-id>
 ```
 
-Keep legacy `sem` for interactive shell workflows that `sem-ai` does not
-replace yet:
+Keep old `sem` for interactive shell workflows that `sem-ai` does not replace yet:
 
 ```bash
 sem attach <job-id>
@@ -116,10 +112,10 @@ sem debug <job-id>
 
 ## Safety
 
-- Inspect first, mutate second.
-- Promotion commands require `--confirm`; verify `--target`, `--param`, and the
-  pipeline id before execution.
-- Prefer `sem-ai <command> --help` over guessing flags.
-- Use `sem-ai yaml validate` before pushing pipeline config changes.
+- Inspect first. Mutate second.
+- Promotion commands require `--confirm`.
+- Verify `--target`, `--param`, and the pipeline ID before execution.
+- Use `sem-ai <command> --help` instead of guessing flags.
+- Use `sem-ai yaml validate` before you push pipeline config changes.
 
 Reference: `https://docs.semaphore.io/reference/sem-ai-cli`
